@@ -51,10 +51,10 @@ public class MenuLogin{
     if (username == "" && senha == "")
       return -3;
 
-    elif (username == "")
+    else if (username == "")
       return -2;
 
-    elif (senha == "")
+    else if (senha == "")
       return -1;
 
     else{
