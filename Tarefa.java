@@ -1,62 +1,80 @@
 public class Tarefa{
   String titulo;
-  String prioridade;
+  int prioridade;
   String conclusao;
   String descricao;
   String hora;
   String data;
 
+  // Construtor para "Adicionar Tarefas"
+  Tarefa(String titulo){
+    this.setTitulo(titulo);
+    this.setPrioridade(0);
+    this.setConclusao("");
+    this.setDescricao("");
+    this.setHora("");
+    this.setData("");
+  }
 
-  //            LOGIN
-  //    nome:
-  //    senha:
-  //            | submit | 
-  //    | mudar_senha |
-  //    | criar_registro |
-  //    | excluir_conta |
+  // Construtor para puxar os dados do
+  Tarefa(String titulo, int prioridade, String conclusao, String descricao, String hora, String data){
+    this.setTitulo(titulo);
+    this.setPrioridade(prioridade);
+    this.setConclusao(conclusao);
+    this.setDescricao(descricao);
+    this.setHora(hora);
+    this.setData(data);
+  }
 
+  void setTitulo(String titulo){
+    this.titulo = titulo;
+  }
 
+  void setPrioridade(String prioridade){
+    this.prioridade = prioridade;
+  }
 
-  //          MUDAR SENHA
-  //    nome:
-  //    senha atual:
-  //    senha nova: 
-  //            | submit | 
-  //    | login |
-  //    | criar_registro |
-  //    | excluir_conta |
+  void setConclusao(String conclusao){
+    this.conclusao = conclusao;
+  }
 
+  void setDescricao(String descricao){
+    this.descricao = descricao;
+  }
 
+  void setHora(String hora){
+    this.hora = hora;
+  }
 
-  //         CRIAR REGISTRO
-  //    nome:
-  //    senha:
-  //            | submit | 
-  //    | mudar_senha |
-  //    | login |
-  //    | excluir_conta |
+  void setData(String data){
+    this.data = data;
+  }
 
+  String getTitulo(){
+    return titulo;
+  }
 
+  String getPrioridade(){
+    return String.valueOf(prioridade);
+  }
 
+  String getConclusao(){
+    return conclusao;
+  }
 
-  //         EXCLUIR CONTA
-  //    nome:
-  //    senha:
-  //            | submit | 
-  //    | mudar_senha |
-  //    | criar_registro |
-  //    | login |
+  String getDescricao(){
+    return descricao;
+  }
 
+  String getHora(){
+    return hora;
+  }
 
+  String getData(){
+    return data;
+  }
 
-
-  //                          MENU PRINCIPAL
-  //   | MODO NOTURNO |         TODO LIST             | MUDAR BACKGROUND  |
-  //   TAREFA D       | CONCLUIDO|    | REMOVER TAREFA |  |EDITAR TAREFA|   | VER DETALHES DA TAREFA|
-  //   TAREFA X       | CONCLUIDO|    | REMOVER TAREFA |  |EDITAR TAREFA|   | VER DETALHES DA TAREFA|
-  //   TAREFA A       | CONCLUIDO|    | REMOVER TAREFA |  |EDITAR TAREFA|   | VER DETALHES DA TAREFA|
-  //   TAREFA B       | CONCLUIDO|    | REMOVER TAREFA |  |EDITAR TAREFA|   | VER DETALHES DA TAREFA|
-  //   TAREFA A'      | CONCLUIDO|    | REMOVER TAREFA |  |EDITAR TAREFA|   | VER DETALHES DA TAREFA|
-  //   | 22% CONC |    | PAG 1 |    | PAG 2 |   | PAG 3 |    | PAG 4 | 
-  //   | ADICIONAR TAREFA |  | LIMPAR TUDO  |   | LIMPAR CONCLUÍDAS  |
+  // 1) concluir
+  // 2) editar
+  // 3) ver detalhes
 }
