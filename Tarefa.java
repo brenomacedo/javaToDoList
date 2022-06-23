@@ -16,11 +16,7 @@ public class Tarefa{
     this.setData("");
   }
 
-<<<<<<< Updated upstream
-  // Construtor para puxar os dados do
-=======
   // Construtor para puxar os dados do banco de dados
->>>>>>> Stashed changes
   Tarefa(String titulo, int prioridade, String conclusao, String descricao, String hora, String data){
     this.setTitulo(titulo);
     this.setPrioridade(prioridade);
