@@ -1,7 +1,7 @@
 //           LOGIN             
 //     nome:                     
 //     senha:                    
-//        | SUBMIT | -> botão para receber as entradas         
+//        | SUBMIT | -> botão para receber as entradas        
 //    | MUDAR SENHA | -> botão que abre uma nova janela de "Mudar Senha"
 //    | CRIAR REGISTRO | -> botão que abre uma nova janela de "Criar Registro"
 //    | EXCLUIR CONTA | -> botão que abre uma nova janela de "Excluir Conta"
@@ -59,7 +59,7 @@
 //  |  TAREFA B       | CONCLUIDO|    | REMOVER TAREFA |  |EDITAR TAREFA|   | VER DETALHES DA TAREFA|  |
 //  |  TAREFA C       | CONCLUIDO|    | REMOVER TAREFA |  |EDITAR TAREFA|   | VER DETALHES DA TAREFA|  |
 //  |                                                                                                  | 
-//  |               | PAG 1 |    | PAG 2 |   | PAG 3 |    | PAG 4 |                                    |
+//  |                 | PAG 1 |    | PAG 2 |   | PAG 3 |    | PAG 4 |                                  |
 //  |__________________________________________________________________________________________________|
 //
 //   | 22% CONC | 
@@ -68,6 +68,7 @@
 
 // OBS:
 // | CONCLUIDO | -> botão que serve para concluir uma tarefa
+// | ADICIONAR TAREFA | -> abre uma nova janela de "Adicionar Tarefa"
 // | REMOVER TAREFA | -> botão que apaga a tarefa escolhida
 // | EDITAR TAREFA  | -> abre uma nova janela de "Editar Tarefa"
 // | VER DETALHES DA TAREFA | -> abre uma nova janela de "Ver Detalhes da Tarefa"
@@ -77,7 +78,10 @@
 // | PAG 4 | -> botão que reinicia MENU TAREFAS para a página 4
 
 
-
+//              ADICIONAR TAREFA
+//  TITULO :
+//         | SUBMIT |
+//  | VOLTAR | -> botão para voltar à tela de "MENU PRINCIPAL" 
 
 
 //                 EDITAR TAREFA
