@@ -29,5 +29,5 @@ public class MenuPrincipal{
   // 6.2) Atualizamos a porcentagem de tarefas concluídas
 
   // 7) Limpar concluídas
-  // 7.1) Olha as 20. Se for concluida, RemoverTarefa.
+  // 7.1) Olhar as 20 tarefas. Se for concluida, RemoverTarefa.
 }
