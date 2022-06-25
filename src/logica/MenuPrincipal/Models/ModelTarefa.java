@@ -1,0 +1,3 @@
+class ModelTarefa{
+  Tarefa tarefa;
+}
