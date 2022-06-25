@@ -27,7 +27,6 @@ public class Menu extends JFrame {
     this.setLayout(new BorderLayout());
     this.setSize(600, 920); 
     this.setResizable(false);
-    this.setVisible(true);
     this.setTitle("To Do List");
 
     this.getContentPane().setBackground(Theme.bgColor);
@@ -139,5 +138,6 @@ public class Menu extends JFrame {
     this.add(listaDeTarefas, BorderLayout.CENTER);
     this.add(tituloContainer, BorderLayout.NORTH);
     this.add(campoBotoes, BorderLayout.SOUTH);
+    this.setVisible(true);
   }
 }
