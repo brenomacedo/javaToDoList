@@ -3,7 +3,7 @@ public class DadosRegistros{
   // Verifica se determinado login existe no banco de dados
   // Se existir -> retorna id_usuario
   // Caso contrário -> retorna -4
-  static int verificarLogin(ModelLogin model){
+  static int verificarLogin(String nome_usuario, String senha){
     return -4;
   }
 
@@ -14,27 +14,34 @@ public class DadosRegistros{
 
   // 3) cadastrar
   // Adiciona um novo cadastro ao banco de dados
-  static void cadastrar(ModelCadastrar model){ 
+  static void cadastrar(String nome_usuario, String senha){
+
+
+    this.atualizar_ultima_id_registrada();
   }
 
 
   // 4) atualizar
   // Atualiza a senha de um usuário no banco de dados
-  static void atualizar(int id_usuario, ModelMudarSenha model){
+  static void atualizar(int id_usuario, String senha_nova){
   }
 
   // 5) verificarNomeUsuario
   // Verifica se o nome_usuario é válido, isto é, se não há nenhum usuário cadastrado com esse nome_usuário
   // Se for válido -> retorna true
   // Caso contrário -> retorna false
-  static boolean verificarNomeUsuario(ModelCadastrar model){
+  static boolean verificarNomeUsuario(String nome_usuario){
     return true;
+  }
+
+  // 6) Função para, após realizar o cadastro de um novo usuário, atualizarmos 
+  // a numeração da última id registrada
+  void atualizar_ultima_id_registrada(){
   }
 
   // 6) salvar
   void salvar(){
   }
-
 
   // 7) carregar
   void carregar(){

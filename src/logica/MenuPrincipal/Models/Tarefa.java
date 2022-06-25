@@ -1,15 +1,17 @@
 public class Tarefa{
   String titulo;
-  int prioridade;
+  String prioridade;
   String conclusao;
   String descricao;
   String hora;
   String data;
+  Pagina pagina_fonte;
+  // Observadores
 
   // Construtor para "Adicionar Tarefas"
   Tarefa(String titulo){
     this.setTitulo(titulo);
-    this.setPrioridade(0);
+    this.setPrioridade("0");
     this.setConclusao("");
     this.setDescricao("");
     this.setHora("");
@@ -17,7 +19,7 @@ public class Tarefa{
   }
 
   // Construtor para puxar os dados do banco de dados
-  Tarefa(String titulo, int prioridade, String conclusao, String descricao, String hora, String data){
+  Tarefa(String titulo, String prioridade, String conclusao, String descricao, String hora, String data){
     this.setTitulo(titulo);
     this.setPrioridade(prioridade);
     this.setConclusao(conclusao);
@@ -55,7 +57,7 @@ public class Tarefa{
   }
 
   String getPrioridade(){
-    return String.valueOf(prioridade);
+    return prioridade;
   }
 
   String getConclusao(){
@@ -73,8 +75,4 @@ public class Tarefa{
   String getData(){
     return data;
   }
-
-  // 1) concluir
-  // 2) editar
-  // 3) ver detalhes
 }
