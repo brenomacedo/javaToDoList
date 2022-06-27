@@ -18,19 +18,22 @@ public class ControllerLogin extends ControllerTelasIniciais{
   void verificarLogin(){
     String nome_usuario = (this.getNomeUsuario()).toUpperCase();
     String senha = this.getSenha();
-    int i = 0;
+    int valor_retorno = -2;
 
     // 1) Verificamos se senha ou nome_usuario são vazios
-    // 2) Caso i == 0, então sabemos que nome_usuario e senha são válidos
-    // Nesse caso, verificamos se o login existe.
+    int i = Verificadora.verifica_senha_nomeUsuario(nome_usuario, senha);
+
+    // nome_usuario e senha não são vazios
     if (i == 0)
-      i = DadosRegistros.verificarLogin(nome_usuario, senha);
+      valor_retorno = (this.getDados()).verificarLogin(nome_usuario, senha);
 
-    // 3) Setamos a mensagem no Model
-    String mensagem_model = Mensagens.mensagem(i);
-    (this.getModelLogin()).setMensagem(mensagem_model);
+      // Login existe
+      if (valor_retorno == 0)
+        (this.getModelLogin()).setUsuario(dados.getUsuario());
 
-    // 4) Setamos "i" como "id_usuario" no Model
-    (this.getModelLogin()).setIdUsuario(i);
+
+    // 2) Setamos a mensagem no Model
+    String mensagem = Mensagens.gera_mensagem_login(i, valor_retorno);
+    (this.getModelLogin()).setMensagem(mensagem);
   }
 }

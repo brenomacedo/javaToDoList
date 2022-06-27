@@ -16,11 +16,19 @@ public class ControllerApagarRegistro extends ControllerTelasIniciais{
 
   // Função apagar
   void apagar(){
-    // 1) Verificamos se o login existe
+    String nome_usuario = (this.getNomeUsuario()).toUpperCase();
+    String senha = this.getSenha();
+    int valor_retorno = -2;
 
-    // 2) Se o login não existir:
+    // 1) Verificamos se senha ou nome_usuario são vazios
+    int i = Verificadora.verifica_senha_nomeUsuario(nome_usuario, senha);
+    
+    // 2) nome_usuario e senha não são vazios
+    if (i == 0)
+      valor_retorno = (this.getDados()).apagar_registro(nome_usuario, senha);
 
-    // 3) Caso contrário, apagamos o registro e então retornamos 0 para que a View exiba uma mensagem de
-    // "Registro apagado com sucesso"
+    // 3) Setamos a mensagem no Model
+    String mensagem = Mensagens.gera_mensagem_apagarRegistro(i, valor_retorno);
+    (this.getModelApagarRegistro()).setMensagem(mensagem);
   }
 }

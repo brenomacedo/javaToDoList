@@ -18,22 +18,17 @@ public class ControllerCadastro extends ControllerTelasIniciais{
   void cadastrar(){
     String nome_usuario = (this.getNomeUsuario()).toUpperCase();
     String senha = this.getSenha();
-    int i = 0;
+    int valor_retorno = -2;
 
     // 1) Verificamos se senha ou nome_usuario são vazios
-    // 2) Caso i == 0, então sabemos que nome_usuario e senha são válidos
+    int i = Verificadora.verifica_senha_nomeUsuario(nome_usuario, senha);
+    
+    // 2) nome_usuario e senha não são vazios
     if (i == 0)
-      // Nesse caso, verificamos se nome_usuario é válido.
-      // Se sim, fazemos o cadastro
-      if (DadosRegistros.verificarNomeUsuario(nome_usuario))
-        DadosRegistros.cadastrar(nome_usuario, senha);
-      else
-        i = -4;
-    else
-      i = -5;
+      valor_retorno = (this.getDados()).cadastrar(nome_usuario, senha);
 
     // 3) Setamos a mensagem no Model
-    String mensagem_model = Mensagens.mensagem(i);
-    (this.getModelCadastro()).setMensagem(mensagem_model);
+    String mensagem = Mensagens.gera_mensagem_cadastro(i, valor_retorno);
+    (this.getModelCadastro()).setMensagem(mensagem);
   }
 }

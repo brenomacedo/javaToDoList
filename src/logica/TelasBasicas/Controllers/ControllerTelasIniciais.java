@@ -4,10 +4,12 @@ class ControllerTelasIniciais{
   // Iniciais terão todos os seguintes métodos e atributos
   String nome_usuario;
   String senha;
+  Dados dados;
 
   ControllerTelasIniciais(String nome_usuario, String senha) {
     this.setNomeUsuario(nome_usuario);
     this.setSenha(senha);
+    this.setDados(new Dados());
   }
 
   void setNomeUsuario(String nome_usuario){
@@ -18,11 +20,19 @@ class ControllerTelasIniciais{
     this.senha = senha;
   }
 
+  void setDados(Dados dados){
+    this.dados = dados;
+  }
+
   String getNomeUsuario(){
     return this.nome_usuario;
   }
 
   String getSenha(){
     return this.senha;
+  }
+
+  Dados getDados(){
+    return this.dados;
   }
 }
