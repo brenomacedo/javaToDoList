@@ -9,6 +9,7 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Dimension;
@@ -18,15 +19,15 @@ import utils.Theme;
 public class Task extends JPanel {
   Task(String titulo, int prioridade) {
     this.setLayout(new BorderLayout());
-    this.setBackground(Theme.bgColor);
-    this.setBorder(new EmptyBorder(4, 4, 4, 4));
-    // botoes da tarefa e prioridade
+    this.setBorder(BorderFactory.createMatteBorder(4, 8, 4, 8, Theme.bgColor));
+    this.setBackground(Color.WHITE);
     JPanel botoes = new JPanel();
-    botoes.setBackground(Theme.bgColor);
+    botoes.setBorder(new EmptyBorder(0, 8, 0, 8));
+    botoes.setBackground(Color.WHITE);
     GridLayout botoesLayout = new GridLayout(1, 4);
     botoesLayout.setHgap(4);
     botoes.setLayout(botoesLayout);
-    botoes.setPreferredSize(new Dimension(124, 28));
+    botoes.setPreferredSize(new Dimension(140, 28));
 
     // Icone icone tarefa concluida
     ImageIcon iconeConcluido = new ImageIcon("images/concluded-task.png");
@@ -45,7 +46,7 @@ public class Task extends JPanel {
     tarefaConcluida.setSize(24, 24);
     tarefaConcluida.setSelectedIcon(iconeConcluido);
     tarefaConcluida.setIcon(iconeNaoConcluido);
-    tarefaConcluida.setBackground(Theme.bgColor);
+    tarefaConcluida.setBackground(Color.WHITE);
 
     // Icone botao deletar
     ImageIcon iconeDeletar = new ImageIcon("images/delete.png");
@@ -60,7 +61,7 @@ public class Task extends JPanel {
     JButton botaoDeletar = new JButton();
     botaoDeletar.setFocusable(false);
     botaoDeletar.setIcon(iconeDeletar);
-    botaoDeletar.setBackground(Theme.bgColor);
+    botaoDeletar.setBackground(Color.WHITE);
     botaoDeletar.setBorder(emptyBorder);
 
     // Icone botao editar
@@ -73,7 +74,7 @@ public class Task extends JPanel {
     JButton botaoEditar = new JButton();
     botaoEditar.setFocusable(false);
     botaoEditar.setIcon(iconeEditar);
-    botaoEditar.setBackground(Theme.bgColor);
+    botaoEditar.setBackground(Color.WHITE);
     botaoEditar.setBorder(emptyBorder);
 
     // Icone botao visualizar
@@ -86,7 +87,7 @@ public class Task extends JPanel {
     JButton botaoVisualizar = new JButton();
     botaoVisualizar.setFocusable(false);
     botaoVisualizar.setIcon(iconeVisualizar);
-    botaoVisualizar.setBackground(Theme.bgColor);
+    botaoVisualizar.setBackground(Color.WHITE);
     botaoVisualizar.setBorder(emptyBorder);
     
     botoes.add(tarefaConcluida);

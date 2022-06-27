@@ -126,8 +126,44 @@ public class Menu extends JFrame {
 
     JPanel listaDeTarefas = new JPanel();
     listaDeTarefas.setBackground(Theme.bgColor);
-    listaDeTarefas.setLayout(new GridLayout(15, 1));
+    listaDeTarefas.setLayout(new GridLayout(14, 1));
 
+    listaDeTarefas.add(
+      new Task("Ola mundo", 3)
+    );
+    listaDeTarefas.add(
+      new Task("Ola mundo", 3)
+    );
+    listaDeTarefas.add(
+      new Task("Ola mundo", 3)
+    );
+    listaDeTarefas.add(
+      new Task("Ola mundo", 3)
+    );
+    listaDeTarefas.add(
+      new Task("Ola mundo", 3)
+    );
+    listaDeTarefas.add(
+      new Task("Ola mundo", 3)
+    );
+    listaDeTarefas.add(
+      new Task("Ola mundo", 3)
+    );
+    listaDeTarefas.add(
+      new Task("Ola mundo", 3)
+    );
+    listaDeTarefas.add(
+      new Task("Ola mundo", 3)
+    );
+    listaDeTarefas.add(
+      new Task("Ola mundo", 3)
+    );
+    listaDeTarefas.add(
+      new Task("Ola mundo", 3)
+    );
+    listaDeTarefas.add(
+      new Task("Ola mundo", 3)
+    );
     listaDeTarefas.add(
       new Task("Ola mundo", 3)
     );
