@@ -89,7 +89,7 @@ public class Dados{
 
   // 2) Apagar registro (OK!)
   // Verifica se o registro existe e o apaga
-  void apagar_registro(String nome_usuario_ent, String senha_ent){
+  int apagar_registro(String nome_usuario_ent, String senha_ent){
     int i = this.verificarLogin(nome_usuario_ent, senha_ent);
 
     // Usuário existente

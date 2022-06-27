@@ -1,8 +1,8 @@
-public class ControllerMudarSenha extends ControllerTelasIniciais{
+class ControllerMudarSenha extends ControllerTelasIniciais{
   String senha_nova;
 
   ControllerMudarSenha(String nome_usuario, String senha, String senha_nova, ModelTelasIniciais model){
-    super(nome_usuario, senha, model)
+    super(nome_usuario, senha, model);
     this.setSenhaNova(senha_nova);
   }
 

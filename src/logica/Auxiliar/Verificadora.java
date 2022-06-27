@@ -39,4 +39,29 @@ public class Verificadora{
 
     return 0;
   }
+
+  static int verifica_nome_nomeUsuario_senha(String nome, String nome_usuario, String senha){
+    if (nome_usuario == "" && senha == "" && nome == "")
+      return -1;
+
+    if (nome_usuario == "" && senha == "")
+      return -2;
+
+    if (nome_usuario == "" && nome == "")
+      return -3;
+
+    if (senha == "" && nome == "")
+      return -4;
+
+    if (senha == "")
+      return -5;
+
+    if (nome == "")
+      return -6;
+
+    if (nome_usuario == "")
+      return -7;
+
+    return 0;
+  }
 }

@@ -1,4 +1,4 @@
-public class ControllerApagarRegistro extends ControllerTelasIniciais{
+class ControllerApagarRegistro extends ControllerTelasIniciais{
   ControllerApagarRegistro(String nome_usuario, String senha, ModelTelasIniciais model){
     super(nome_usuario, senha, model);
   }
