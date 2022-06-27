@@ -5,6 +5,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
@@ -13,6 +14,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Dimension;
+import java.awt.Font;
 
 import utils.Theme;
 
@@ -95,6 +97,14 @@ public class Task extends JPanel {
     botoes.add(botaoEditar);
     botoes.add(botaoVisualizar);
 
+    JTextField campoTarefa = new JTextField("Nova Tarefa");
+    campoTarefa.setPreferredSize(new Dimension(425, 28));
+    campoTarefa.setBorder(new EmptyBorder(8,8,8,8));
+    campoTarefa.setFont(new Font(null, Font.BOLD, 18));
+    // campoTarefa.setFocusable(false);
+
+
+    this.add(campoTarefa, BorderLayout.WEST);
     this.add(botoes, BorderLayout.EAST);
 
   }
