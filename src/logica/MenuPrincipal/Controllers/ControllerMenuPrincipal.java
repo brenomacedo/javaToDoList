@@ -1,28 +1,36 @@
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 class ControllerMenuPrincipal{
   ModelMenuPrincipal model_menu_principal;
-  int id_usuario;
+  JSONObject usuario;
 
-  ControllerMenuPrincipal(int id_usuario){
-    this.setIdUsuario(id_usuario);
+  ControllerMenuPrincipal(JSONObject usuario){
+    this.setUsuario(usuario);
     this.iniciar();
   } 
 
-  void setIdUsuario(int id_usuario){
-    this.id_usuario = id_usuario;
+  void setUsuario(JSONObject usuario){
+    this.usuario = usuario;
   }
 
-  int getIdUsuario(){
-    return this.id_usuario;
+  JSONObject getUsuario(){
+    return this.usuario;
+  }
+
+  void setModelMenuPrincipal(ModelMenuPrincipal model_menu_principal){
+    this.model_menu_principal = model_menu_principal;
+  }
+
+  ModelMenuPrincipal getModelMenuPrincipal(){
+    return this.model_menu_principal;
   }
 
   // 1) Função de inicializar o MenuPrincipal (após fazer o login)
   void iniciar(){
-
+    ModelMenuPrincipal model_menu_principal = new ModelMenuPrincipal(this.getUsuario());
+    this.setModelMenuPrincipal(model_menu_principal);
   }
-
-  // OBS: Ao "adicionar_tarefa", "limpar_tarefas_concluidas" ou "limpar_tudo", precisamos modificar
-  // o "model_menu_tarefas" do "model_menu_principal"
-
 
   // 2) Função de adicionar tarefas
   // Como essa função foi chamada, então podemos adicionar mais uma tarefa em "model_menu_tarefas" do

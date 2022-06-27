@@ -5,7 +5,6 @@ public class Tarefa{
   String descricao;
   String hora;
   String data;
-  Pagina pagina_fonte;
   // Observadores
 
   // Construtor para "Adicionar Tarefas"
