@@ -1,7 +1,7 @@
-import views.VisualizarTask;
+import views.EditarTask;
 
 class Main {
   public static void main(String[] args) {
-    new VisualizarTask();
+    new EditarTask();
   }
 }
