@@ -1,36 +1,27 @@
 public class ControllerLogin extends ControllerTelasIniciais{
-  ModelLogin model_login;
-
-  ControllerLogin(String nome_usuario, String senha, ModelLogin model_login){
-    super(nome_usuario, senha);
-    this.setModellogin(model_login);
-  }
-
-  void setModelLogin(ModelLogin model_login){
-    this.model_login = model_login;
-  }
-
-  ModelLogin getModelLogin(){
-    return this.model_login;
+  ControllerLogin(String nome_usuario, String senha, ModelTelasIniciais model){
+    super(nome_usuario, senha, model);
   }
 
   // Função verificarLogin
   void verificarLogin(){
     String nome_usuario = (this.getNomeUsuario()).toUpperCase();
     String senha = this.getSenha();
-    int i = 0;
+    int valor_retorno = -2;
 
     // 1) Verificamos se senha ou nome_usuario são vazios
-    // 2) Caso i == 0, então sabemos que nome_usuario e senha são válidos
-    // Nesse caso, verificamos se o login existe.
+    int i = Verificadora.verifica_senha_nomeUsuario(nome_usuario, senha);
+
+    // nome_usuario e senha não são vazios
     if (i == 0)
-      i = DadosRegistros.verificarLogin(nome_usuario, senha);
+      valor_retorno = (this.getDados()).verificarLogin(nome_usuario, senha);
 
-    // 3) Setamos a mensagem no Model
-    String mensagem_model = Mensagens.mensagem(i);
-    (this.getModelLogin()).setMensagem(mensagem_model);
+    // 2) Setamos a mensagem no Model
+    String mensagem = Mensagens.gera_mensagem_login(i, valor_retorno);
+    (this.getModel()).setMensagem(mensagem);
 
-    // 4) Setamos "i" como "id_usuario" no Model
-    (this.getModelLogin()).setIdUsuario(i);
+    // 3) Login existe
+      if (valor_retorno == 0)
+        (this.getModel()).setUsuario(dados.getUsuario());
   }
 }

@@ -1,27 +1,50 @@
+import org.json.JSONObject;
+
 class ModelTelasIniciais{
   // Essa classe vai ser a superclasse dos 4 Models de Telas Iniciais
-  // Serve apenas para evitar a repetição do código abaixo, pois os 4 Models de Telas
-  // Iniciais terão todos os seguintes métodos e atributos
-
   String mensagem;
-  // Observador_mensagem observador_mensagem;
+  JSONObject usuario;
+  ObservadorMensagem observador_mensagem;
+  ObservadorLogin observador_login;
 
-  // ModelTelasIniciais(Observador_mensagem observador_mensagem){
-  //   this.attach(observador);
-  //   this.setMensagem(""); 
-  // }
+  ModelTelasIniciais(){
+    this.attachObservadorMensagem(new ObservadorMensagem());
+    this.attachObservadorLogin(new ObservadorLogin());
+  }
 
-  // void attach(Observador observador){}
+  void attachObservadorMensagem(ObservadorMensagem observador){
+    this.observador_mensagem = observador;
+    observador.setModel(this);
+  }
+
+  void attachObservadorLogin(ObservadorLogin observador){
+    this.observador_login = observador;
+    observador.setModel(this);
+  }
+
+  void NotifyMensagem(){
+    (this.observador_mensagem).update();
+  }
 
   void setMensagem(String mensagem){
     this.mensagem = mensagem;
-    // if (mensagem != "")
-      // this.Notify();
+    this.NotifyMensagem();
   }
 
   String getMensagem(){
     return this.mensagem;
   }
 
-  // void Notify(){}
+  void NotifyLogin(){
+    (this.observador_login).update();
+  }
+
+  void setUsuario(JSONObject usuario){
+    this.usuario = usuario;
+    this.NotifyLogin();
+  }
+
+  JSONObject getUsuario(){
+    return this.usuario;
+  }
 }
