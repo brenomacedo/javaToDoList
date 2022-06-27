@@ -1,17 +1,6 @@
 public class ControllerCadastro extends ControllerTelasIniciais{
-  ModelCadastro model_cadastro;
-
-  ControllerCadastro(String nome_usuario, String senha, ModelCadastro model_cadastro) {
-    super(nome_usuario, senha);
-    this.setModelcadastrar(model_cadastro);
-  }
-
-  void setModelcadastro(ModelCadastro model_cadastro){
-    this.model_cadastro = model_cadastro;
-  }
-
-  ModelCadastro getModelCadastro(){
-    return this.model_cadastro;
+  ControllerCadastro(String nome_usuario, String senha, ModelTelasIniciais model) {
+    super(nome_usuario, senha, model);
   }
 
   // Função cadastrar
@@ -29,6 +18,6 @@ public class ControllerCadastro extends ControllerTelasIniciais{
 
     // 3) Setamos a mensagem no Model
     String mensagem = Mensagens.gera_mensagem_cadastro(i, valor_retorno);
-    (this.getModelCadastro()).setMensagem(mensagem);
+    (this.getModel()).setMensagem(mensagem);
   }
 }

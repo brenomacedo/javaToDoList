@@ -5,8 +5,9 @@ class ControllerTelasIniciais{
   String nome_usuario;
   String senha;
   Dados dados;
+  ModelTelasIniciais model;
 
-  ControllerTelasIniciais(String nome_usuario, String senha) {
+  ControllerTelasIniciais(String nome_usuario, String senha, ModelTelasIniciais model) {
     this.setNomeUsuario(nome_usuario);
     this.setSenha(senha);
     this.setDados(new Dados());
@@ -24,6 +25,10 @@ class ControllerTelasIniciais{
     this.dados = dados;
   }
 
+  void setModel(ModelTelasIniciais model){
+    this.model = model;
+  }
+
   String getNomeUsuario(){
     return this.nome_usuario;
   }
@@ -34,5 +39,9 @@ class ControllerTelasIniciais{
 
   Dados getDados(){
     return this.dados;
+  }
+
+  ModelTelasIniciais getModel(){
+    return this.model;
   }
 }

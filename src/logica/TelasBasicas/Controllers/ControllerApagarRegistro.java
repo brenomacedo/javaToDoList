@@ -1,17 +1,6 @@
 public class ControllerApagarRegistro extends ControllerTelasIniciais{
-  ModelApagarRegistro model_apagar_registro;
-
-  ControllerApagarRegistro(String nome_usuario, String senha, ModelApagarRegistro model_apagar_registro){
-    super(nome_usuario, senha);
-    this.setModelApagarRegistro(model_apagar_registro);
-  }
-
-  void setModelApagarRegistro(ModelApagarRegistro model_apagar_registro){
-    this.model_apagar_registro = model_apagar_registro;
-  }
-
-  ModelApagarRegistro getModelApagarRegistro(){
-    return this.model_apagar_registro;
+  ControllerApagarRegistro(String nome_usuario, String senha, ModelTelasIniciais model){
+    super(nome_usuario, senha, model);
   }
 
   // Função apagar
@@ -29,6 +18,6 @@ public class ControllerApagarRegistro extends ControllerTelasIniciais{
 
     // 3) Setamos a mensagem no Model
     String mensagem = Mensagens.gera_mensagem_apagarRegistro(i, valor_retorno);
-    (this.getModelApagarRegistro()).setMensagem(mensagem);
+    (this.getModel()).setMensagem(mensagem);
   }
 }

@@ -1,27 +1,17 @@
 public class ControllerMudarSenha extends ControllerTelasIniciais{
   String senha_nova;
-  ModelMudarSenha model_mudar_senha;
 
-  ControllerMudarSenha(String nome_usuario, String senha, String senha_nova, ModelMudarSenha model_mudar_senha){
-    super(nome_usuario, senha)
+  ControllerMudarSenha(String nome_usuario, String senha, String senha_nova, ModelTelasIniciais model){
+    super(nome_usuario, senha, model)
     this.setSenhaNova(senha_nova);
-    this.setModelMudarSenha(model_mudar_senha);
   }
 
   void setSenhaNova(String senha_nova){
     this.senha_nova = senha_nova;
   }
 
-  void setModelMudarSenha(ModelMudarSenha model_mudar_senha){
-    this.model_mudar_senha = model_mudar_senha;
-  }
-
   String getSenhaNova(){
     return this.senha_nova;
-  }
-
-  ModelMudarSenha getModelMudarSenha(){
-    return this.model_mudar_senha;
   }
 
   // Função mudarSenha
@@ -40,6 +30,6 @@ public class ControllerMudarSenha extends ControllerTelasIniciais{
       
     // 3) Setamos a mensagem no model
     String mensagem = Mensagens.gerar_mensagem_mudarsenha(i, valor_retorno);
-    (this.getModelMudarSenha()).setMensagem(mensagem);
+    (this.getModel()).setMensagem(mensagem);
   }
 }
