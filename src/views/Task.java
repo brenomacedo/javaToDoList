@@ -16,6 +16,7 @@ import java.awt.Image;
 import java.awt.Dimension;
 import java.awt.Font;
 
+import utils.JTextFieldLimit;
 import utils.Theme;
 
 public class Task extends JPanel {
@@ -97,10 +98,17 @@ public class Task extends JPanel {
     botoes.add(botaoEditar);
     botoes.add(botaoVisualizar);
 
-    JTextField campoTarefa = new JTextField("Nova Tarefa");
+    JTextField campoTarefa = new JTextField();
     campoTarefa.setPreferredSize(new Dimension(425, 28));
     campoTarefa.setBorder(new EmptyBorder(8,8,8,8));
     campoTarefa.setFont(new Font(null, Font.BOLD, 18));
+    
+    campoTarefa.setDocument(
+      new JTextFieldLimit(30)
+    );
+
+    campoTarefa.setText("Nova Tarefa");
+
     // campoTarefa.setFocusable(false);
 
 

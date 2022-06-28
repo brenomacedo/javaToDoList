@@ -17,6 +17,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 
 import utils.Theme;
+import utils.JTextFieldLimit;
 
 public class EditarTask extends JFrame {
   public EditarTask() {
@@ -36,12 +37,19 @@ public class EditarTask extends JFrame {
     labelTitulo.setFont(new Font(null, Font.BOLD, 18));
 
     // Receber como parametro a entrada da model (Tiago big brand)
-    JTextField campoTitulo = new JTextField("Minha tarefa interessante");
+    JTextField campoTitulo = new JTextField();
     campoTitulo.setFont(new Font(null, Font.BOLD, 18));
     campoTitulo.setEditable(true);
 
     secaoTitulo.add(labelTitulo);
     secaoTitulo.add(campoTitulo);
+
+    // Limitando a entrada do JTextField
+    campoTitulo.setDocument(
+      new JTextFieldLimit(30)
+    );
+
+    campoTitulo.setText("Minha tarefa interessante");
 
     JPanel centroSecaoTitulo = new JPanel();
     centroSecaoTitulo.setLayout(new BorderLayout());
@@ -56,7 +64,7 @@ public class EditarTask extends JFrame {
     tituloDescricao.setFont(new Font(null, Font.BOLD, 18));
     tituloDescricao.setPreferredSize(new Dimension(400, 24));
 
-    JTextArea campoDescricao = new JTextArea("Descricao da minha tarefa muito dpaowkd dapwok dawpokd awd awpodk awpdo awpodkl, hoje vou buscar muito sexo com o");
+    JTextArea campoDescricao = new JTextArea();
     campoDescricao.setFont(new Font(null, Font.BOLD, 18));
     campoDescricao.setEditable(true);
     campoDescricao.setPreferredSize(new Dimension(400, 96));
@@ -67,6 +75,12 @@ public class EditarTask extends JFrame {
     secaoDescricao.add(campoDescricao, BorderLayout.CENTER);
 
     centroSecaoTitulo.add(secaoDescricao, BorderLayout.NORTH);
+
+    campoDescricao.setDocument(
+      new JTextFieldLimit(140)
+    );
+
+    campoDescricao.setText("Minha descricao pika");
 
     JPanel centroSecaoDescricao = new JPanel();
     centroSecaoDescricao.setLayout(new BorderLayout());
@@ -82,9 +96,15 @@ public class EditarTask extends JFrame {
     tituloData.setFont(new Font(null, Font.BOLD, 18));
     tituloData.setPreferredSize(new Dimension(400, 24));
 
-    JTextField campoData = new JTextField("14/01/2023");
+    JTextField campoData = new JTextField();
     campoData.setFont(new Font(null, Font.BOLD, 18));
     campoData.setEditable(true);
+
+    campoData.setDocument(
+      new JTextFieldLimit(30)
+    );
+
+    campoData.setText("14/01/2023");
 
     secaoData.add(tituloData);
     secaoData.add(campoData);
@@ -103,9 +123,15 @@ public class EditarTask extends JFrame {
     tituloHora.setFont(new Font(null, Font.BOLD, 18));
     tituloHora.setPreferredSize(new Dimension(400, 24));
 
-    JTextField campoHora = new JTextField("04:20");
+    JTextField campoHora = new JTextField();
     campoHora.setFont(new Font(null, Font.BOLD, 18));
-    campoHora.setEditable(true); 
+    campoHora.setEditable(true);
+    
+    campoHora.setDocument(
+      new JTextFieldLimit(30)
+    );
+
+    campoHora.setText("04:20");
 
     secaoHora.add(tituloHora);
     secaoHora.add(campoHora);

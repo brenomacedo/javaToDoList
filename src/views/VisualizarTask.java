@@ -52,7 +52,7 @@ public class VisualizarTask extends JFrame {
     tituloDescricao.setFont(new Font(null, Font.BOLD, 18));
     tituloDescricao.setPreferredSize(new Dimension(400, 24));
 
-    JTextArea campoDescricao = new JTextArea("Descricao da minha tarefa muito dpaowkd dapwok dawpokd awd awpodk awpdo awpodkl, hoje vou buscar muito sexo com o");
+    JTextArea campoDescricao = new JTextArea("Descricao da minha tarefa muito dpaowkd dapwok dawpokd awd awpodk awpdo awpodkl, hoje vou buscar muito com o");
     campoDescricao.setFont(new Font(null, Font.BOLD, 18));
     campoDescricao.setEditable(false);
     campoDescricao.setPreferredSize(new Dimension(400, 96));
