@@ -1,4 +1,4 @@
-public class ControllerLogin extends ControllerTelasIniciais{
+class ControllerLogin extends ControllerTelasIniciais{
   ControllerLogin(String nome_usuario, String senha, ModelTelasIniciais model){
     super(nome_usuario, senha, model);
   }

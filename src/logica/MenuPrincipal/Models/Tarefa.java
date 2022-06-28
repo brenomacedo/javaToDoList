@@ -1,4 +1,4 @@
-public class Tarefa{
+class Tarefa{
   String titulo;
   String prioridade;
   String conclusao;

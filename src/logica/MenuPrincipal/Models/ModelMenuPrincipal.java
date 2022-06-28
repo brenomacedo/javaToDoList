@@ -1,3 +1,4 @@
+import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -7,7 +8,7 @@ class ModelMenuPrincipal{
   String porcentagem_tarefas_concluidas;
   boolean adicionar_tarefa; // True se podemos adicionar mais tarefas.
   boolean limpar_tarefas_concluidas; // True se há alguma tarefa concluída para limparmos
-  boolean limpar_tudo_; // True se há alguma tarefa para limparmos
+  boolean limpar_tudo; // True se há alguma tarefa para limparmos
 
   // Adicionar observadores
   // Fazer attach
@@ -23,7 +24,7 @@ class ModelMenuPrincipal{
     boolean adicionar_tarefa, limpar_tarefas_concluidas, limpar_tudo;
 
     Iterator<Object> iterator_tarefas = tarefas.iterator();
-    JSONObject tarefa
+    JSONObject tarefa;
     String conclusão_tarefa;
 
     // Verificamos cada tarefa em tarefas
