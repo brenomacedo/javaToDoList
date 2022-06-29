@@ -1,5 +1,7 @@
+package logica.Auxiliar;
+
 public class Mensagens{
-  static String gera_mensagem_login(int i, int valor_retorno){
+  public static String gera_mensagem_login(int i, int valor_retorno){
     String mensagem = "";
     if (i == 0){
       if (valor_retorno == -1)
@@ -22,7 +24,7 @@ public class Mensagens{
     return mensagem;
   }
 
-  static String gera_mensagem_cadastro(int i, int valor_retorno){
+  public static String gera_mensagem_cadastro(int i, int valor_retorno){
     String mensagem = "";
     if (i == 0){
       if (valor_retorno == 0)
@@ -51,7 +53,7 @@ public class Mensagens{
     return mensagem;
   }
 
-  static String gera_mensagem_mudarsenha(int i, int valor_retorno){
+  public static String gera_mensagem_mudarsenha(int i, int valor_retorno){
     String mensagem = "";
     if (i == 0){
       if (valor_retorno == -1)
@@ -82,7 +84,7 @@ public class Mensagens{
     return mensagem;
   }
 
-  static String gera_mensagem_apagarRegistro(int i, int valor_retorno){
+  public static String gera_mensagem_apagarRegistro(int i, int valor_retorno){
     String mensagem = "";
     if (i == 0){
       if (valor_retorno == -1)

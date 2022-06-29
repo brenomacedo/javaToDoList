@@ -1,20 +1,25 @@
-class ControllerCadastro extends ControllerTelasIniciais{
+package logica.TelasBasicas.Controllers;
+
+import logica.TelasBasicas.Models.ModelTelasIniciais;
+import logica.Auxiliar.*;
+
+public class ControllerCadastro extends ControllerTelasIniciais{
   String nome;
-  ControllerCadastro(String nome, String nome_usuario, String senha, ModelTelasIniciais model) {
+  public ControllerCadastro(String nome, String nome_usuario, String senha, ModelTelasIniciais model) {
     super(nome_usuario, senha, model);
     this.setNome(nome);
   }
 
-  void setNome(String nome) {
+  public void setNome(String nome) {
     this.nome = nome;
   }
 
-  String getNome(String nome){
+  public String getNome(){
     return this.nome;
   }
 
   // Função cadastrar
-  void cadastrar(){
+  public void cadastrar(){
     String nome_usuario = (this.getNomeUsuario()).toUpperCase();
     String senha = this.getSenha();
     String nome = this.getNome();

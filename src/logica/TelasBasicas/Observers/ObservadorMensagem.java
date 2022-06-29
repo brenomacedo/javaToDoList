@@ -1,12 +1,15 @@
-class ObservadorMensagem{
+package logica.TelasBasicas.Observers;
+import logica.TelasBasicas.Models.ModelTelasIniciais;
+
+public class ObservadorMensagem{
   String mensagem;
   ModelTelasIniciais model;
 
-  void setModel(ModelTelasIniciais model){
+  public void setModel(ModelTelasIniciais model){
     this.model = model;
   }
 
-  void update(){
+  public void update(){
     this.mensagem = (this.model).getMensagem();
     // Abrir uma telinha exibindo "mensagem"
   }

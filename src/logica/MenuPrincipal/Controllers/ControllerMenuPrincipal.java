@@ -1,5 +1,7 @@
-import org.json.JSONArray;
+package logica.MenuPrincipal.Controllers;
+
 import org.json.JSONObject;
+import logica.MenuPrincipal.Models.*;
 
 class ControllerMenuPrincipal{
   ModelMenuPrincipal model_menu_principal;

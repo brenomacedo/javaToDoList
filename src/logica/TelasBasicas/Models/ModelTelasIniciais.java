@@ -1,50 +1,53 @@
+package logica.TelasBasicas.Models;
+
+import logica.TelasBasicas.Observers.*;
 import org.json.JSONObject;
 
-class ModelTelasIniciais{
+public class ModelTelasIniciais{
   // Essa classe vai ser a superclasse dos 4 Models de Telas Iniciais
   String mensagem;
   JSONObject usuario;
   ObservadorMensagem observador_mensagem;
   ObservadorLogin observador_login;
 
-  ModelTelasIniciais(){
+  public ModelTelasIniciais(){
     this.attachObservadorMensagem(new ObservadorMensagem());
     this.attachObservadorLogin(new ObservadorLogin());
   }
 
-  void attachObservadorMensagem(ObservadorMensagem observador){
+  public void attachObservadorMensagem(ObservadorMensagem observador){
     this.observador_mensagem = observador;
     observador.setModel(this);
   }
 
-  void attachObservadorLogin(ObservadorLogin observador){
+  public void attachObservadorLogin(ObservadorLogin observador){
     this.observador_login = observador;
     observador.setModel(this);
   }
 
-  void NotifyMensagem(){
+  public void NotifyMensagem(){
     (this.observador_mensagem).update();
   }
 
-  void setMensagem(String mensagem){
+  public void setMensagem(String mensagem){
     this.mensagem = mensagem;
     this.NotifyMensagem();
   }
 
-  String getMensagem(){
+  public String getMensagem(){
     return this.mensagem;
   }
 
-  void NotifyLogin(){
+  public void NotifyLogin(){
     (this.observador_login).update();
   }
 
-  void setUsuario(JSONObject usuario){
+  public void setUsuario(JSONObject usuario){
     this.usuario = usuario;
     this.NotifyLogin();
   }
 
-  JSONObject getUsuario(){
+  public JSONObject getUsuario(){
     return this.usuario;
   }
 }

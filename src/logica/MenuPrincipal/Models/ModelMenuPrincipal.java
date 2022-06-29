@@ -1,8 +1,10 @@
-import java.util.List;
+package logica.MenuPrincipal.Models;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
+import java.util.Iterator;
 
-class ModelMenuPrincipal{
+public class ModelMenuPrincipal{
   String nome_usuario;
   JSONArray tarefas;
   String porcentagem_tarefas_concluidas;
@@ -14,7 +16,7 @@ class ModelMenuPrincipal{
   // Fazer attach
   // Fazer notify
   // Fazer construtor
-  ModelMenuPrincipal(JSONObject usuario){
+  public ModelMenuPrincipal(JSONObject usuario){
     String nome_usuario = (String) usuario.get("nome_usuario");
     JSONArray tarefas = (JSONArray) usuario.get("tarefas");
 
@@ -30,7 +32,7 @@ class ModelMenuPrincipal{
     // Verificamos cada tarefa em tarefas
     while (iterator_tarefas.hasNext()){
       contador_tarefas++;
-      tarefa = iterator_tarefas.next();
+      tarefa = (JSONObject) iterator_tarefas.next();
       conclusão_tarefa = (String) tarefa.get("conclusão");
       
       if (conclusão_tarefa == "Concluído")
@@ -70,52 +72,52 @@ class ModelMenuPrincipal{
     this.setPorcentagemTarefasConcluidas(porcentagem_tarefas_concluidas);
   }
 
-  void setNomeUsuario(String nome_usuario){
+  public void setNomeUsuario(String nome_usuario){
     this.nome_usuario = nome_usuario;
   }
 
-  void setTarefas(JSONArray tarefas){
+  public void setTarefas(JSONArray tarefas){
     this.tarefas = tarefas;
   }
 
-  void setPorcentagemTarefasConcluidas(String porcentagem_tarefas_concluidas){
+  public void setPorcentagemTarefasConcluidas(String porcentagem_tarefas_concluidas){
     this.porcentagem_tarefas_concluidas = porcentagem_tarefas_concluidas;
   }
 
-  void setAdicionarTarefa(boolean adicionar_tarefa){
+  public void setAdicionarTarefa(boolean adicionar_tarefa){
     this.adicionar_tarefa = adicionar_tarefa;
   }
 
-  void setLimparTarefasConcluidas(boolean limpar_tarefas_concluidas){
+  public void setLimparTarefasConcluidas(boolean limpar_tarefas_concluidas){
     this.limpar_tarefas_concluidas = limpar_tarefas_concluidas;
   }
 
-  void setLimparTudo(boolean limpar_tudo){
+  public void setLimparTudo(boolean limpar_tudo){
     this.limpar_tudo = limpar_tudo;
   }
 
   // Fazer os getter's
-  String getNomeUsuario(){
+  public String getNomeUsuario(){
     return this.nome_usuario;
   }
 
-  JSONArray getTarefas(){
+  public JSONArray getTarefas(){
     return this.tarefas;
   }
 
-  String getPorcentagemTarefasConcluidas(){
+  public String getPorcentagemTarefasConcluidas(){
     return this.porcentagem_tarefas_concluidas;
   }
 
-  boolean getAdicionarTarefa(){
+  public boolean getAdicionarTarefa(){
     return this.adicionar_tarefa;
   }
 
-  boolean getLimparTarefasConcluidas(){
+  public boolean getLimparTarefasConcluidas(){
     return this.limpar_tarefas_concluidas;
   }
 
-  boolean getLimparTudo(){
+  public boolean getLimparTudo(){
     return this.limpar_tudo;
   }
 }

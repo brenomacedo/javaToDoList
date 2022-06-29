@@ -1,4 +1,6 @@
-class Tarefa{
+package logica.MenuPrincipal.Models;
+
+public class Tarefa{
   String titulo;
   String prioridade;
   String conclusao;
@@ -8,7 +10,7 @@ class Tarefa{
   // Observadores
 
   // Construtor para "Adicionar Tarefas"
-  Tarefa(String titulo){
+  public Tarefa(String titulo){
     this.setTitulo(titulo);
     this.setPrioridade("0");
     this.setConclusao("");
@@ -18,7 +20,7 @@ class Tarefa{
   }
 
   // Construtor para puxar os dados do banco de dados
-  Tarefa(String titulo, String prioridade, String conclusao, String descricao, String hora, String data){
+  public Tarefa(String titulo, String prioridade, String conclusao, String descricao, String hora, String data){
     this.setTitulo(titulo);
     this.setPrioridade(prioridade);
     this.setConclusao(conclusao);
@@ -27,51 +29,51 @@ class Tarefa{
     this.setData(data);
   }
 
-  void setTitulo(String titulo){
+  public void setTitulo(String titulo){
     this.titulo = titulo;
   }
 
-  void setPrioridade(String prioridade){
+  public void setPrioridade(String prioridade){
     this.prioridade = prioridade;
   }
 
-  void setConclusao(String conclusao){
+  public void setConclusao(String conclusao){
     this.conclusao = conclusao;
   }
 
-  void setDescricao(String descricao){
+  public void setDescricao(String descricao){
     this.descricao = descricao;
   }
 
-  void setHora(String hora){
+  public void setHora(String hora){
     this.hora = hora;
   }
 
-  void setData(String data){
+  public void setData(String data){
     this.data = data;
   }
 
-  String getTitulo(){
+  public String getTitulo(){
     return titulo;
   }
 
-  String getPrioridade(){
+  public String getPrioridade(){
     return prioridade;
   }
 
-  String getConclusao(){
+  public String getConclusao(){
     return conclusao;
   }
 
-  String getDescricao(){
+  public String getDescricao(){
     return descricao;
   }
 
-  String getHora(){
+  public String getHora(){
     return hora;
   }
 
-  String getData(){
+  public String getData(){
     return data;
   }
 }

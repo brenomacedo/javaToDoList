@@ -1,8 +1,10 @@
+package logica.Auxiliar;
+
 public class Verificadora{
   // Essa classe serve para realizar verificações simples, mas que realizamos muitas vezes
   // ao longo da execução
   
-  static int verifica_senha_nomeUsuario (String nome_usuario, String senha){
+  public static int verifica_senha_nomeUsuario (String nome_usuario, String senha){
     if (nome_usuario == "" && senha == "")
       return -1;
 
@@ -15,7 +17,7 @@ public class Verificadora{
     return 0;
   }
 
-  static int verifica_senha_nomeUsuario_senhaNova(String nome_usuario, String senha, String senha_nova){
+  public static int verifica_senha_nomeUsuario_senhaNova(String nome_usuario, String senha, String senha_nova){
     if (nome_usuario == "" && senha == "" && senha_nova == "")
       return -1;
 
@@ -40,7 +42,7 @@ public class Verificadora{
     return 0;
   }
 
-  static int verifica_nome_nomeUsuario_senha(String nome, String nome_usuario, String senha){
+  public static int verifica_nome_nomeUsuario_senha(String nome, String nome_usuario, String senha){
     if (nome_usuario == "" && senha == "" && nome == "")
       return -1;
 

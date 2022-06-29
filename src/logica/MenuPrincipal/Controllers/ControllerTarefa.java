@@ -1,27 +1,30 @@
+package logica.MenuPrincipal.Controllers;
+import logica.MenuPrincipal.Models.*;
+
 public class ControllerTarefa{
   Tarefa tarefa;
 
   // 1) concluir
   void concluirTarefa(){
-    this.setConclusao("Concluída");
+    this.tarefa.setConclusao("Concluída");
   }
 
 
   // 2) editar
   void editarTarefa(String titulo, String prioridade, String descricao, String hora, String data){
     if (titulo != "")
-      this.setTitulo(titulo);
+      this.tarefa.setTitulo(titulo);
 
     if (prioridade != "")
-      this.setPrioridade(prioridade);
+      this.tarefa.setPrioridade(prioridade);
 
     if (descricao != "")
-      this.setDescricao(descricao);
+      this.tarefa.setDescricao(descricao);
 
     if (hora != "")
-      this.setHora(hora);
+      this.tarefa.setHora(hora);
 
-    if (datos != "")
-      this.setData(data);
+    if (data != "")
+      this.tarefa.setData(data);
   }
 }
