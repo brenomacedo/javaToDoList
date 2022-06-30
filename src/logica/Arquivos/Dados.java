@@ -18,12 +18,12 @@ import java.io.FileWriter;
 // . "Tarefas": ArrayList Tarefas
 
 // - Tarefa:
-// . "Título" : String
-// . "Descrição" : String
+// . "Titulo" : String
+// . "Descricao" : String
 // . "Data" : String
 // . "Horas" : String
 // . "Prioridade" : String
-// . "Conclusão" : String
+// . "Conclusao" : String
 
 public class Dados{
   JSONArray usuarios;
@@ -39,19 +39,21 @@ public class Dados{
   public void carregar(){
     try{
       // Lendo os dados dos usuários
-      List<String> lines = Files.readAllLines(Paths.get("./dados.json"));
+      List<String> lines = Files.readAllLines(Paths.get("src/logica/Arquivos/dados.json"));
       String data = lines.get(0);
       this.usuarios = new JSONArray(data);
 
       // Lendo a próxima id livre
-      lines = Files.readAllLines(Paths.get("./prox_id_livre.json"));
+      lines = Files.readAllLines(Paths.get("src/logica/Arquivos/prox_id_livre.json"));
       data = lines.get(0);
 
       JSONObject id = new JSONObject(data);
       this.prox_id_livre = (int) id.get("id");
     }
 
-    catch(Exception e){}
+    catch(Exception e){
+      System.out.println("Erro");
+    }
   }
 
   // 1) Verificar login
@@ -71,8 +73,8 @@ public class Dados{
       nome_usuario = (String) usuario.get("nome_usuario");
       senha = (String) usuario.get("senha");
 
-      if (nome_usuario == nome_usuario_ent){
-        if (senha == senha_ent){
+      if (nome_usuario.equals(nome_usuario_ent)){
+        if (senha.equals(senha_ent)){
           this.usuario_logado = usuario;
 
           // Usuário existe e a senha está correta
@@ -126,31 +128,22 @@ public class Dados{
   }
 
   // 3) Apagar registro
-  public boolean apagar_registro(JSONObject usuario, String senha){
-    if (senha == usuario.getString("senha")){
-      int index = this.getIndex(usuario);
-      this.usuarios.remove(index);
-      this.salvar();
-
-      return true;
-    }
-    return false;
+  public void apagar_registro(JSONObject usuario){
+    int index = this.getIndex(usuario);
+    this.usuarios.remove(index);
+    this.salvar();
   }
 
-  // 4) Mudar senha
-  public boolean mudar_senha(JSONObject usuario, String senha, String senha_nova){
-    if (senha == usuario.getString("senha")){
-      int index = this.getIndex(usuario);
-      this.usuarios.remove(index);
+  // 4) Atualizar usuário
+  public void atualizarUsuario(JSONObject usuario, String mudanca, String tipo_mudanca){
+    int index = this.getIndex(usuario); 
+    this.usuarios.remove(index);
 
-      usuario.put("senha", senha_nova);
-      this.usuarios.put(usuario);
-      this.salvar();
-
-      return true;
-    }
-    return false;
+    usuario.put(tipo_mudanca, mudanca);
+    this.usuarios.put(usuario);
+    this.salvar();
   }
+
 
   // 5) Acrescenta 1 ao atributo "prox_id_livre"
   public void atualizar_prox_id_livre(){
@@ -162,7 +155,7 @@ public class Dados{
   public void salvar(){
     try {
       // Salvando dados dos usuários
-      FileWriter filewriter = new FileWriter("./dados.json");
+      FileWriter filewriter = new FileWriter("src/logica/Arquivos/dados.json");
 
       filewriter.write((this.usuarios).toString());
 
@@ -172,7 +165,7 @@ public class Dados{
       JSONObject id = new JSONObject();
       id.put("id", this.prox_id_livre);
 
-      filewriter = new FileWriter("./prox_id_livre.json");
+      filewriter = new FileWriter("src/logica/Arquivos/prox_id_livre.json");
       filewriter.write(id.toString());
       filewriter.close();
     }

@@ -33,9 +33,9 @@ public class ModelMenuPrincipal{
     while (iterator_tarefas.hasNext()){
       contador_tarefas++;
       tarefa = (JSONObject) iterator_tarefas.next();
-      conclusão_tarefa = (String) tarefa.get("conclusão");
-      
-      if (conclusão_tarefa == "Concluído")
+      conclusão_tarefa = (String) tarefa.get("conclusao");
+      String conclusao__ = "Concluido";
+      if (conclusão_tarefa.equals(conclusao__))
         concluidas++;
     }
 
@@ -96,7 +96,6 @@ public class ModelMenuPrincipal{
     this.limpar_tudo = limpar_tudo;
   }
 
-  // Fazer os getter's
   public String getNomeUsuario(){
     return this.nome_usuario;
   }

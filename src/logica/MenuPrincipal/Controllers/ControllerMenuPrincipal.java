@@ -2,6 +2,8 @@ package logica.MenuPrincipal.Controllers;
 
 import org.json.JSONObject;
 import logica.MenuPrincipal.Models.*;
+import org.json.JSONArray;
+import logica.Arquivos.Dados_tarefas;
 
 class ControllerMenuPrincipal{
   ModelMenuPrincipal model_menu_principal;
@@ -38,8 +40,9 @@ class ControllerMenuPrincipal{
   // Como essa função foi chamada, então podemos adicionar mais uma tarefa em "model_menu_tarefas" do
   // "model_menu_principal".
   // Precisamos atualizar "porcentagem_tarefas_concluidas" e atualizar "model_menu_tarefas"
-  void adicionar_tarefa(){
-
+  void adicionar_tarefa(String titulo){
+    JSONArray tarefas = Dados_tarefas.adicionar_tarefa(((this.model_menu_principal).getTarefas()), titulo);
+    (this.model_menu_principal).setTarefas(tarefas);
   }
 
 
@@ -48,7 +51,8 @@ class ControllerMenuPrincipal{
   // "model_menu_principal"
   // Precisamos atualizar "porcentagem_tarefas_concluidas" e "zerar" todas as tarefas concluídas do "model_menu_tarefas" do "model_menu_principal".
   void limpar_tarefas_concluidas(){
-
+    JSONArray tarefas = Dados_tarefas.limparConcluidas(((this.model_menu_principal).getTarefas()));
+    (this.model_menu_principal).setTarefas(tarefas);
   }
 
 
@@ -57,6 +61,6 @@ class ControllerMenuPrincipal{
   // "model_menu_principal".
   // Precisamos atualizar "porcentagem_tarefas_concluidas" e "zerar" o "model_menu_tarefas" do "model_menu_principal".
   void limpar_tudo(){
-
+    (this.model_menu_principal).setTarefas(new JSONArray());
   }
 }

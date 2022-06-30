@@ -12,5 +12,7 @@ public class ObservadorMensagem{
   public void update(){
     this.mensagem = (this.model).getMensagem();
     // Abrir uma telinha exibindo "mensagem"
+    // Teste
+    System.out.println(mensagem);
   }
 }

@@ -3,6 +3,7 @@ import logica.MenuPrincipal.Models.*;
 
 public class ControllerTarefa{
   Tarefa tarefa;
+  String vazio = "";
 
   // 1) concluir
   void concluirTarefa(){
@@ -12,19 +13,21 @@ public class ControllerTarefa{
 
   // 2) editar
   void editarTarefa(String titulo, String prioridade, String descricao, String hora, String data){
-    if (titulo != "")
+    if (titulo.equals(vazio))
       this.tarefa.setTitulo(titulo);
 
-    if (prioridade != "")
+    if (prioridade.equals(vazio))
       this.tarefa.setPrioridade(prioridade);
 
-    if (descricao != "")
+    if (descricao.equals(vazio))
       this.tarefa.setDescricao(descricao);
 
-    if (hora != "")
+    if (hora.equals(vazio))
       this.tarefa.setHora(hora);
 
-    if (data != "")
+    if (data.equals(vazio))
       this.tarefa.setData(data);
   }
+
+  // void removerTarefa()
 }

@@ -4,7 +4,7 @@ import logica.TelasBasicas.Models.ModelTelasIniciais;
 import logica.Auxiliar.*;
 
 public class ControllerLogin extends ControllerTelasIniciais{
-  ControllerLogin(String nome_usuario, String senha, ModelTelasIniciais model){
+  public ControllerLogin(String nome_usuario, String senha, ModelTelasIniciais model){
     super(nome_usuario, senha, model);
   }
 

@@ -16,6 +16,7 @@ public class ControllerTelasIniciais{
     this.setNomeUsuario(nome_usuario);
     this.setSenha(senha);
     this.setDados(new Dados());
+    this.setModel(model);
   }
 
   public void setNomeUsuario(String nome_usuario){
