@@ -40,7 +40,7 @@ public class ControllerMenuPrincipal{
   // Como essa função foi chamada, então podemos adicionar mais uma tarefa em "model_menu_tarefas" do
   // "model_menu_principal".
   // Precisamos atualizar "porcentagem_tarefas_concluidas" e atualizar "model_menu_tarefas"
-  public int addTarefa () {
+  public void addTarefa () {
     JSONObject tarefa = new JSONObject();
     tarefa.put("titulo", "Nova tarefa");
     tarefa.put("descricao", "");
@@ -54,7 +54,7 @@ public class ControllerMenuPrincipal{
       model_menu_principal.getTarefas().put(tarefa)
     );
 
-    return (model_menu_principal.getTarefas().length() - 1);
+    model_menu_principal.notifyAdicionarTarefa();
   }
 
 

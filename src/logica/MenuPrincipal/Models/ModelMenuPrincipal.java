@@ -144,4 +144,8 @@ public class ModelMenuPrincipal{
     this.observadorAdicionarTarefa = observador;
     observador.setModel(this);
   }
+
+  public void notifyAdicionarTarefa () {
+    this.observadorAdicionarTarefa.update();
+  }
 }

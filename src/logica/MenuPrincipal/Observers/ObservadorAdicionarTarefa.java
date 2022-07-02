@@ -8,4 +8,8 @@ public class ObservadorAdicionarTarefa {
     public void setModel (ModelMenuPrincipal model) {
         this.model = model;
     }
+
+    public void update () {
+        
+    }
 }

@@ -176,7 +176,7 @@ public class Menu extends JFrame implements ActionListener {
   }
 
   public void adicionarTarefa () {
-    int index = this.controllerMenuPrincipal.addTarefa();
+    this.controllerMenuPrincipal.addTarefa();
     this.listaDeTarefas.add(
       new Task(index ,"Nova Tarefa", 0, false)
     );
@@ -191,7 +191,7 @@ public class Menu extends JFrame implements ActionListener {
   }
 
   public void recarregarTarefas () {
-    
+
   }
 
   @Override
