@@ -18,12 +18,12 @@ import java.io.FileWriter;
 // . "Tarefas": ArrayList Tarefas
 
 // - Tarefa:
-// . "Titulo" : String
-// . "Descricao" : String
-// . "Data" : String
-// . "Horas" : String
-// . "Prioridade" : String
-// . "Conclusao" : String
+// . "titulo" : String
+// . "descricao" : String
+// . "data" : String
+// . "horas" : String
+// . "prioridade" : String
+// . "conclusao" : String
 
 public class Dados{
   JSONArray usuarios;

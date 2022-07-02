@@ -1,15 +1,20 @@
 package views;
 import javax.swing.*;
+
+import logica.MenuPrincipal.Models.ModelMenuPrincipal;
+
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class Change_info_Panel extends JPanel  implements MouseListener {
 
-    JTextField change_passw_input = new JTextField(60);
-    JTextField confirm_passw_input = new JTextField(60);
+    JPasswordField change_passw_input = new JPasswordField(60);
+    JPasswordField confirm_passw_input = new JPasswordField(60);
+    ModelMenuPrincipal model;
 
-    Change_info_Panel () {
+    Change_info_Panel (ModelMenuPrincipal model) {
+        this.model = model;
         //Label com o texto "informações do usuário"
         JLabel basic_inform_text = new JLabel("Informações do usuário");
         basic_inform_text.setFont(new Font("Verdana", Font.PLAIN, 18));
@@ -23,7 +28,7 @@ public class Change_info_Panel extends JPanel  implements MouseListener {
         userIconSetting = new ImageIcon(novaImageUserIconSetting);
 
         //Label do nome de usuário 
-        JLabel nome_usuario = new JLabel("TEsteson da silva junho aquino rego");
+        JLabel nome_usuario = new JLabel(model.getNomeUsuario());
         nome_usuario.setFont(new Font("Verdana", Font.PLAIN, 16));
         nome_usuario.setForeground(new Color(144, 202, 249));
         nome_usuario.setBounds(10, 50 , 300, 25);
@@ -36,7 +41,8 @@ public class Change_info_Panel extends JPanel  implements MouseListener {
         passwIconSetting = new ImageIcon(novaImagePasswIconSetting);
 
         //Label com senha 
-        JLabel senha_usuario = new JLabel("akj234rf");        
+        JLabel senha_usuario = new JLabel(model.getSenha());
+        senha_usuario.setSize(400, 20);        
         senha_usuario.setFont(new Font("Verdana", Font.PLAIN, 16));
         senha_usuario.setBounds(10, 90, 300, 25);
         senha_usuario.setForeground(new Color(144, 202, 249));

@@ -22,11 +22,11 @@ public class TesteTelaConfiguracoes {
     // Antes:
     // {"nome_usuario":"BRANDAO","senha":"12345","id_usuario":0,"tarefas":[],"nome":"Tiago"}
     // {"nome_usuario":"E GAY","senha":"eu sou gay","id_usuario":2,"tarefas":[],"nome":"Gustoso"}
-    ControllerLogin controle1 = new ControllerLogin(nome_usuario, senha, new ModelLogin());
+    ControllerLogin controle1 = new ControllerLogin(nome_usuario, senha, new ModelLogin(null));
     controle1.verificarLogin();
     JSONObject usuario1 = (controle1.getDados()).getUsuario();
 
-    ControllerLogin controle2 = new ControllerLogin(outro_usuario, senha_outro_usuario, new ModelLogin());
+    ControllerLogin controle2 = new ControllerLogin(outro_usuario, senha_outro_usuario, new ModelLogin(null));
     controle2.verificarLogin();
     JSONObject usuario2 = (controle2.getDados()).getUsuario();
 

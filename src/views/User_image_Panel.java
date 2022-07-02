@@ -4,8 +4,7 @@ import java.awt.*;
 
 public class User_image_Panel extends JPanel {
     
-    User_image_Panel () {
-
+    User_image_Panel (String nome) {
 
         //imagem seta voltando
         ImageIcon arrowIcon = new ImageIcon("images/back_arrow.png");
@@ -26,7 +25,7 @@ public class User_image_Panel extends JPanel {
         userIcon = new ImageIcon(novaImageUserIcon);
  
         //Label com o icone de usuário e o nome 
-        JLabel user_Icon = new JLabel("TEsteson da silva junho aquino rego");
+        JLabel user_Icon = new JLabel(nome);
         user_Icon.setIcon(userIcon);
         user_Icon.setFont(new Font("Verdana", Font.PLAIN, 16));
         user_Icon.setHorizontalTextPosition(JLabel.CENTER);

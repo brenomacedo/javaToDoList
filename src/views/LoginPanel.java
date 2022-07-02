@@ -19,9 +19,10 @@ public class LoginPanel extends JPanel implements ActionListener {
     int buttonPositionPanel = this.panelWidth/2 - (this.buttonWidth/2);
     final JTextField usernameInput = new JTextField(60);
     final JPasswordField passwoField = new JPasswordField(60);
+    final JFrame frame;
 
-    LoginPanel () {
-        
+    LoginPanel (JFrame frame) {
+        this.frame = frame;
         
         final JLabel usernameLabel = new JLabel("Digite seu username: ");
         final JLabel passwordLabel = new JLabel("Digite sua senha: ");
@@ -90,7 +91,7 @@ public class LoginPanel extends JPanel implements ActionListener {
         String username = this.usernameInput.getText();
         String password = this.passwoField.getText();
 
-        ControllerLogin controllerLogin = new ControllerLogin(username, password, new ModelLogin());
+        ControllerLogin controllerLogin = new ControllerLogin(username, password, new ModelLogin(this.frame));
         controllerLogin.verificarLogin();
     }
 

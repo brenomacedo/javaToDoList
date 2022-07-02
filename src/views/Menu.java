@@ -9,6 +9,9 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
+import org.json.JSONObject;
+
+import logica.MenuPrincipal.Models.ModelMenuPrincipal;
 import utils.Theme;
 
 import java.awt.BorderLayout;
@@ -17,10 +20,20 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Menu extends JFrame {
+import java.util.Iterator;
+
+public class Menu extends JFrame implements ActionListener {
   
-  public Menu () {
+  ModelMenuPrincipal model;
+  JPanel listaDeTarefas;
+  JButton botaoConfig;
+
+  public Menu (ModelMenuPrincipal model) {
+
+    this.model = model;
 
     // configurações da tela
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -54,12 +67,13 @@ public class Menu extends JFrame {
     Border emptyBorder = BorderFactory.createEmptyBorder();
 
     // botao de configurações
-    JButton botaoConfig = new JButton();
+    botaoConfig = new JButton();
     botaoConfig.setPreferredSize(new Dimension(60, 76));
     botaoConfig.setIcon(iconeConfiguracoes);
     botaoConfig.setFocusable(false);
     botaoConfig.setBorder(emptyBorder);
     botaoConfig.setBackground(Theme.bgColor);
+    botaoConfig.addActionListener(this);
     
     tituloContainer.add(titulo, BorderLayout.CENTER);
     tituloContainer.setBackground(Theme.bgColor);
@@ -124,56 +138,43 @@ public class Menu extends JFrame {
     campoBotoes.add(botaoLimparConcluidas);
     campoBotoes.add(botaoLimparTudo);
 
-    JPanel listaDeTarefas = new JPanel();
+    listaDeTarefas = new JPanel();
     listaDeTarefas.setBackground(Theme.bgColor);
     listaDeTarefas.setLayout(new GridLayout(14, 1));
 
-    listaDeTarefas.add(
-      new Task("Ola mundo", 3)
-    );
-    listaDeTarefas.add(
-      new Task("Ola mundo", 3)
-    );
-    listaDeTarefas.add(
-      new Task("Ola mundo", 3)
-    );
-    listaDeTarefas.add(
-      new Task("Ola mundo", 3)
-    );
-    listaDeTarefas.add(
-      new Task("Ola mundo", 3)
-    );
-    listaDeTarefas.add(
-      new Task("Ola mundo", 3)
-    );
-    listaDeTarefas.add(
-      new Task("Ola mundo", 3)
-    );
-    listaDeTarefas.add(
-      new Task("Ola mundo", 3)
-    );
-    listaDeTarefas.add(
-      new Task("Ola mundo", 3)
-    );
-    listaDeTarefas.add(
-      new Task("Ola mundo", 3)
-    );
-    listaDeTarefas.add(
-      new Task("Ola mundo", 3)
-    );
-    listaDeTarefas.add(
-      new Task("Ola mundo", 3)
-    );
-    listaDeTarefas.add(
-      new Task("Ola mundo", 3)
-    );
-    listaDeTarefas.add(
-      new Task("Ola mundo", 3)
-    );
+    this.mostrarTarefas();
 
     this.add(listaDeTarefas, BorderLayout.CENTER);
     this.add(tituloContainer, BorderLayout.NORTH);
     this.add(campoBotoes, BorderLayout.SOUTH);
     this.setVisible(true);
+  }
+
+  public void mostrarTarefas () {
+    Iterator<Object> tarefas = this.model.getTarefas().iterator();
+
+    JSONObject tarefa;
+    int index = 0;
+    while (tarefas.hasNext()) {
+      tarefa = (JSONObject) tarefas.next();
+
+      String titulo = (String) tarefa.get("titulo");
+      int prioridade = (int) tarefa.get("prioridade");
+      boolean conclusao = ((String) tarefa.get("conclusao")).equals("concluido");
+
+      listaDeTarefas.add(
+        new Task(index, titulo, prioridade, conclusao)
+      );
+      
+      index++;
+    }
+  }
+
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    if (e.getSource() == this.botaoConfig) {
+      this.botaoConfig.removeActionListener(this);
+      new Sett_frame(this, this.botaoConfig, model);
+    }
   }
 }

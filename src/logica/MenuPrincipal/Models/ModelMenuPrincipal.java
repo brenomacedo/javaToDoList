@@ -11,12 +11,15 @@ public class ModelMenuPrincipal{
   boolean adicionar_tarefa; // True se podemos adicionar mais tarefas.
   boolean limpar_tarefas_concluidas; // True se há alguma tarefa concluída para limparmos
   boolean limpar_tudo; // True se há alguma tarefa para limparmos
+  JSONObject usuario;
 
   // Adicionar observadores
   // Fazer attach
   // Fazer notify
   // Fazer construtor
   public ModelMenuPrincipal(JSONObject usuario){
+    this.usuario = usuario;
+
     String nome_usuario = (String) usuario.get("nome_usuario");
     JSONArray tarefas = (JSONArray) usuario.get("tarefas");
 
@@ -118,5 +121,13 @@ public class ModelMenuPrincipal{
 
   public boolean getLimparTudo(){
     return this.limpar_tudo;
+  }
+
+  public String getSenha() {
+    return (String) this.usuario.get("senha");
+  }
+
+  public String getNome() {
+    return (String) this.usuario.get("nome");
   }
 }

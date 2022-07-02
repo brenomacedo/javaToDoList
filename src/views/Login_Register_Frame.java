@@ -8,8 +8,8 @@ import java.awt.event.MouseListener;
 public class Login_Register_Frame extends JFrame implements MouseListener {
     int width = 600;
     int height = 920;
-    LoginPanel login = new LoginPanel();
-    RegisterPanel register = new RegisterPanel();
+    LoginPanel login = new LoginPanel(this);
+    RegisterPanel register = new RegisterPanel(this);
     JLabel voltar_ao_login = new JLabel("Fazer login", JLabel.CENTER);
     JLabel register_button = new JLabel("Criar uma conta",  JLabel.CENTER);
 

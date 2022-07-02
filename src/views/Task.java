@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -20,7 +22,12 @@ import utils.JTextFieldLimit;
 import utils.Theme;
 
 public class Task extends JPanel {
-  Task(String titulo, int prioridade) {
+
+  int index;
+
+  Task(int index, String titulo, int prioridade, boolean concluido) {
+    this.index = index;
+
     this.setLayout(new BorderLayout());
     this.setBorder(BorderFactory.createMatteBorder(4, 8, 4, 8, Theme.bgColor));
     this.setBackground(Color.WHITE);
@@ -50,6 +57,7 @@ public class Task extends JPanel {
     tarefaConcluida.setSelectedIcon(iconeConcluido);
     tarefaConcluida.setIcon(iconeNaoConcluido);
     tarefaConcluida.setBackground(Color.WHITE);
+    tarefaConcluida.setSelected(concluido);
 
     // Icone botao deletar
     ImageIcon iconeDeletar = new ImageIcon("images/delete.png");

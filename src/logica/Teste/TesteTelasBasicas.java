@@ -19,7 +19,7 @@ public class TesteTelasBasicas {
     ControllerCadastro controle_cadastro = new ControllerCadastro(vazio, vazio, vazio, new ModelCadastro());
     controle_cadastro.cadastrar();
 
-    ControllerLogin controle_login = new ControllerLogin(vazio, vazio, new ModelLogin());
+    ControllerLogin controle_login = new ControllerLogin(vazio, vazio, new ModelLogin(null));
     controle_login.verificarLogin();
   }
 }

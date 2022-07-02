@@ -23,8 +23,11 @@ public class RegisterPanel extends JPanel implements ActionListener {
     final JPasswordField passwoField = new JPasswordField(60);
     final JPasswordField passwoFieldTypeAgain = new JPasswordField(60);
     final JButton registerButton;
-    
-    RegisterPanel () {
+    final JFrame frame;
+
+    RegisterPanel (JFrame frame) {
+
+        this.frame = frame;
 
         //como fazer imagem
         /* ImageIcon iconeConfiguracoes = new ImageIcon("images/config.png");
