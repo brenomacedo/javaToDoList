@@ -150,7 +150,7 @@ public class EditarTask extends JFrame {
     tituloPrioridade.setFont(new Font(null, Font.BOLD, 18));
     tituloPrioridade.setPreferredSize(new Dimension(400, 24));
 
-    String[] options = { "1", "2", "3", "4", "5" };
+    String[] options = { "0", "1", "2", "3", "4", "5" };
 
     JComboBox<String> campoPrioridade = new JComboBox<>(options);
     campoPrioridade.setFont(new Font(null, Font.BOLD, 18));

@@ -25,7 +25,7 @@ public class Task extends JPanel {
 
   int index;
 
-  Task(int index, String titulo, int prioridade, boolean concluido) {
+  public Task(int index, String titulo, int prioridade, boolean concluido) {
     this.index = index;
 
     this.setLayout(new BorderLayout());

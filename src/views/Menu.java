@@ -5,6 +5,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
@@ -24,17 +25,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import java.util.Iterator;
+import logica.MenuPrincipal.Controllers.ControllerMenuPrincipal;
 
 public class Menu extends JFrame implements ActionListener {
   
   ModelMenuPrincipal model;
   JPanel listaDeTarefas;
   JButton botaoConfig;
+  JButton botaoAdicionar;
+  ControllerMenuPrincipal controllerMenuPrincipal;
 
   public Menu (ModelMenuPrincipal model) {
 
     this.model = model;
-
+    this.controllerMenuPrincipal = new ControllerMenuPrincipal(model.getUsuario());
     // configurações da tela
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLayout(new BorderLayout());
@@ -108,7 +112,7 @@ public class Menu extends JFrame implements ActionListener {
     iconeRemoverTudo = new ImageIcon(novoIconeRemoverTudo);
     // =================
 
-    JButton botaoAdicionar = new JButton("Adicionar");
+    botaoAdicionar = new JButton("Adicionar");
     JButton botaoLimparConcluidas = new JButton("Limpar Conc.");
     JButton botaoLimparTudo = new JButton("Limpar tudo");
 
@@ -119,6 +123,7 @@ public class Menu extends JFrame implements ActionListener {
     botaoAdicionar.setFocusable(false);
     botaoAdicionar.setIcon(iconeAdicionar);
     botaoAdicionar.setIconTextGap(10);
+    botaoAdicionar.addActionListener(this);
 
     botaoLimparConcluidas.setFont(fonteBotao);
     botaoLimparConcluidas.setForeground(Color.BLACK);
@@ -140,9 +145,9 @@ public class Menu extends JFrame implements ActionListener {
 
     listaDeTarefas = new JPanel();
     listaDeTarefas.setBackground(Theme.bgColor);
-    listaDeTarefas.setLayout(new GridLayout(14, 1));
+    listaDeTarefas.setLayout(new GridLayout(15, 1));
 
-    this.mostrarTarefas();
+    this.carregarTarefas();
 
     this.add(listaDeTarefas, BorderLayout.CENTER);
     this.add(tituloContainer, BorderLayout.NORTH);
@@ -150,7 +155,7 @@ public class Menu extends JFrame implements ActionListener {
     this.setVisible(true);
   }
 
-  public void mostrarTarefas () {
+  public void carregarTarefas () {
     Iterator<Object> tarefas = this.model.getTarefas().iterator();
 
     JSONObject tarefa;
@@ -170,11 +175,34 @@ public class Menu extends JFrame implements ActionListener {
     }
   }
 
+  public void adicionarTarefa () {
+    int index = this.controllerMenuPrincipal.addTarefa();
+    this.listaDeTarefas.add(
+      new Task(index ,"Nova Tarefa", 0, false)
+    );
+
+    if (model.getTarefas().length() == 15) {
+      botaoAdicionar.setEnabled(false);
+    } else {
+      botaoAdicionar.setEnabled(true);
+    }
+
+    this.setVisible(true);
+  }
+
+  public void recarregarTarefas () {
+    
+  }
+
   @Override
   public void actionPerformed(ActionEvent e) {
     if (e.getSource() == this.botaoConfig) {
       this.botaoConfig.removeActionListener(this);
       new Sett_frame(this, this.botaoConfig, model);
+    }
+
+    if (e.getSource() == this.botaoAdicionar) {
+      this.adicionarTarefa();
     }
   }
 }

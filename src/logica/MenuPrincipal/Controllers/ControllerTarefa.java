@@ -23,14 +23,4 @@ public class ControllerTarefa{
     JSONArray tarefasAtualizadas = Dados_tarefas.atualizarDados(index, model.getTarefas(), tarefa);
     model.setTarefas(tarefasAtualizadas);
   }
-
-  void addTarefa (String titulo, String descricao, String data, String hora, int prioridade, String conclusao) {
-    JSONObject tarefa = new JSONObject();
-    tarefa.put("titulo", titulo);
-    tarefa.put("descricao", descricao);
-    tarefa.put("data", data);
-    tarefa.put("hora", hora);
-    tarefa.put("prioridade", prioridade);
-    tarefa.put("conclusao", conclusao);
-  }
 }

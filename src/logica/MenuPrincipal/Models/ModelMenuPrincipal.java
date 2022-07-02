@@ -2,6 +2,9 @@ package logica.MenuPrincipal.Models;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import logica.MenuPrincipal.Observers.ObservadorAdicionarTarefa;
+
 import java.util.Iterator;
 
 public class ModelMenuPrincipal{
@@ -12,6 +15,7 @@ public class ModelMenuPrincipal{
   boolean limpar_tarefas_concluidas; // True se há alguma tarefa concluída para limparmos
   boolean limpar_tudo; // True se há alguma tarefa para limparmos
   JSONObject usuario;
+  ObservadorAdicionarTarefa observadorAdicionarTarefa;
 
   // Adicionar observadores
   // Fazer attach
@@ -19,6 +23,7 @@ public class ModelMenuPrincipal{
   // Fazer construtor
   public ModelMenuPrincipal(JSONObject usuario){
     this.usuario = usuario;
+    this.attach(new ObservadorAdicionarTarefa());
 
     String nome_usuario = (String) usuario.get("nome_usuario");
     JSONArray tarefas = (JSONArray) usuario.get("tarefas");
@@ -129,5 +134,14 @@ public class ModelMenuPrincipal{
 
   public String getNome() {
     return (String) this.usuario.get("nome");
+  }
+
+  public JSONObject getUsuario () {
+    return this.usuario;
+  }
+
+  public void attach (ObservadorAdicionarTarefa observador) {
+    this.observadorAdicionarTarefa = observador;
+    observador.setModel(this);
   }
 }
