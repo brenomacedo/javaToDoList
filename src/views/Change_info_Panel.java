@@ -11,12 +11,14 @@ public class Change_info_Panel extends JPanel  implements MouseListener {
 
     JPasswordField change_passw_input = new JPasswordField(60);
     JPasswordField confirm_passw_input = new JPasswordField(60);
+    JPasswordField change_userName_input = new JPasswordField(60);
+    JPasswordField change_name_input = new JPasswordField(60);
     ModelMenuPrincipal model;
 
     Change_info_Panel (ModelMenuPrincipal model) {
         this.model = model;
         //Label com o texto "informações do usuário"
-        JLabel basic_inform_text = new JLabel("Informações do usuário");
+        JLabel basic_inform_text = new JLabel("INFORMAÇÕES DO USUÁRIO");
         basic_inform_text.setFont(new Font("Verdana", Font.PLAIN, 18));
         basic_inform_text.setForeground(new Color(144, 202, 249));
         basic_inform_text.setBounds(10, 10, 280, 25);
@@ -49,35 +51,65 @@ public class Change_info_Panel extends JPanel  implements MouseListener {
         senha_usuario.setIcon(passwIconSetting);
 
         //Label com o titulo de alterar informações 
-        JLabel change_inform = new JLabel("alterar Informações do usuário");
+        JLabel change_inform = new JLabel("ALTERAR INFORMAÇÕES DO USUÁRIO");
         change_inform.setFont(new Font("Verdana", Font.PLAIN, 18));
         change_inform.setForeground(new Color(144, 202, 249));
         change_inform.setBounds(10, 140, 350, 25);
 
+        //Label com o texto de alterar nome de usuário
+        JLabel change_userName = new JLabel("Alterar nome de usuário: ");
+        change_userName.setFont(new Font("Verdana", Font.PLAIN, 16));
+        change_userName.setForeground(new Color(144, 202, 249));
+        change_userName.setBounds(10, 170, 300, 25);
+
+        //textinput para alterar nome de usuário
+        change_userName_input.setBounds(10, 200, 300, 25);
+
+        //botão para salvar novo nome de usuário
+        JButton save_new_userName = new JButton("Salvar");
+        save_new_userName.setBounds(315, 200, 80, 25);
+        save_new_userName.setBackground(Color.cyan);
+        save_new_userName.addMouseListener(this);
+
+        //Label com o texto de alterar nome
+        JLabel change_name = new JLabel("Alterar nome: ");
+        change_name.setFont(new Font("Verdana", Font.PLAIN, 16));
+        change_name.setForeground(new Color(144, 202, 249));
+        change_name.setBounds(10, 226, 300, 25);
+
+        //textinput para alterar nome
+        change_name_input.setBounds(10, 248, 300, 25);
+
+        //botão para salvar novo nome
+        JButton save_new_name = new JButton("Salvar");
+        save_new_name.setBounds(315, 248, 80, 25);
+        save_new_name.setBackground(Color.cyan);
+        save_new_name.addMouseListener(this);
+
         //Label com o texto de alterar senha
-        JLabel change_passw = new JLabel("alterar senha: ");
+        JLabel change_passw = new JLabel("Alterar senha: ");
         change_passw.setFont(new Font("Verdana", Font.PLAIN, 16));
         change_passw.setForeground(new Color(144, 202, 249));
-        change_passw.setBounds(10, 180, 300, 25);
+        change_passw.setBounds(10, 280, 300, 25);
 
         //textinput para alterar a senha 
        
-        change_passw_input.setBounds(10, 210, 300, 25);
+        change_passw_input.setBounds(10, 310, 300, 25);
 
 
         //Label com o texto de confirmar senha 
         JLabel confirm_passw = new JLabel("Por favor, confirme sua senha: ");
         confirm_passw.setFont(new Font("Verdana", Font.PLAIN, 16));
         confirm_passw.setForeground(new Color(144, 202, 249));
-        confirm_passw.setBounds(10, 240, 300, 25);
+        confirm_passw.setBounds(10, 340, 370, 25);
 
         //textinput para confirmar a senha 
         
-        confirm_passw_input.setBounds(10, 270, 300, 25);
+        confirm_passw_input.setBounds(10, 370, 300, 25);
 
         //butão alterar senha 
         JButton save_new_passw = new JButton("Salvar");
-        save_new_passw.setBounds(315, 270, 80, 25);
+        save_new_passw.setBounds(315, 370, 80, 25);
         save_new_passw.setBackground(Color.cyan);
         save_new_passw.addMouseListener(this);
 
@@ -85,19 +117,25 @@ public class Change_info_Panel extends JPanel  implements MouseListener {
         JLabel logout_button = new JLabel("Fazer logout");
         logout_button.setFont(new Font("Verdana", Font.PLAIN, 16));
         logout_button.setForeground(Color.red);        
-        logout_button.setBounds(240,340, 300, 25);
+        logout_button.setBounds(240,400, 300, 25);
 
         //botão de deletar conta
         JLabel delete_account = new JLabel("Deletar conta");
         delete_account.setFont(new Font("Verdana", Font.PLAIN, 16));
         delete_account.setForeground(Color.red);        
-        delete_account.setBounds(236,370, 300, 25);
+        delete_account.setBounds( 236, 430, 300, 25 );
 
 
         this.add(basic_inform_text);
         this.add(nome_usuario);
         this.add(senha_usuario);
         this.add(change_inform);
+        this.add(change_userName);
+        this.add(change_userName_input);
+        this.add(save_new_userName);
+        this.add(change_name);
+        this.add(change_name_input);
+        this.add(save_new_name);
         this.add(change_passw);
         this.add(change_passw_input);
         this.add(confirm_passw);

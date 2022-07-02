@@ -25,12 +25,12 @@ public class User_image_Panel extends JPanel {
         userIcon = new ImageIcon(novaImageUserIcon);
  
         //Label com o icone de usuário e o nome 
-        JLabel user_Icon = new JLabel(nome);
+        JLabel user_Icon = new JLabel(nome, JLabel.CENTER);
         user_Icon.setIcon(userIcon);
         user_Icon.setFont(new Font("Verdana", Font.PLAIN, 16));
         user_Icon.setHorizontalTextPosition(JLabel.CENTER);
         user_Icon.setVerticalTextPosition(JLabel.BOTTOM);
-        user_Icon.setBounds(150, 30, 300, 200 );
+        user_Icon.setBounds(0, 0, 600, 270 );
 
         this.add(user_Icon);
         this.add(back_to_main);
