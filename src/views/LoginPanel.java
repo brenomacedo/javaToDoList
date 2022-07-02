@@ -1,10 +1,14 @@
 package views;
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
-public class LoginPanel extends JPanel implements MouseListener {
+import logica.TelasBasicas.Controllers.ControllerLogin;
+import logica.TelasBasicas.Models.ModelLogin;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class LoginPanel extends JPanel implements ActionListener {
     int width = 300;
     int height = 400;
     int inputWidth = 600/3;
@@ -44,7 +48,7 @@ public class LoginPanel extends JPanel implements MouseListener {
         iconeConfiguracoes = new ImageIcon(novoIconeConfigurac oes);*/
 
 
-        loginButton.addMouseListener(this);
+        loginButton.addActionListener(this);
        
 
         ImageIcon backRec = new ImageIcon("images/logIN.png");
@@ -76,57 +80,18 @@ public class LoginPanel extends JPanel implements MouseListener {
         this.add(passwordLabel);
         this.add(passwoField);
         this.add(loginButton);
-       
-
-        
-    
-        
         
         this.setLayout(null);
         
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
+    public void actionPerformed(ActionEvent e) {
+        String username = this.usernameInput.getText();
+        String password = this.passwoField.getText();
 
-       String username = usernameInput.getText();
-       String passw = passwoField.getText();
-
-       
-
-      
-    
-        
+        ControllerLogin controllerLogin = new ControllerLogin(username, password, new ModelLogin());
+        controllerLogin.verificarLogin();
     }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
-        
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        // TODO Auto-generated method stub
-      
-        
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
-        
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        // TODO Auto-generated method stub
-       
-        
-    }
-
 
 }

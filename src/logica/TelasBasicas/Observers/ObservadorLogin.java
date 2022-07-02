@@ -13,6 +13,7 @@ public class ObservadorLogin{
 
   public void update(){
     this.usuario = (this.model).getUsuario();
+    System.out.println("Tiago brandao forte");
     // Abrir o menu principal. Passar "this.usuario" como parâmetro
   }
 }
