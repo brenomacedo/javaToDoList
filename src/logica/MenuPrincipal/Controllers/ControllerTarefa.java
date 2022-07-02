@@ -1,33 +1,36 @@
 package logica.MenuPrincipal.Controllers;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import logica.Arquivos.Dados_tarefas;
 import logica.MenuPrincipal.Models.*;
 
 public class ControllerTarefa{
   Tarefa tarefa;
-  String vazio = "";
+  int index;
 
-  // 1) concluir
-  void concluirTarefa(){
-    this.tarefa.setConclusao("Concluída");
+  ModelMenuPrincipal model;
+
+  ControllerTarefa (int index, ModelMenuPrincipal model) {
+    this.model = model;
+    this.index = index;
   }
 
-
-  // 2) editar
-  void editarTarefa(String titulo, String prioridade, String descricao, String hora, String data){
-    if (titulo.equals(vazio))
-      this.tarefa.setTitulo(titulo);
-
-    if (prioridade.equals(vazio))
-      this.tarefa.setPrioridade(prioridade);
-
-    if (descricao.equals(vazio))
-      this.tarefa.setDescricao(descricao);
-
-    if (hora.equals(vazio))
-      this.tarefa.setHora(hora);
-
-    if (data.equals(vazio))
-      this.tarefa.setData(data);
+  void concluirTarefa () {
+    JSONObject tarefa = Dados_tarefas.buscarTarefa(index, model.getTarefas());
+    String estadoAtual = (String) tarefa.get("conclusao");
+    tarefa.put("conclusao", estadoAtual == "concluido" ? "naoconcluido" : "concluido");
+    JSONArray tarefasAtualizadas = Dados_tarefas.atualizarDados(index, model.getTarefas(), tarefa);
+    model.setTarefas(tarefasAtualizadas);
   }
 
-  // void removerTarefa()
+  void addTarefa (String titulo, String descricao, String data, String hora, int prioridade, String conclusao) {
+    JSONObject tarefa = new JSONObject();
+    tarefa.put("titulo", titulo);
+    tarefa.put("descricao", descricao);
+    tarefa.put("data", data);
+    tarefa.put("hora", hora);
+    tarefa.put("prioridade", prioridade);
+    tarefa.put("conclusao", conclusao);
+  }
 }

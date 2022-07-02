@@ -21,7 +21,7 @@ import java.io.FileWriter;
 // . "titulo" : String
 // . "descricao" : String
 // . "data" : String
-// . "horas" : String
+// . "hora" : String
 // . "prioridade" : String
 // . "conclusao" : String
 

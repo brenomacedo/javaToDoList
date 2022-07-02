@@ -48,4 +48,23 @@ public class Dados_tarefas{
 
     return tarefas;
   }
+
+  public static JSONObject buscarTarefa (int index, JSONArray tarefas) {
+    Iterator<Object> iterator = tarefas.iterator();
+
+    JSONObject tarefa = null;
+
+    int i = 0;
+    while (iterator.hasNext() && i <= index) {
+      tarefa = (JSONObject) iterator.next();
+      i++;
+    }
+
+    return tarefa;
+  }
+
+  public static JSONArray atualizarDados (int index, JSONArray tarefas, JSONObject tarefaAtualizada) {
+    tarefas.put(index, tarefaAtualizada);
+    return tarefas;
+  }
 }

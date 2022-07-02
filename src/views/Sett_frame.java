@@ -1,5 +1,4 @@
 package views;
-import java.awt.Color;
 import javax.swing.*;
 
 import logica.MenuPrincipal.Models.ModelMenuPrincipal;
