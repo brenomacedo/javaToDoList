@@ -13,27 +13,27 @@ public class LoginPanel extends JPanel implements MouseListener {
     int panelWidth = 300;
     int inputPositionInPanel = this.panelWidth/2 - (this.inputWidth/2);
     int buttonPositionPanel = this.panelWidth/2 - (this.buttonWidth/2);
-    final JTextField emailInput = new JTextField(60);
-    final JTextField passwoField = new JTextField(60);
+    final JTextField usernameInput = new JTextField(60);
+    final JPasswordField passwoField = new JPasswordField(60);
 
     LoginPanel () {
         
         
-        final JLabel emailLabel = new JLabel("Digite seu email: ");
+        final JLabel usernameLabel = new JLabel("Digite seu username: ");
         final JLabel passwordLabel = new JLabel("Digite sua senha: ");
         final JButton loginButton = new JButton("Login");
        
     
-        emailLabel.setBounds(this.inputPositionInPanel, 165, 200, 25);
+        usernameLabel.setBounds(this.inputPositionInPanel, 165, 200, 25);
         passwordLabel.setBounds(this.inputPositionInPanel, 225 , 200, 25);
-        emailInput.setBounds( this.inputPositionInPanel, 195 , this.inputWidth, 25);
+        usernameInput.setBounds( this.inputPositionInPanel, 195 , this.inputWidth, 25);
         passwoField.setBounds(this.inputPositionInPanel, 250, this.inputWidth, 25);
         loginButton.setBounds(this.buttonPositionPanel, 300, this.buttonWidth, 30);
 
         loginButton.setBackground(Color.CYAN);
        
-        emailLabel.setFont(new Font("Verdana", Font.PLAIN, 18));
-        emailLabel.setForeground(Color.decode("#2596be"));
+        usernameLabel.setFont(new Font("Verdana", Font.PLAIN, 18));
+        usernameLabel.setForeground(Color.decode("#2596be"));
         passwordLabel.setFont(new Font("Verdana", Font.PLAIN, 18));
         passwordLabel.setForeground(Color.decode("#2596be"));
 
@@ -58,7 +58,7 @@ public class LoginPanel extends JPanel implements MouseListener {
        
 
        // this.getContentPane().add(mainContent);
-       /*  this.getContentPane().add(emailInput);
+       /*  this.getContentPane().add(usernameInput);
         this.getContentPane().add(passwoField);
         this.getContentPane().add(loginButton);
          */
@@ -71,8 +71,8 @@ public class LoginPanel extends JPanel implements MouseListener {
         this.setLayout(null);
         this.setBackground(Color.white);
         this.add(backLabel);
-        this.add(emailLabel);
-        this.add(emailInput);
+        this.add(usernameLabel);
+        this.add(usernameInput);
         this.add(passwordLabel);
         this.add(passwoField);
         this.add(loginButton);
@@ -90,7 +90,7 @@ public class LoginPanel extends JPanel implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         // TODO Auto-generated method stub
 
-       String email = emailInput.getText();
+       String username = usernameInput.getText();
        String passw = passwoField.getText();
 
        

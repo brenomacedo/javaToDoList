@@ -39,12 +39,12 @@ public class Dados{
   public void carregar(){
     try{
       // Lendo os dados dos usuários
-      List<String> lines = Files.readAllLines(Paths.get("src/logica/Arquivos/dados.json"));
+      List<String> lines = Files.readAllLines(Paths.get("./logica/Arquivos/dados.json"));
       String data = lines.get(0);
       this.usuarios = new JSONArray(data);
 
       // Lendo a próxima id livre
-      lines = Files.readAllLines(Paths.get("src/logica/Arquivos/prox_id_livre.json"));
+      lines = Files.readAllLines(Paths.get("./logica/Arquivos/prox_id_livre.json"));
       data = lines.get(0);
 
       JSONObject id = new JSONObject(data);
@@ -155,7 +155,7 @@ public class Dados{
   public void salvar(){
     try {
       // Salvando dados dos usuários
-      FileWriter filewriter = new FileWriter("src/logica/Arquivos/dados.json");
+      FileWriter filewriter = new FileWriter("./logica/Arquivos/dados.json");
 
       filewriter.write((this.usuarios).toString());
 
@@ -165,7 +165,7 @@ public class Dados{
       JSONObject id = new JSONObject();
       id.put("id", this.prox_id_livre);
 
-      filewriter = new FileWriter("src/logica/Arquivos/prox_id_livre.json");
+      filewriter = new FileWriter("./logica/Arquivos/prox_id_livre.json");
       filewriter.write(id.toString());
       filewriter.close();
     }

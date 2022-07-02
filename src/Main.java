@@ -1,7 +1,7 @@
-import views.EditarTask;
+import views.Login_Register_Frame;
 
 class Main {
   public static void main(String[] args) {
-    new EditarTask();
+    new Login_Register_Frame();
   }
 }

@@ -1,10 +1,14 @@
 package views;
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
-public class RegisterPanel extends JPanel implements MouseListener {
+import logica.TelasBasicas.Controllers.ControllerCadastro;
+import logica.TelasBasicas.Models.ModelCadastro;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class RegisterPanel extends JPanel implements ActionListener {
     int width = 570;
     int height = 400;
     int inputWidth = 280;
@@ -14,10 +18,11 @@ public class RegisterPanel extends JPanel implements MouseListener {
     int inputPositionInPanel = (this.panelWidth/2 - (this.inputWidth/2)) + 120 ;
     int buttonPositionPanel = this.panelWidth/2 - (this.buttonWidth/2) + 120;
 
-    final JTextField emailInput = new JTextField(60);
-    final JTextField emailInputTypeAgain = new JTextField(60);
-    final JTextField passwoField = new JTextField(60);
-    final JTextField passwoFieldTypeAgain = new JTextField(60);
+    final JTextField usernameInput = new JTextField(60);
+    final JTextField nameInputTypeAgain = new JTextField(60);
+    final JPasswordField passwoField = new JPasswordField(60);
+    final JPasswordField passwoFieldTypeAgain = new JPasswordField(60);
+    final JButton registerButton;
     
     RegisterPanel () {
 
@@ -27,25 +32,25 @@ public class RegisterPanel extends JPanel implements MouseListener {
         Image novoIconeConfiguracoes = imageIconeConfiguracoes.getScaledInstance(30, 30,  java.awt.Image.SCALE_SMOOTH);
         iconeConfiguracoes = new ImageIcon(novoIconeConfigurac oes);*/
 
-        //Label do input que pede o email
-        final JLabel emailLabel = new JLabel("Digite seu email: ");
-        emailLabel.setFont(new Font("Verdana", Font.PLAIN, 18));
-        emailLabel.setForeground(Color.decode("#2596be"));
-        emailLabel.setBounds(265, 20, 200, 25);
+        //Label do input que pede o username
+        final JLabel usernameLabel = new JLabel("Digite seu username: ");
+        usernameLabel.setFont(new Font("Verdana", Font.PLAIN, 18));
+        usernameLabel.setForeground(Color.decode("#2596be"));
+        usernameLabel.setBounds(265, 20, 200, 25);
 
-        //input que pede o email 
+        //input que pede o username 
         
-        emailInput.setBounds(this.inputPositionInPanel, 50, this.inputWidth, 25);
+        usernameInput.setBounds(this.inputPositionInPanel, 50, this.inputWidth, 25);
 
-        //label do input que pede o email novamente
-        final JLabel emailLabelTypeAgain = new JLabel("Repita o email: ");
-        emailLabelTypeAgain.setFont(new Font("Verdana", Font.PLAIN, 18));
-        emailLabelTypeAgain.setForeground(Color.decode("#2596be"));
-        emailLabelTypeAgain.setBounds(265, 80, 200, 25);
+        //label do input que pede o nome
+        final JLabel nameLabel = new JLabel("Digite seu nome: ");
+        nameLabel.setFont(new Font("Verdana", Font.PLAIN, 18));
+        nameLabel.setForeground(Color.decode("#2596be"));
+        nameLabel.setBounds(265, 80, 200, 25);
 
-        //input que pede o email novamente 
+        //input que pede o nome 
         
-        emailInputTypeAgain.setBounds(this.inputPositionInPanel, 110, this.inputWidth, 25);
+        nameInputTypeAgain.setBounds(this.inputPositionInPanel, 110, this.inputWidth, 25);
 
         //label do input que pede a senha 
         final JLabel passwordLabel = new JLabel("Digite sua senha: ");
@@ -68,10 +73,10 @@ public class RegisterPanel extends JPanel implements MouseListener {
         passwoFieldTypeAgain.setBounds(this.inputPositionInPanel, 230, this.inputWidth, 25);
 
         //botão de criar conta 
-        final JButton registerButton = new JButton("Criar conta");
+        registerButton = new JButton("Criar conta");
         registerButton.setBounds(this.buttonPositionPanel, 280, this.buttonWidth, 25);
         registerButton.setBackground(Color.CYAN);
-
+        registerButton.addActionListener(this);
         
         
         //imagem que fica no JPanel de registro
@@ -91,10 +96,10 @@ public class RegisterPanel extends JPanel implements MouseListener {
         this.setLayout(null);
         this.setBackground(Color.white);
         this.add(imgae_Of_Inputs_panel);
-        this.add(emailLabel);
-        this.add(emailInput);
-        this.add(emailLabelTypeAgain);
-        this.add(emailInputTypeAgain);
+        this.add(usernameLabel);
+        this.add(usernameInput);
+        this.add(nameLabel);
+        this.add(nameInputTypeAgain);
         this.add(passwordLabel);
         this.add(passwoField);
         this.add(passwordLabelTypeAgain);
@@ -111,50 +116,17 @@ public class RegisterPanel extends JPanel implements MouseListener {
 
     }
 
-
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
-
-        String email = emailInput.getText();
-        String password = emailInputTypeAgain.getText();
-        String email_Confirm = passwoField.getText();
+        
+        String username = usernameInput.getText();
+        String nome = nameInputTypeAgain.getText();
+        String password = passwoField.getText();
         String passw_confirm = passwoFieldTypeAgain.getText();
-
-       //chamar a lógica do brandão
-      
-       
-
-      
-    
         
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
-        
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        // TODO Auto-generated method stub
-      
-        
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
-        
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        // TODO Auto-generated method stub
-       
-        
+        //chamar a lógica do brandão
+        ControllerCadastro controllerCadastro = new ControllerCadastro(nome, username, password, new ModelCadastro());
+        controllerCadastro.cadastrar();
     }
 }

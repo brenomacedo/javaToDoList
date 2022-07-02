@@ -13,10 +13,10 @@ public class Login_Register_Frame extends JFrame implements MouseListener {
     JLabel voltar_ao_login = new JLabel("Fazer login", JLabel.CENTER);
     JLabel register_button = new JLabel("Criar uma conta",  JLabel.CENTER);
 
-    Login_Register_Frame () {
+    public Login_Register_Frame () {
         
 
-        
+        this.setResizable(false);
 
         //imagem que está no titulo 
         ImageIcon icon = new ImageIcon("images/to_do.png");

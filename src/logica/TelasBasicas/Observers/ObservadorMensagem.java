@@ -1,4 +1,6 @@
 package logica.TelasBasicas.Observers;
+import javax.swing.JOptionPane;
+
 import logica.TelasBasicas.Models.ModelTelasIniciais;
 
 public class ObservadorMensagem{
@@ -11,8 +13,7 @@ public class ObservadorMensagem{
 
   public void update(){
     this.mensagem = (this.model).getMensagem();
-    // Abrir uma telinha exibindo "mensagem"
-    // Teste
-    System.out.println(mensagem);
+    
+    JOptionPane.showMessageDialog(null, this.mensagem, "Aviso", JOptionPane.INFORMATION_MESSAGE);
   }
 }
