@@ -30,15 +30,15 @@ import logica.MenuPrincipal.Controllers.ControllerMenuPrincipal;
 public class Menu extends JFrame implements ActionListener {
   
   ModelMenuPrincipal model;
-  JPanel listaDeTarefas;
+  public JPanel listaDeTarefas;
   JButton botaoConfig;
-  JButton botaoAdicionar;
+  public JButton botaoAdicionar;
   ControllerMenuPrincipal controllerMenuPrincipal;
 
   public Menu (ModelMenuPrincipal model) {
 
     this.model = model;
-    this.controllerMenuPrincipal = new ControllerMenuPrincipal(model.getUsuario());
+    this.controllerMenuPrincipal = new ControllerMenuPrincipal(model.getUsuario(), this);
     // configurações da tela
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLayout(new BorderLayout());
@@ -177,17 +177,6 @@ public class Menu extends JFrame implements ActionListener {
 
   public void adicionarTarefa () {
     this.controllerMenuPrincipal.addTarefa();
-    this.listaDeTarefas.add(
-      new Task(index ,"Nova Tarefa", 0, false)
-    );
-
-    if (model.getTarefas().length() == 15) {
-      botaoAdicionar.setEnabled(false);
-    } else {
-      botaoAdicionar.setEnabled(true);
-    }
-
-    this.setVisible(true);
   }
 
   public void recarregarTarefas () {

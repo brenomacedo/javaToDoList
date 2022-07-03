@@ -4,14 +4,18 @@ import org.json.JSONObject;
 import logica.MenuPrincipal.Models.*;
 import org.json.JSONArray;
 import logica.Arquivos.Dados_tarefas;
+import views.Menu;
+
 
 public class ControllerMenuPrincipal{
   ModelMenuPrincipal model_menu_principal;
   JSONObject usuario;
+  Menu menu;
 
-  public ControllerMenuPrincipal(JSONObject usuario){
+  public ControllerMenuPrincipal(JSONObject usuario, Menu menu){
     this.setUsuario(usuario);
     this.iniciar();
+    this.setMenu(menu);
   } 
 
   public void setUsuario(JSONObject usuario){
@@ -20,6 +24,14 @@ public class ControllerMenuPrincipal{
 
   public JSONObject getUsuario(){
     return this.usuario;
+  }
+
+  public void setMenu(Menu menu){
+    this.menu = menu;
+  }
+
+  public Menu getMenu(){
+    return this.menu;
   }
 
   public void setModelMenuPrincipal(ModelMenuPrincipal model_menu_principal){
@@ -32,7 +44,7 @@ public class ControllerMenuPrincipal{
 
   // 1) Função de inicializar o MenuPrincipal (após fazer o login)
   public void iniciar(){
-    ModelMenuPrincipal model_menu_principal = new ModelMenuPrincipal(this.getUsuario());
+    ModelMenuPrincipal model_menu_principal = new ModelMenuPrincipal(this.getUsuario(), this.getMenu());
     this.setModelMenuPrincipal(model_menu_principal);
   }
 

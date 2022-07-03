@@ -24,6 +24,6 @@ public class ObservadorLogin{
     JFrame telaLogin = ((ModelLogin) this.model).telaLogin;
     telaLogin.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     telaLogin.dispatchEvent(new WindowEvent(telaLogin, WindowEvent.WINDOW_CLOSING));
-    new Menu(new ModelMenuPrincipal(this.usuario));
+    new Menu(new ModelMenuPrincipal(this.usuario, null));
   }
 }

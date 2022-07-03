@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import logica.MenuPrincipal.Observers.ObservadorAdicionarTarefa;
 
 import java.util.Iterator;
+import views.Menu;
 
 public class ModelMenuPrincipal{
   String nome_usuario;
@@ -16,14 +17,16 @@ public class ModelMenuPrincipal{
   boolean limpar_tudo; // True se há alguma tarefa para limparmos
   JSONObject usuario;
   ObservadorAdicionarTarefa observadorAdicionarTarefa;
+  Menu menu;
 
   // Adicionar observadores
   // Fazer attach
   // Fazer notify
   // Fazer construtor
-  public ModelMenuPrincipal(JSONObject usuario){
+  public ModelMenuPrincipal(JSONObject usuario, Menu menu){
     this.usuario = usuario;
     this.attach(new ObservadorAdicionarTarefa());
+    this.setMenu(menu);
 
     String nome_usuario = (String) usuario.get("nome_usuario");
     JSONArray tarefas = (JSONArray) usuario.get("tarefas");
@@ -55,7 +58,7 @@ public class ModelMenuPrincipal{
       else
         limpar_tarefas_concluidas = false;
 
-      if (contador_tarefas == 14)
+      if (contador_tarefas == 15)
         adicionar_tarefa = false;
       else
         adicionar_tarefa = true;
@@ -78,6 +81,14 @@ public class ModelMenuPrincipal{
     this.setLimparTarefasConcluidas(limpar_tarefas_concluidas);
     this.setLimparTudo(limpar_tudo);
     this.setPorcentagemTarefasConcluidas(porcentagem_tarefas_concluidas);
+  }
+
+  public void setMenu(Menu menu){
+    this.menu = menu;
+  }
+
+  public Menu getMenu(){
+    return this.menu;
   }
 
   public void setNomeUsuario(String nome_usuario){
