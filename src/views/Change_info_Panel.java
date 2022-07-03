@@ -1,5 +1,6 @@
 package views;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 import logica.MenuPrincipal.Models.ModelMenuPrincipal;
 
@@ -11,8 +12,8 @@ public class Change_info_Panel extends JPanel  implements MouseListener {
 
     JPasswordField change_passw_input = new JPasswordField(60);
     JPasswordField confirm_passw_input = new JPasswordField(60);
-    JPasswordField change_userName_input = new JPasswordField(60);
-    JPasswordField change_name_input = new JPasswordField(60);
+    JTextField change_userName_input = new JTextField(60);
+    JTextField change_name_input = new JTextField(60);
     ModelMenuPrincipal model;
 
     Change_info_Panel (ModelMenuPrincipal model) {
@@ -117,13 +118,15 @@ public class Change_info_Panel extends JPanel  implements MouseListener {
         JLabel logout_button = new JLabel("Fazer logout");
         logout_button.setFont(new Font("Verdana", Font.PLAIN, 16));
         logout_button.setForeground(Color.red);        
-        logout_button.setBounds(240,400, 300, 25);
+        logout_button.setBounds(240,400, 300, 55);
+        logout_button.setBorder(new EmptyBorder(30, 0, 0, 0));
 
         //botão de deletar conta
         JLabel delete_account = new JLabel("Deletar conta");
         delete_account.setFont(new Font("Verdana", Font.PLAIN, 16));
         delete_account.setForeground(Color.red);        
-        delete_account.setBounds( 236, 430, 300, 25 );
+        delete_account.setBounds( 236, 430, 300, 55 );
+        delete_account.setBorder(new EmptyBorder(30, 0, 0, 0));
 
 
         this.add(basic_inform_text);
