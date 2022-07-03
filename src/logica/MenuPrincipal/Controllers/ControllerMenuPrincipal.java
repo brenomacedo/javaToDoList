@@ -14,8 +14,8 @@ public class ControllerMenuPrincipal{
 
   public ControllerMenuPrincipal(JSONObject usuario, Menu menu){
     this.setUsuario(usuario);
-    this.iniciar();
     this.setMenu(menu);
+    this.iniciar();
   } 
 
   public void setUsuario(JSONObject usuario){
