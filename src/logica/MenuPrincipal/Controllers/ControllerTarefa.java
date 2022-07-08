@@ -18,7 +18,7 @@ public class ControllerTarefa{
   void concluirTarefa () {
     JSONObject tarefa = Dados_tarefas.buscarTarefa(index, model.getTarefas());
     String estadoAtual = (String) tarefa.get("conclusao");
-    tarefa.put("conclusao", estadoAtual == "concluido" ? "naoconcluido" : "concluido");
+    tarefa.put("conclusao", estadoAtual == "concluido" ? "nao concluido" : "concluido");
     JSONArray tarefasAtualizadas = Dados_tarefas.atualizarDados(index, model.getTarefas(), tarefa);
     model.setTarefas(tarefasAtualizadas);
   }
