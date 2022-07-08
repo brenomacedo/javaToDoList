@@ -115,4 +115,11 @@ public class ControllerMenuPrincipal{
       titulo, descricao, data, hora, prioridade, conclusao, this.menu
     );
   }
+
+  public void concluirTarefa (int index, boolean value) {
+    JSONObject tarefa = Dados_tarefas.buscarTarefa(index, this.model_menu_principal.getTarefas());
+    tarefa.put("conclusao", value ? "concluido" : "nao concluido");
+    JSONArray tarefasAtualizadas = Dados_tarefas.atualizarDados(index, this.model_menu_principal.getTarefas(), tarefa);
+    this.model_menu_principal.setTarefas(tarefasAtualizadas);
+  }
 }

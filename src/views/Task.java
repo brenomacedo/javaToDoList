@@ -25,6 +25,7 @@ public class Task extends JPanel implements ActionListener {
 
   int index;
   JButton botaoVisualizar;
+  JCheckBox tarefaConcluida;
   Menu menu;
 
   public Task(int index, String titulo, String prioridade, boolean concluido, Menu menu) {
@@ -55,7 +56,8 @@ public class Task extends JPanel implements ActionListener {
     iconeNaoConcluido = new ImageIcon(novoIconeNaoConcluido);
 
     // Checkbox tarefa concluída
-    JCheckBox tarefaConcluida = new JCheckBox();
+    tarefaConcluida = new JCheckBox();
+    tarefaConcluida.addActionListener(this);
     tarefaConcluida.setSize(24, 24);
     tarefaConcluida.setSelectedIcon(iconeConcluido);
     tarefaConcluida.setIcon(iconeNaoConcluido);
@@ -133,6 +135,11 @@ public class Task extends JPanel implements ActionListener {
   public void actionPerformed(ActionEvent e) {
     if (e.getSource() == this.botaoVisualizar) {
       this.menu.visualizarTarefa(this.index);
+    }
+
+    if (e.getSource() == this.tarefaConcluida) {
+      boolean newValue = this.tarefaConcluida.isSelected();
+      this.menu.concluirTarefa(index, newValue);
     }
   }
 

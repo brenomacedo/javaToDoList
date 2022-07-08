@@ -12,12 +12,6 @@ public class User_image_Panel extends JPanel {
         Image novaimageIcon = imageArrowIcon.getScaledInstance(25, 25, java.awt.Image.SCALE_SMOOTH);
         arrowIcon = new ImageIcon(novaimageIcon);
  
-        //botão de voltar
-        JLabel back_to_main = new JLabel("Voltar");
-        back_to_main.setForeground(Color.white);
-        back_to_main.setBounds(10,10,90,40);
-        back_to_main.setIcon(arrowIcon);
- 
         //imagem de usuário
         ImageIcon userIcon = new ImageIcon("images/user_icon.png");
         Image imageUserIcon = userIcon.getImage();
@@ -33,7 +27,6 @@ public class User_image_Panel extends JPanel {
         user_Icon.setBounds(0, 0, 600, 270 );
 
         this.add(user_Icon);
-        this.add(back_to_main);
 
 
         this.setBounds(0,0,600,270);

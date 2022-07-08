@@ -198,6 +198,10 @@ public class Menu extends JFrame implements ActionListener {
     }
   }
 
+  public void concluirTarefa (int index, boolean value) {
+    this.controllerMenuPrincipal.concluirTarefa(index, value);
+  }
+
   @Override
   public void actionPerformed(ActionEvent e) {
     if (e.getSource() == this.botaoConfig) {
