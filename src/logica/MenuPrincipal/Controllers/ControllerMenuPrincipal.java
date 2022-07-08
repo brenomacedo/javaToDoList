@@ -2,9 +2,13 @@ package logica.MenuPrincipal.Controllers;
 
 import org.json.JSONObject;
 import logica.MenuPrincipal.Models.*;
+
+import java.util.Iterator;
+
 import org.json.JSONArray;
 import logica.Arquivos.Dados_tarefas;
 import views.Menu;
+import views.VisualizarTask;
 
 
 public class ControllerMenuPrincipal{
@@ -86,5 +90,29 @@ public class ControllerMenuPrincipal{
   // Precisamos atualizar "porcentagem_tarefas_concluidas" e "zerar" o "model_menu_tarefas" do "model_menu_principal".
   public void limpar_tudo(){
     (this.model_menu_principal).setTarefas(new JSONArray());
+  }
+
+  // 5) Função de visualizar tarefa
+  public void visualizarTarefa(int index) {
+    Iterator<Object> tarefas = this.model_menu_principal.getTarefas().iterator();
+    
+    JSONObject tarefa = null;
+
+    int indexTarefa = 0;
+    while (tarefas.hasNext() && indexTarefa <= index) {
+      tarefa = (JSONObject) tarefas.next();
+      indexTarefa++;
+    }
+
+    String titulo = (String) tarefa.get("titulo");
+    String descricao = (String) tarefa.get("descricao");
+    String data = (String) tarefa.get("data");
+    String hora = (String) tarefa.get("hora");
+    String prioridade = (String) tarefa.get("prioridade");
+    String conclusao = (String) tarefa.get("conclusao");
+
+    new VisualizarTask(
+      titulo, descricao, data, hora, prioridade, conclusao, this.menu
+    );
   }
 }

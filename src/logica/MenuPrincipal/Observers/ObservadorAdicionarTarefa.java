@@ -1,6 +1,7 @@
 package logica.MenuPrincipal.Observers;
 
 import logica.MenuPrincipal.Models.ModelMenuPrincipal;
+import views.Menu;
 import views.Task;
 
 public class ObservadorAdicionarTarefa {
@@ -12,7 +13,8 @@ public class ObservadorAdicionarTarefa {
 
     public void update () {
         int num_tarefas = model.getTarefas().length();
-        (this.model.getMenu()).listaDeTarefas.add(new Task(num_tarefas-1,"Nova Tarefa", 0, false));
+        Menu menu = this.model.getMenu();
+        menu.listaDeTarefas.add(new Task(num_tarefas-1,"Nova Tarefa", "0", false, menu));
         if (num_tarefas == 15){
             // Exibe mensagem de "n° máximo de tarefas alcançado"
             (this.model.getMenu()).botaoAdicionar.setEnabled(false);

@@ -8,8 +8,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -17,16 +15,21 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import utils.JTextFieldLimit;
 import utils.Theme;
 
-public class Task extends JPanel {
+public class Task extends JPanel implements ActionListener {
 
   int index;
+  JButton botaoVisualizar;
+  Menu menu;
 
-  public Task(int index, String titulo, int prioridade, boolean concluido) {
+  public Task(int index, String titulo, String prioridade, boolean concluido, Menu menu) {
     this.index = index;
+    this.menu = menu;
 
     this.setLayout(new BorderLayout());
     this.setBorder(BorderFactory.createMatteBorder(4, 8, 4, 8, Theme.bgColor));
@@ -95,7 +98,8 @@ public class Task extends JPanel {
     iconeVisualizar = new ImageIcon(novoIconeVisualiar);
 
     // Botao visualizar
-    JButton botaoVisualizar = new JButton();
+    botaoVisualizar = new JButton();
+    botaoVisualizar.addActionListener(this);
     botaoVisualizar.setFocusable(false);
     botaoVisualizar.setIcon(iconeVisualizar);
     botaoVisualizar.setBackground(Color.WHITE);
@@ -124,4 +128,12 @@ public class Task extends JPanel {
     this.add(botoes, BorderLayout.EAST);
 
   }
+
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    if (e.getSource() == this.botaoVisualizar) {
+      this.menu.visualizarTarefa(this.index);
+    }
+  }
+
 }

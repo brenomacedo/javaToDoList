@@ -6,7 +6,6 @@ import logica.Arquivos.Dados_tarefas;
 import logica.MenuPrincipal.Models.*;
 
 public class ControllerTarefa{
-  Tarefa tarefa;
   int index;
 
   ModelMenuPrincipal model;

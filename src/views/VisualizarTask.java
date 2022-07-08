@@ -12,15 +12,40 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 import utils.Theme;
 
 public class VisualizarTask extends JFrame {
-  public VisualizarTask() {
-    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+  String titulo;
+  String descricao;
+  String data;
+  String hora;
+  String prioridade;
+  String conclusao;
+
+  public VisualizarTask(String titulo, String descricao, String data, String hora, String prioridade, String conclusao, Menu menu) {
+
+    this.titulo = titulo;
+    this.descricao = descricao;
+    this.data = data;
+    this.hora = hora;
+    this.prioridade = prioridade;
+    this.conclusao = conclusao;
+
+    this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     this.getContentPane().setBackground(Theme.bgColor);
     this.setResizable(false);
     this.setSize(400, 510);
     this.setLayout(new BorderLayout());
+
+    this.addWindowListener(new WindowAdapter() {
+      public void windowClosing(WindowEvent e) {
+        menu.setVisualizandoTarefa(false);
+      }
+    });
 
     JPanel secaoTitulo = new JPanel();
     secaoTitulo.setBackground(Theme.bgColor);
@@ -32,7 +57,7 @@ public class VisualizarTask extends JFrame {
     labelTitulo.setFont(new Font(null, Font.BOLD, 18));
 
     // Receber como parametro a entrada da model (Tiago big brand)
-    JTextField campoTitulo = new JTextField("Minha tarefa interessante");
+    JTextField campoTitulo = new JTextField(this.titulo);
     campoTitulo.setFont(new Font(null, Font.BOLD, 18));
     campoTitulo.setEditable(false);
 
@@ -52,7 +77,7 @@ public class VisualizarTask extends JFrame {
     tituloDescricao.setFont(new Font(null, Font.BOLD, 18));
     tituloDescricao.setPreferredSize(new Dimension(400, 24));
 
-    JTextArea campoDescricao = new JTextArea("Descricao da minha tarefa muito dpaowkd dapwok dawpokd awd awpodk awpdo awpodkl, hoje vou buscar muito com o");
+    JTextArea campoDescricao = new JTextArea(this.descricao);
     campoDescricao.setFont(new Font(null, Font.BOLD, 18));
     campoDescricao.setEditable(false);
     campoDescricao.setPreferredSize(new Dimension(400, 96));
@@ -78,7 +103,7 @@ public class VisualizarTask extends JFrame {
     tituloData.setFont(new Font(null, Font.BOLD, 18));
     tituloData.setPreferredSize(new Dimension(400, 24));
 
-    JTextField campoData = new JTextField("14/01/2023");
+    JTextField campoData = new JTextField(this.data);
     campoData.setFont(new Font(null, Font.BOLD, 18));
     campoData.setEditable(false);
 
@@ -99,7 +124,7 @@ public class VisualizarTask extends JFrame {
     tituloHora.setFont(new Font(null, Font.BOLD, 18));
     tituloHora.setPreferredSize(new Dimension(400, 24));
 
-    JTextField campoHora = new JTextField("04:20");
+    JTextField campoHora = new JTextField(this.hora);
     campoHora.setFont(new Font(null, Font.BOLD, 18));
     campoHora.setEditable(false); 
 
@@ -120,7 +145,7 @@ public class VisualizarTask extends JFrame {
     tituloPrioridade.setFont(new Font(null, Font.BOLD, 18));
     tituloPrioridade.setPreferredSize(new Dimension(400, 24));
 
-    JTextField campoPrioridade = new JTextField("3");
+    JTextField campoPrioridade = new JTextField(this.prioridade);
     campoPrioridade.setFont(new Font(null, Font.BOLD, 18));
     campoPrioridade.setEditable(false); 
 

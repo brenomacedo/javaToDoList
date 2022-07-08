@@ -5,7 +5,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
@@ -34,6 +33,7 @@ public class Menu extends JFrame implements ActionListener {
   JButton botaoConfig;
   public JButton botaoAdicionar;
   ControllerMenuPrincipal controllerMenuPrincipal;
+  boolean visualizandoTarefa = false;
 
   public Menu (ModelMenuPrincipal model) {
 
@@ -155,6 +155,14 @@ public class Menu extends JFrame implements ActionListener {
     this.setVisible(true);
   }
 
+  public boolean getVisualizandoTarefa () {
+    return this.visualizandoTarefa;
+  }
+
+  public void setVisualizandoTarefa (boolean visualizandoTarefa) {
+    this.visualizandoTarefa = visualizandoTarefa;
+  }
+
   public void carregarTarefas () {
     Iterator<Object> tarefas = this.model.getTarefas().iterator();
 
@@ -164,11 +172,11 @@ public class Menu extends JFrame implements ActionListener {
       tarefa = (JSONObject) tarefas.next();
 
       String titulo = (String) tarefa.get("titulo");
-      int prioridade = (int) tarefa.get("prioridade");
+      String prioridade = (String) tarefa.get("prioridade");
       boolean conclusao = ((String) tarefa.get("conclusao")).equals("concluido");
 
       listaDeTarefas.add(
-        new Task(index, titulo, prioridade, conclusao)
+        new Task(index, titulo, prioridade, conclusao, this)
       );
       
       index++;
@@ -181,6 +189,13 @@ public class Menu extends JFrame implements ActionListener {
 
   public void recarregarTarefas () {
 
+  }
+
+  public void visualizarTarefa (int index) {
+    if (!this.visualizandoTarefa) {
+      this.controllerMenuPrincipal.visualizarTarefa(index);
+      this.setVisualizandoTarefa(true);
+    }
   }
 
   @Override
