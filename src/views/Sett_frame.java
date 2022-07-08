@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 
 public class Sett_frame extends JFrame {
 
-    ActionListener menuFrame;
+    public ActionListener menuFrame;
     JButton botaoConfig;
     ModelMenuPrincipal model;
 
@@ -25,7 +25,7 @@ public class Sett_frame extends JFrame {
         this.menuFrame = menuFrame;
         this.botaoConfig = botaoConfig;
         this.model = model;
-        this.change_panel = new Change_info_Panel(model);
+        this.change_panel = new Change_info_Panel(model, this);
         this.user_image = new User_image_Panel(model.getNome());
 
         this.addWindowListener(new WindowAdapter() {

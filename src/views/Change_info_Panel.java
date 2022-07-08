@@ -20,10 +20,14 @@ public class Change_info_Panel extends JPanel implements ActionListener {
     JButton save_new_userName;
     JButton save_new_name;
     JButton save_new_passw;
+    JButton logout_button;
+    JButton delete_account;
+    Sett_frame sett_frame;
 
-    Change_info_Panel (ModelMenuPrincipal model) {
+    Change_info_Panel (ModelMenuPrincipal model, Sett_frame frame) {
         this.model = model;
         this.controllerConfiguracoes = new ControllerConfiguracoes(this.model.getUsuario());
+        this.sett_frame = frame;
         //Label com o texto "informações do usuário"
         JLabel basic_inform_text = new JLabel("INFORMAÇÕES DO USUÁRIO");
         basic_inform_text.setFont(new Font("Verdana", Font.PLAIN, 18));
@@ -128,18 +132,22 @@ public class Change_info_Panel extends JPanel implements ActionListener {
         save_new_passw.addActionListener(this);
 
         //botão de fazer logout
-        JLabel logout_button = new JLabel("Fazer logout");
+        logout_button = new JButton("Fazer logout");
+        logout_button.addActionListener(this);
         logout_button.setFont(new Font("Verdana", Font.PLAIN, 16));
         logout_button.setForeground(Color.red);        
-        logout_button.setBounds(240,400, 300, 55);
-        logout_button.setBorder(new EmptyBorder(30, 0, 0, 0));
+        logout_button.setBounds(240,400, 120, 55);
+        logout_button.setBorder(new EmptyBorder(0, 0, 0, 0));
+        logout_button.setBackground(Color.white);
 
         //botão de deletar conta
-        JLabel delete_account = new JLabel("Deletar conta");
+        delete_account = new JButton("Deletar conta");
+        delete_account.addActionListener(this);
         delete_account.setFont(new Font("Verdana", Font.PLAIN, 16));
         delete_account.setForeground(Color.red);        
-        delete_account.setBounds( 236, 430, 300, 55 );
-        delete_account.setBorder(new EmptyBorder(30, 0, 0, 0));
+        delete_account.setBounds( 240, 470, 120, 55 );
+        delete_account.setBorder(new EmptyBorder(0, 0, 0, 0));
+        delete_account.setBackground(Color.white);
 
 
         this.add(basic_inform_text);
@@ -172,7 +180,7 @@ public class Change_info_Panel extends JPanel implements ActionListener {
 
         if (e.getSource() == this.save_new_userName) {
             String username = change_userName_input.getText();
-            this.controllerConfiguracoes.editarPerfil(username, confirmarSenha, "username");
+            this.controllerConfiguracoes.editarPerfil(username, confirmarSenha, "nome_usuario");
         }
 
         if (e.getSource() == this.save_new_name) {
@@ -183,6 +191,14 @@ public class Change_info_Panel extends JPanel implements ActionListener {
         if (e.getSource() == this.save_new_passw) {
             String newPassword = change_passw_input.getText();
             this.controllerConfiguracoes.editarPerfil(newPassword, confirmarSenha, "senha");
+        }
+
+        if (e.getSource() == this.logout_button) {
+            this.controllerConfiguracoes.logout(this.sett_frame);
+        }
+
+        if (e.getSource() == this.delete_account) {
+            this.controllerConfiguracoes.ApagarRegistro(this.sett_frame);
         }
     }
 

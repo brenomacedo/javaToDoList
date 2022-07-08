@@ -1,7 +1,9 @@
 package logica.TelaConfigurações.Observers;
 
+import javax.swing.JOptionPane;
+
 public class ObserverApagarRegistro extends Observer {
   public void update(){
-    System.out.println((this.model).getMensagem());
+    JOptionPane.showMessageDialog(null, "Conta apagada com sucesso!", "Conta apagada", JOptionPane.INFORMATION_MESSAGE);
   }
 }

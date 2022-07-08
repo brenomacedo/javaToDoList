@@ -1,12 +1,17 @@
 package logica.TelaConfigurações.Controller;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import org.json.JSONObject;
 
 import logica.Auxiliar.Mensagens;
 import logica.TelaConfigurações.Models.ModelConfiguracoes;
+import views.Login_Register_Frame;
+import views.Menu;
+import views.Sett_frame;
 import logica.Arquivos.Dados;
+import java.awt.event.WindowEvent;
 
 public class ControllerConfiguracoes{
   JSONObject usuario;
@@ -40,6 +45,10 @@ public class ControllerConfiguracoes{
   // Se tipo_mudanca == "nome_usuario", modifica o nome de usuario do Usuário
   public void editarPerfil(String mudanca, String senha, String tipo_mudanca){
     String mensagem = "";
+
+    if (tipo_mudanca.equals("nome_usuario")) {
+      mudanca = mudanca.toUpperCase();
+    }
     
     if (!mudanca.isEmpty()) {
       String senha_usuario = (String) (this.usuario).get("senha");
@@ -75,18 +84,21 @@ public class ControllerConfiguracoes{
   }
 
   // 2) Apagar registro
-  public void ApagarRegistro(String senha){
-    String senha_usuario = (String) (this.usuario).get("senha");
+  public void ApagarRegistro(Sett_frame frame){
+    Dados arquivo = new Dados();
+    arquivo.apagar_registro(usuario);
 
-    String mensagem = Mensagens.gera_mensagem_ApagarRegistro(senha_usuario, senha);
+    (this.model).setApagarRegistro(true);
 
-    (this.model).setMensagem(mensagem);
+    this.logout(frame);
+  }
 
-    if (senha_usuario.equals(senha)){
-      Dados arquivo = new Dados();
-      arquivo.apagar_registro(usuario);
+  // 3) Fazer logout
+  public void logout (Sett_frame frame) {
+    ((JFrame) frame.menuFrame).setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+    ((Menu) frame.menuFrame).dispatchEvent(new WindowEvent(((Menu) frame.menuFrame), WindowEvent.WINDOW_CLOSING));
+    frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
 
-      (this.model).setApagarRegistro(true);
-    }
+    new Login_Register_Frame();
   }
 }
