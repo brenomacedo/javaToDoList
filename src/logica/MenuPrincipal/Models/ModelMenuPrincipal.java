@@ -45,7 +45,7 @@ public class ModelMenuPrincipal{
       contador_tarefas++;
       tarefa = (JSONObject) iterator_tarefas.next();
       conclusão_tarefa = (String) tarefa.get("conclusao");
-      String conclusao__ = "Concluido";
+      String conclusao__ = "concluido";
       if (conclusão_tarefa.equals(conclusao__))
         concluidas++;
     }

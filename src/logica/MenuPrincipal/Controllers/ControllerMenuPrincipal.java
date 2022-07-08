@@ -62,7 +62,7 @@ public class ControllerMenuPrincipal{
     tarefa.put("descricao", "");
     tarefa.put("data", "");
     tarefa.put("hora", "");
-    tarefa.put("prioridade", 0);
+    tarefa.put("prioridade", "0");
     tarefa.put("conclusao", "");
 
     

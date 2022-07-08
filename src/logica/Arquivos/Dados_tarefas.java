@@ -8,12 +8,12 @@ public class Dados_tarefas{
   // 1) Adicionar Tarefas
   public static JSONArray adicionar_tarefa(JSONArray tarefas, String titulo){
     JSONObject objeto_tarefa = new JSONObject();
-    objeto_tarefa.put("Titulo", titulo);
-    objeto_tarefa.put("Descricao", "");
-    objeto_tarefa.put("Data", "");
-    objeto_tarefa.put("Horas", "");
-    objeto_tarefa.put("Prioridade", "");
-    objeto_tarefa.put("Conclusao", "Nao concluida");
+    objeto_tarefa.put("titulo", titulo);
+    objeto_tarefa.put("descricao", "");
+    objeto_tarefa.put("data", "");
+    objeto_tarefa.put("horas", "");
+    objeto_tarefa.put("prioridade", "");
+    objeto_tarefa.put("conclusao", "nao concluido");
 
     tarefas.put(objeto_tarefa);
     return tarefas;
@@ -24,12 +24,12 @@ public class Dados_tarefas{
     int i = -1;
     JSONObject tarefa;
     String conclusao;
-    String aux_conclusao = "Concluida";
+    String aux_conclusao = "concluido";
     Iterator<Object> iterator_tarefas = tarefas.iterator();
 
     while (iterator_tarefas.hasNext()){
       tarefa = (JSONObject)iterator_tarefas.next();
-      conclusao = (String) tarefa.get("Conclusao");
+      conclusao = (String) tarefa.get("conclusao");
       i++;
       if (conclusao.equals(aux_conclusao))
         return i;
