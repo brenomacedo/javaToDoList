@@ -117,7 +117,9 @@ public class Menu extends JFrame implements ActionListener {
 
     botaoAdicionar = new JButton("Adicionar");
     botaoLimparConcluidas = new JButton("Limpar Conc.");
+    botaoLimparConcluidas.addActionListener(this);
     botaoLimparTudo = new JButton("Limpar tudo");
+    botaoLimparTudo.addActionListener(this);
 
     Font fonteBotao = new Font("Monospaced", Font.BOLD, 14);
     botaoAdicionar.setFont(fonteBotao);
@@ -248,6 +250,16 @@ public class Menu extends JFrame implements ActionListener {
     this.recarregarTarefas();
   }
 
+  public void limparTudo () {
+    this.controllerMenuPrincipal.limparTudo();
+    this.recarregarTarefas();
+  }
+
+  public void limparConcluidas () {
+    this.controllerMenuPrincipal.limparConcluidas();
+    this.recarregarTarefas();
+  }
+
   @Override
   public void actionPerformed(ActionEvent e) {
     if (e.getSource() == this.botaoConfig) {
@@ -257,6 +269,14 @@ public class Menu extends JFrame implements ActionListener {
 
     if (e.getSource() == this.botaoAdicionar) {
       this.adicionarTarefa();
+    }
+
+    if (e.getSource() == this.botaoLimparConcluidas) {
+      this.limparConcluidas();
+    }
+
+    if (e.getSource() == this.botaoLimparTudo) {
+      this.limparTudo();
     }
   }
 }

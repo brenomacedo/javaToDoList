@@ -1,5 +1,7 @@
 package logica.TelaConfigurações.Controller;
 
+import javax.swing.JOptionPane;
+
 import org.json.JSONObject;
 
 import logica.Auxiliar.Mensagens;
@@ -37,25 +39,39 @@ public class ControllerConfiguracoes{
   // Se tipo_mudanca == "senha", modifica a senha do Usuário
   // Se tipo_mudanca == "nome_usuario", modifica o nome de usuario do Usuário
   public void editarPerfil(String mudanca, String senha, String tipo_mudanca){
-    String senha_usuario = (String) (this.usuario).get("senha");
+    String mensagem = "";
+    
+    if (!mudanca.isEmpty()) {
+      String senha_usuario = (String) (this.usuario).get("senha");
 
-    String mensagem = Mensagens.gera_mensagem_EditarPerfil(senha_usuario, senha, tipo_mudanca);
+      mensagem = Mensagens.gera_mensagem_EditarPerfil(senha_usuario, senha, tipo_mudanca);
 
-    (this.model).setMensagem(mensagem);
+      (this.model).setMensagem(mensagem);
 
-    if (senha_usuario.equals(senha)){
-      Dados arquivo = new Dados();
-      arquivo.atualizarUsuario((this.usuario), mudanca, tipo_mudanca);
-      String nome_ = "nome";
-      String senha_ = "senha";
+      if (senha_usuario.equals(senha)){
+        Dados arquivo = new Dados();
+        arquivo.atualizarUsuario((this.usuario), mudanca, tipo_mudanca);
+        String nome_ = "nome";
+        String senha_ = "senha";
 
-      if (tipo_mudanca.equals(nome_))
-        (this.model).setNome(mudanca);
-      else if (tipo_mudanca.equals(senha_))
-        (this.model).setSenha(mudanca);
-      else
-        (this.model).setNomeUsuario(mudanca);
+        if (tipo_mudanca.equals(nome_))
+          (this.model).setNome(mudanca);
+        else if (tipo_mudanca.equals(senha_))
+          (this.model).setSenha(mudanca);
+        else
+          (this.model).setNomeUsuario(mudanca);
+      }
+    } else {
+      if (tipo_mudanca.equals("nome")) {
+        mensagem = "Por favor, digite um nome";
+      } else if (tipo_mudanca.equals("senha")) {
+        mensagem = "Por favor, digite uma senha";
+      } else {
+        mensagem = "Por favor, digite um nome de usuário";
+      }
     }
+
+    JOptionPane.showMessageDialog(null, mensagem, "Mensagem", JOptionPane.INFORMATION_MESSAGE);
   }
 
   // 2) Apagar registro

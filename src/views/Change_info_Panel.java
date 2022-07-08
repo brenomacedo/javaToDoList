@@ -3,21 +3,27 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import logica.MenuPrincipal.Models.ModelMenuPrincipal;
+import logica.TelaConfigurações.Controller.ControllerConfiguracoes;
 
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Change_info_Panel extends JPanel  implements MouseListener {
+public class Change_info_Panel extends JPanel implements ActionListener {
 
     JPasswordField change_passw_input = new JPasswordField(60);
     JPasswordField confirm_passw_input = new JPasswordField(60);
     JTextField change_userName_input = new JTextField(60);
     JTextField change_name_input = new JTextField(60);
     ModelMenuPrincipal model;
+    ControllerConfiguracoes controllerConfiguracoes;
+    JButton save_new_userName;
+    JButton save_new_name;
+    JButton save_new_passw;
 
     Change_info_Panel (ModelMenuPrincipal model) {
         this.model = model;
+        this.controllerConfiguracoes = new ControllerConfiguracoes(this.model.getUsuario());
         //Label com o texto "informações do usuário"
         JLabel basic_inform_text = new JLabel("INFORMAÇÕES DO USUÁRIO");
         basic_inform_text.setFont(new Font("Verdana", Font.PLAIN, 18));
@@ -44,7 +50,14 @@ public class Change_info_Panel extends JPanel  implements MouseListener {
         passwIconSetting = new ImageIcon(novaImagePasswIconSetting);
 
         //Label com senha 
-        JLabel senha_usuario = new JLabel(model.getSenha());
+
+        String senhaEscondida = "";
+
+        for (int i = 0; i < model.getSenha().length(); i++) {
+            senhaEscondida = senhaEscondida + "*";
+        }
+
+        JLabel senha_usuario = new JLabel(senhaEscondida);
         senha_usuario.setSize(400, 20);        
         senha_usuario.setFont(new Font("Verdana", Font.PLAIN, 16));
         senha_usuario.setBounds(10, 90, 300, 25);
@@ -67,10 +80,10 @@ public class Change_info_Panel extends JPanel  implements MouseListener {
         change_userName_input.setBounds(10, 200, 300, 25);
 
         //botão para salvar novo nome de usuário
-        JButton save_new_userName = new JButton("Salvar");
+        save_new_userName = new JButton("Salvar");
         save_new_userName.setBounds(315, 200, 80, 25);
         save_new_userName.setBackground(Color.cyan);
-        save_new_userName.addMouseListener(this);
+        save_new_userName.addActionListener(this);
 
         //Label com o texto de alterar nome
         JLabel change_name = new JLabel("Alterar nome: ");
@@ -82,10 +95,10 @@ public class Change_info_Panel extends JPanel  implements MouseListener {
         change_name_input.setBounds(10, 248, 300, 25);
 
         //botão para salvar novo nome
-        JButton save_new_name = new JButton("Salvar");
+        save_new_name = new JButton("Salvar");
         save_new_name.setBounds(315, 248, 80, 25);
         save_new_name.setBackground(Color.cyan);
-        save_new_name.addMouseListener(this);
+        save_new_name.addActionListener(this);
 
         //Label com o texto de alterar senha
         JLabel change_passw = new JLabel("Alterar senha: ");
@@ -109,10 +122,10 @@ public class Change_info_Panel extends JPanel  implements MouseListener {
         confirm_passw_input.setBounds(10, 370, 300, 25);
 
         //butão alterar senha 
-        JButton save_new_passw = new JButton("Salvar");
+        save_new_passw = new JButton("Salvar");
         save_new_passw.setBounds(315, 370, 80, 25);
         save_new_passw.setBackground(Color.cyan);
-        save_new_passw.addMouseListener(this);
+        save_new_passw.addActionListener(this);
 
         //botão de fazer logout
         JLabel logout_button = new JLabel("Fazer logout");
@@ -151,51 +164,26 @@ public class Change_info_Panel extends JPanel  implements MouseListener {
         this.setBackground(Color.white);
         this.setLayout(null);
     }
-
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
-
-        String passw_confirm = confirm_passw_input.getText();
-        String new_passw = change_passw_input.getText();
-
-       
-        System.out.println("sneha: " + passw_confirm);
-        System.out.println("new pass: " + new_passw);
-       
-
-      
     
-        
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        String confirmarSenha = confirm_passw_input.getText();
+
+        if (e.getSource() == this.save_new_userName) {
+            String username = change_userName_input.getText();
+            this.controllerConfiguracoes.editarPerfil(username, confirmarSenha, "username");
+        }
+
+        if (e.getSource() == this.save_new_name) {
+            String name = change_name_input.getText();
+            this.controllerConfiguracoes.editarPerfil(name, confirmarSenha, "nome");   
+        }
+
+        if (e.getSource() == this.save_new_passw) {
+            String newPassword = change_passw_input.getText();
+            this.controllerConfiguracoes.editarPerfil(newPassword, confirmarSenha, "senha");
+        }
     }
 
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
-        
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        // TODO Auto-generated method stub
-      
-        
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
-        
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        // TODO Auto-generated method stub
-       
-        
-    }
-    
 }

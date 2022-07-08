@@ -63,10 +63,10 @@ public class Mensagens{
     else if (senha_ent.equals(senha_atual)){
       if (tipo_mudanca.equals(nome))
         mensagem = "Nome modificado com sucesso!";
-      else if (tipo_mudanca.equals(nome_usuario))
-        mensagem = "Nome de usuário modificado com sucesso!";
-      else
+      else if (tipo_mudanca.equals(senha))
         mensagem = "Senha modificada com sucesso!";
+      else
+        mensagem = "Nome de usuário modificado com sucesso!";
     }
     else
       mensagem = "Senha errada!";

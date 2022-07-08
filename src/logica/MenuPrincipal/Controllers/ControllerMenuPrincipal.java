@@ -223,4 +223,28 @@ public class ControllerMenuPrincipal{
       this.menu.botaoLimparConcluidas.setEnabled(false);
     }
   }
+
+  public void limparConcluidas () {
+    this.model_menu_principal.setTarefas(
+      Dados_tarefas.limparConcluidas(this.model_menu_principal.getTarefas())
+    );
+
+    this.model_menu_principal.setLimparTarefasConcluidas(false);
+    this.menu.botaoLimparConcluidas.setEnabled(false);
+
+    if (this.model_menu_principal.getTarefas().length() == 0) {
+      this.model_menu_principal.setLimparTudo(false);
+      this.menu.botaoLimparTudo.setEnabled(false);
+    }
+  }
+
+  public void limparTudo () {
+    this.model_menu_principal.getTarefas().clear();
+
+    this.model_menu_principal.setLimparTarefasConcluidas(false);
+    this.menu.botaoLimparConcluidas.setEnabled(false);
+
+    this.model_menu_principal.setLimparTudo(false);
+    this.menu.botaoLimparTudo.setEnabled(false);
+  }
 }
