@@ -16,16 +16,56 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import utils.Theme;
 import utils.JTextFieldLimit;
 
-public class EditarTask extends JFrame {
-  public EditarTask() {
-    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+public class EditarTask extends JFrame implements ActionListener {
+
+  int index;
+  String titulo;
+  String descricao;
+  String data;
+  String hora;
+  String prioridade;
+  String conclusao;
+
+  JButton botaoSalvar;
+  JTextField campoTitulo;
+  JTextArea campoDescricao;
+  JTextField campoData;
+  JTextField campoHora;
+  JComboBox<String> campoPrioridade;
+
+  Menu menu;
+
+  public EditarTask(int index, String titulo, String descricao, String data, String hora, String prioridade, String conclusao, Menu menu) {
+
+    this.index = index;
+    this.titulo = titulo;
+    this.descricao = descricao;
+    this.data = data;
+    this.hora = hora;
+    this.prioridade = prioridade;
+    this.conclusao = conclusao;
+
+    this.menu = menu;
+
+    this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     this.getContentPane().setBackground(Theme.bgColor);
     this.setResizable(false);
     this.setSize(400, 570);
     this.setLayout(new BorderLayout());
+
+    this.addWindowListener(new WindowAdapter() {
+      public void windowClosing(WindowEvent e) {
+        menu.setEditandoTarefa(false);
+      }
+    });
 
     JPanel secaoTitulo = new JPanel();
     secaoTitulo.setBackground(Theme.bgColor);
@@ -37,7 +77,7 @@ public class EditarTask extends JFrame {
     labelTitulo.setFont(new Font(null, Font.BOLD, 18));
 
     // Receber como parametro a entrada da model (Tiago big brand)
-    JTextField campoTitulo = new JTextField();
+    campoTitulo = new JTextField();
     campoTitulo.setFont(new Font(null, Font.BOLD, 18));
     campoTitulo.setEditable(true);
 
@@ -49,7 +89,7 @@ public class EditarTask extends JFrame {
       new JTextFieldLimit(30)
     );
 
-    campoTitulo.setText("Minha tarefa interessante");
+    campoTitulo.setText(this.titulo);
 
     JPanel centroSecaoTitulo = new JPanel();
     centroSecaoTitulo.setLayout(new BorderLayout());
@@ -64,7 +104,7 @@ public class EditarTask extends JFrame {
     tituloDescricao.setFont(new Font(null, Font.BOLD, 18));
     tituloDescricao.setPreferredSize(new Dimension(400, 24));
 
-    JTextArea campoDescricao = new JTextArea();
+    campoDescricao = new JTextArea();
     campoDescricao.setFont(new Font(null, Font.BOLD, 18));
     campoDescricao.setEditable(true);
     campoDescricao.setPreferredSize(new Dimension(400, 96));
@@ -80,7 +120,7 @@ public class EditarTask extends JFrame {
       new JTextFieldLimit(140)
     );
 
-    campoDescricao.setText("Minha descricao pika");
+    campoDescricao.setText(this.descricao);
 
     JPanel centroSecaoDescricao = new JPanel();
     centroSecaoDescricao.setLayout(new BorderLayout());
@@ -96,7 +136,7 @@ public class EditarTask extends JFrame {
     tituloData.setFont(new Font(null, Font.BOLD, 18));
     tituloData.setPreferredSize(new Dimension(400, 24));
 
-    JTextField campoData = new JTextField();
+    campoData = new JTextField();
     campoData.setFont(new Font(null, Font.BOLD, 18));
     campoData.setEditable(true);
 
@@ -104,7 +144,7 @@ public class EditarTask extends JFrame {
       new JTextFieldLimit(30)
     );
 
-    campoData.setText("14/01/2023");
+    campoData.setText(this.data);
 
     secaoData.add(tituloData);
     secaoData.add(campoData);
@@ -123,7 +163,7 @@ public class EditarTask extends JFrame {
     tituloHora.setFont(new Font(null, Font.BOLD, 18));
     tituloHora.setPreferredSize(new Dimension(400, 24));
 
-    JTextField campoHora = new JTextField();
+    campoHora = new JTextField();
     campoHora.setFont(new Font(null, Font.BOLD, 18));
     campoHora.setEditable(true);
     
@@ -131,7 +171,7 @@ public class EditarTask extends JFrame {
       new JTextFieldLimit(30)
     );
 
-    campoHora.setText("04:20");
+    campoHora.setText(this.hora);
 
     secaoHora.add(tituloHora);
     secaoHora.add(campoHora);
@@ -152,7 +192,7 @@ public class EditarTask extends JFrame {
 
     String[] options = { "0", "1", "2", "3", "4", "5" };
 
-    JComboBox<String> campoPrioridade = new JComboBox<>(options);
+    campoPrioridade = new JComboBox<>(options);
     campoPrioridade.setFont(new Font(null, Font.BOLD, 18));
     campoPrioridade.setEditable(false);
     campoPrioridade.setBackground(Color.WHITE);
@@ -163,7 +203,8 @@ public class EditarTask extends JFrame {
     JPanel centroSecaoPrioridade = new JPanel();
     centroSecaoPrioridade.setLayout(new BorderLayout());
 
-    JButton botaoSalvar = new JButton("Salvar");
+    botaoSalvar = new JButton("Salvar");
+    botaoSalvar.addActionListener(this);
     botaoSalvar.setPreferredSize(new Dimension(400, 60));
     botaoSalvar.setBackground(new Color(33, 255, 174));
     botaoSalvar.setFont(new Font(null, Font.BOLD, 18));
@@ -184,5 +225,19 @@ public class EditarTask extends JFrame {
     this.add(secaoTitulo, BorderLayout.NORTH);
     this.add(centroSecaoTitulo);
     this.setVisible(true);
+  }
+
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    if (e.getSource() == this.botaoSalvar) {
+      String titulo = this.campoTitulo.getText();
+      String descricao = this.campoDescricao.getText();
+      String data = this.campoData.getText();
+      String hora = this.campoHora.getText();
+      String prioridade = (String) this.campoPrioridade.getSelectedItem();
+
+      this.menu.editarTarefa(index, titulo, descricao, data, hora, prioridade);
+      this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+    }
   }
 }

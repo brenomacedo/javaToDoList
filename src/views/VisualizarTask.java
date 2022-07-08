@@ -77,7 +77,7 @@ public class VisualizarTask extends JFrame {
     tituloDescricao.setFont(new Font(null, Font.BOLD, 18));
     tituloDescricao.setPreferredSize(new Dimension(400, 24));
 
-    JTextArea campoDescricao = new JTextArea(this.conclusao);
+    JTextArea campoDescricao = new JTextArea(this.descricao);
     campoDescricao.setFont(new Font(null, Font.BOLD, 18));
     campoDescricao.setEditable(false);
     campoDescricao.setPreferredSize(new Dimension(400, 96));

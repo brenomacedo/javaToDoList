@@ -25,6 +25,8 @@ public class Task extends JPanel implements ActionListener {
 
   int index;
   JButton botaoVisualizar;
+  JButton botaoEditar;
+  JButton botaoDeletar;
   JCheckBox tarefaConcluida;
   Menu menu;
 
@@ -74,7 +76,8 @@ public class Task extends JPanel implements ActionListener {
     Border emptyBorder = BorderFactory.createEmptyBorder();
 
     // botao deletar
-    JButton botaoDeletar = new JButton();
+    botaoDeletar = new JButton();
+    botaoDeletar.addActionListener(this);
     botaoDeletar.setFocusable(false);
     botaoDeletar.setIcon(iconeDeletar);
     botaoDeletar.setBackground(Color.WHITE);
@@ -87,7 +90,8 @@ public class Task extends JPanel implements ActionListener {
     iconeEditar = new ImageIcon(novoIconeEditar);
 
     // Botao editar
-    JButton botaoEditar = new JButton();
+    botaoEditar = new JButton();
+    botaoEditar.addActionListener(this);
     botaoEditar.setFocusable(false);
     botaoEditar.setIcon(iconeEditar);
     botaoEditar.setBackground(Color.WHITE);
@@ -121,7 +125,7 @@ public class Task extends JPanel implements ActionListener {
       new JTextFieldLimit(30)
     );
 
-    campoTarefa.setText("Nova Tarefa");
+    campoTarefa.setText(titulo);
 
     // campoTarefa.setFocusable(false);
 
@@ -140,6 +144,14 @@ public class Task extends JPanel implements ActionListener {
     if (e.getSource() == this.tarefaConcluida) {
       boolean newValue = this.tarefaConcluida.isSelected();
       this.menu.concluirTarefa(index, newValue);
+    }
+
+    if (e.getSource() == this.botaoEditar) {
+      this.menu.abrirEditarTarefa(index);
+    }
+
+    if (e.getSource() == this.botaoDeletar) {
+      this.menu.deletarTarefa(this.index);
     }
   }
 

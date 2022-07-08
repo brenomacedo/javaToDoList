@@ -28,12 +28,15 @@ import logica.MenuPrincipal.Controllers.ControllerMenuPrincipal;
 
 public class Menu extends JFrame implements ActionListener {
   
-  ModelMenuPrincipal model;
   public JPanel listaDeTarefas;
-  JButton botaoConfig;
   public JButton botaoAdicionar;
+  public JButton botaoLimparConcluidas;
+  public JButton botaoLimparTudo;
+  ModelMenuPrincipal model;
+  JButton botaoConfig;
   ControllerMenuPrincipal controllerMenuPrincipal;
   boolean visualizandoTarefa = false;
+  boolean editandoTarefa = false;
 
   public Menu (ModelMenuPrincipal model) {
 
@@ -113,8 +116,8 @@ public class Menu extends JFrame implements ActionListener {
     // =================
 
     botaoAdicionar = new JButton("Adicionar");
-    JButton botaoLimparConcluidas = new JButton("Limpar Conc.");
-    JButton botaoLimparTudo = new JButton("Limpar tudo");
+    botaoLimparConcluidas = new JButton("Limpar Conc.");
+    botaoLimparTudo = new JButton("Limpar tudo");
 
     Font fonteBotao = new Font("Monospaced", Font.BOLD, 14);
     botaoAdicionar.setFont(fonteBotao);
@@ -163,6 +166,14 @@ public class Menu extends JFrame implements ActionListener {
     this.visualizandoTarefa = visualizandoTarefa;
   }
 
+  public boolean getEditandoTarefa () {
+    return this.editandoTarefa;
+  }
+
+  public void setEditandoTarefa (boolean editandoTarefa) {
+    this.editandoTarefa = editandoTarefa;
+  }
+
   public void carregarTarefas () {
     Iterator<Object> tarefas = this.model.getTarefas().iterator();
 
@@ -188,18 +199,53 @@ public class Menu extends JFrame implements ActionListener {
   }
 
   public void recarregarTarefas () {
-
+    this.listaDeTarefas.removeAll();
+    this.carregarTarefas();
+    this.repaint();
+    this.setVisible(true);
   }
 
   public void visualizarTarefa (int index) {
     if (!this.visualizandoTarefa) {
-      this.controllerMenuPrincipal.visualizarTarefa(index);
       this.setVisualizandoTarefa(true);
+      this.controllerMenuPrincipal.visualizarTarefa(index);
     }
   }
 
   public void concluirTarefa (int index, boolean value) {
     this.controllerMenuPrincipal.concluirTarefa(index, value);
+  }
+
+  public void abrirEditarTarefa (int index) {
+    if (!this.editandoTarefa) { 
+      this.setEditandoTarefa(true);
+      this.controllerMenuPrincipal.abrirEditarTarefa(index);
+    }
+  }
+
+  public void editarTarefa (
+    int index,
+    String titulo,
+    String descricao,
+    String data,
+    String hora,
+    String prioridade
+  ) {
+    this.controllerMenuPrincipal.editarTarefa(
+      index,
+      titulo,
+      descricao,
+      data,
+      hora,
+      prioridade
+    );
+
+    this.recarregarTarefas();
+  }
+
+  public void deletarTarefa (int index) {
+    this.controllerMenuPrincipal.deletarTarefa(index);
+    this.recarregarTarefas();
   }
 
   @Override
