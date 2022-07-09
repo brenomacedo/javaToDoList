@@ -233,6 +233,9 @@ public class ControllerMenuPrincipal{
 
     this.model_menu_principal.setLimparTarefasConcluidas(false);
     this.menu.botaoLimparConcluidas.setEnabled(false);
+    
+    this.model_menu_principal.setAdicionarTarefa(true);
+    this.menu.botaoAdicionar.setEnabled(true);
 
     if (this.model_menu_principal.getTarefas().length() == 0) {
       this.model_menu_principal.setLimparTudo(false);
@@ -248,6 +251,8 @@ public class ControllerMenuPrincipal{
 
     this.model_menu_principal.setLimparTudo(false);
     this.menu.botaoLimparTudo.setEnabled(false);
+    this.model_menu_principal.setAdicionarTarefa(true);
+    this.menu.botaoAdicionar.setEnabled(true);
   }
 
   public void salvarDados () {

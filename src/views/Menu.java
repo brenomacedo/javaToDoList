@@ -191,6 +191,8 @@ public class Menu extends JFrame implements ActionListener {
   public void carregarTarefas () {
     Iterator<Object> tarefas = this.model.getTarefas().iterator();
 
+    boolean temConcluido = false;
+
     JSONObject tarefa;
     int index = 0;
     while (tarefas.hasNext()) {
@@ -200,11 +202,21 @@ public class Menu extends JFrame implements ActionListener {
       String prioridade = (String) tarefa.get("prioridade");
       boolean conclusao = ((String) tarefa.get("conclusao")).equals("concluido");
 
+      temConcluido = temConcluido || conclusao;
+
       listaDeTarefas.add(
         new Task(index, titulo, prioridade, conclusao, this)
       );
       
       index++;
+    }
+
+    if (!temConcluido) {
+      this.botaoLimparConcluidas.setEnabled(false);
+    }
+
+    if (this.model.getTarefas().length() == 0) {
+      this.botaoLimparTudo.setEnabled(false);
     }
   }
 

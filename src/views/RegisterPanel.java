@@ -129,7 +129,7 @@ public class RegisterPanel extends JPanel implements ActionListener {
         String passw_confirm = passwoFieldTypeAgain.getText();
         
         //chamar a lógica do brandão
-        ControllerCadastro controllerCadastro = new ControllerCadastro(nome, username, password, new ModelCadastro());
+        ControllerCadastro controllerCadastro = new ControllerCadastro(nome, username, password, passw_confirm, new ModelCadastro());
         controllerCadastro.cadastrar();
     }
 }

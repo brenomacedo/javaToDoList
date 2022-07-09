@@ -8,6 +8,7 @@ import logica.TelaConfigurações.Controller.ControllerConfiguracoes;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 
 public class Change_info_Panel extends JPanel implements ActionListener {
 
@@ -200,6 +201,8 @@ public class Change_info_Panel extends JPanel implements ActionListener {
         if (e.getSource() == this.delete_account) {
             this.controllerConfiguracoes.ApagarRegistro(this.sett_frame);
         }
+
+        sett_frame.dispatchEvent(new WindowEvent(sett_frame, WindowEvent.WINDOW_CLOSING));
     }
 
 }

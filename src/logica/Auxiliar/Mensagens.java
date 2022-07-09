@@ -27,30 +27,21 @@ public class Mensagens{
     return mensagem;
   }
 
-  public static String gera_mensagem_cadastro(int i, int valor_retorno){
+  public static String gera_mensagem_cadastro(int i, int valor_retorno, String senha, String confirmaSenha){
     String mensagem = "";
     if (i == 0){
-      if (valor_retorno == 0)
-        mensagem = "Cadastro realizado com sucesso!";
-      else if (valor_retorno == 1)
-        mensagem = "Já existe um registro com esse nome de usuário!";
+      if (senha.equals(confirmaSenha)){
+        if (valor_retorno == 0)
+          mensagem = "Cadastro realizado com sucesso!";
+        else if (valor_retorno == 1)
+          mensagem = "Já existe um registro com esse nome de usuário!";
+      } else {
+        mensagem = "As senhas não conferem!";
+      }
     }
 
     else{
-      if (i == -1)
-        mensagem = "Por favor, digite nome, nome de usuário e senha!";
-      else if (i == -2)
-        mensagem = "Por favor, digite nome de usuário e senha!";
-      else if (i == -3)
-        mensagem = "Por favor, digite nome e nome de usuário!";
-      else if (i == -4)
-        mensagem = "Por favor, digite nome e senha!";
-      else if (i == -5)
-        mensagem = "Por favor, digite a senha!";
-      else if (i == -6)
-        mensagem = "Por favor, digite o nome!";
-      else if (i == -7)
-        mensagem = "Por favor, digite o nome de usuário!";
+      mensagem = "Por favor, digite os dados corretamente!";
     }
 
     return mensagem;

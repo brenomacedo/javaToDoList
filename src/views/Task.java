@@ -117,9 +117,11 @@ public class Task extends JPanel implements ActionListener {
     botoes.add(botaoVisualizar);
 
     JTextField campoTarefa = new JTextField();
+    campoTarefa.setEditable(false);
     campoTarefa.setPreferredSize(new Dimension(425, 28));
     campoTarefa.setBorder(new EmptyBorder(8,8,8,8));
     campoTarefa.setFont(new Font(null, Font.BOLD, 18));
+    campoTarefa.setBackground(null);
     
     campoTarefa.setDocument(
       new JTextFieldLimit(30)
