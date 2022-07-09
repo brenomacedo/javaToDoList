@@ -6,6 +6,8 @@ import logica.MenuPrincipal.Models.*;
 import java.util.Iterator;
 
 import org.json.JSONArray;
+
+import logica.Arquivos.Dados;
 import logica.Arquivos.Dados_tarefas;
 import views.EditarTask;
 import views.Menu;
@@ -246,5 +248,10 @@ public class ControllerMenuPrincipal{
 
     this.model_menu_principal.setLimparTudo(false);
     this.menu.botaoLimparTudo.setEnabled(false);
+  }
+
+  public void salvarDados () {
+    Dados dados = new Dados();
+    dados.salvarUsuario(usuario);
   }
 }

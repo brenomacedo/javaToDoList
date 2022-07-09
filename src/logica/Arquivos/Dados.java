@@ -144,6 +144,13 @@ public class Dados{
     this.salvar();
   }
 
+  // 4.5 Salvar usuario
+  public void salvarUsuario (JSONObject usuario) {
+    int index = this.getIndex(usuario);
+    this.usuarios.put(index, usuario);
+    this.salvar();
+  }
+
 
   // 5) Acrescenta 1 ao atributo "prox_id_livre"
   public void atualizar_prox_id_livre(){
