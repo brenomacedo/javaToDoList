@@ -18,10 +18,10 @@ public class RegisterPanel extends JPanel implements ActionListener {
     int inputPositionInPanel = (this.panelWidth/2 - (this.inputWidth/2)) + 120 ;
     int buttonPositionPanel = this.panelWidth/2 - (this.buttonWidth/2) + 120;
 
-    final JTextField usernameInput = new JTextField(60);
-    final JTextField nameInputTypeAgain = new JTextField(60);
-    final JPasswordField passwoField = new JPasswordField(60);
-    final JPasswordField passwoFieldTypeAgain = new JPasswordField(60);
+    public final JTextField usernameInput = new JTextField(60);
+    public final JTextField nameInputTypeAgain = new JTextField(60);
+    public final JPasswordField passwoField = new JPasswordField(60);
+    public final JPasswordField passwoFieldTypeAgain = new JPasswordField(60);
     final JButton registerButton;
     final JFrame frame;
 

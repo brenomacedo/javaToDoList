@@ -70,14 +70,19 @@ public class Login_Register_Frame extends JFrame implements MouseListener {
 
     @Override
         public void mouseClicked(MouseEvent e) {
-            // TODO Auto-generated method stub
 
             if ( login.isShowing() ) {
+                login.usernameInput.setText("");
+                login.passwoField.setText("");
                 login.setVisible(false);
                 register.setVisible(true);
                 register_button.setText("Fazer Login");
             } else {
                 login.setVisible(true);
+                register.usernameInput.setText("");
+                register.nameInputTypeAgain.setText("");
+                register.passwoField.setText("");
+                register.passwoFieldTypeAgain.setText("");
                 register.setVisible(false);
                 register_button.setText("Criar conta");
             }
@@ -91,31 +96,15 @@ public class Login_Register_Frame extends JFrame implements MouseListener {
         }
     
         @Override
-        public void mouseEntered(MouseEvent e) {
-            // TODO Auto-generated method stub
-            
-            
-        }
+        public void mouseEntered(MouseEvent e) {}
     
         @Override
-        public void mouseExited(MouseEvent e) {
-            // TODO Auto-generated method stub
-          
-            
-        }
+        public void mouseExited(MouseEvent e) {}
     
         @Override
-        public void mousePressed(MouseEvent e) {
-            // TODO Auto-generated method stub
-            
-            
-        }
+        public void mousePressed(MouseEvent e) {}
     
         @Override
-        public void mouseReleased(MouseEvent e) {
-            // TODO Auto-generated method stub
-           
-            
-        }
+        public void mouseReleased(MouseEvent e) {}
    
 }

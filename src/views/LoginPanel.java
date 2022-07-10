@@ -17,8 +17,8 @@ public class LoginPanel extends JPanel implements ActionListener {
     int panelWidth = 300;
     int inputPositionInPanel = this.panelWidth/2 - (this.inputWidth/2);
     int buttonPositionPanel = this.panelWidth/2 - (this.buttonWidth/2);
-    final JTextField usernameInput = new JTextField(60);
-    final JPasswordField passwoField = new JPasswordField(60);
+    public final JTextField usernameInput = new JTextField(60);
+    public final JPasswordField passwoField = new JPasswordField(60);
     final JFrame frame;
 
     LoginPanel (JFrame frame) {

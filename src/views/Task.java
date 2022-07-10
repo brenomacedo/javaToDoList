@@ -121,7 +121,22 @@ public class Task extends JPanel implements ActionListener {
     campoTarefa.setPreferredSize(new Dimension(425, 28));
     campoTarefa.setBorder(new EmptyBorder(8,8,8,8));
     campoTarefa.setFont(new Font(null, Font.BOLD, 18));
-    campoTarefa.setBackground(null);
+
+    Color corPrioridade = null;
+
+    if (prioridade == "1") {
+      corPrioridade = new Color(186, 246, 247);
+    } else if (prioridade == "2") {
+      corPrioridade = new Color(159, 243, 245);
+    } else if (prioridade == "3") {
+      corPrioridade = new Color(185, 245, 171);
+    } else if (prioridade == "4") {
+      corPrioridade = new Color(255, 201, 150);
+    } else if (prioridade == "5") {
+      corPrioridade = new Color(255, 150, 150);
+    }
+
+    campoTarefa.setBackground(corPrioridade);
     
     campoTarefa.setDocument(
       new JTextFieldLimit(30)
