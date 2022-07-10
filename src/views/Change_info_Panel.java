@@ -208,7 +208,11 @@ public class Change_info_Panel extends JPanel implements ActionListener {
         }
 
         if (e.getSource() == this.delete_account) {
-            this.controllerConfiguracoes.ApagarRegistro(this.sett_frame);
+            int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente deletar sua conta?", "DELETAR CONTA", JOptionPane.YES_NO_OPTION);
+            
+            if (resposta == 0) {
+                this.controllerConfiguracoes.ApagarRegistro(this.sett_frame);
+            }
         }
 
         //sett_frame.dispatchEvent(new WindowEvent(sett_frame, WindowEvent.WINDOW_CLOSING));
