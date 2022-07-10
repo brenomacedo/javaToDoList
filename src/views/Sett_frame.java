@@ -16,8 +16,8 @@ public class Sett_frame extends JFrame {
     int width = 600;
     int height = 920;
 
-    User_image_Panel user_image;
-    Change_info_Panel change_panel;
+    public User_image_Panel user_image;
+    public Change_info_Panel change_panel;
 
 
     

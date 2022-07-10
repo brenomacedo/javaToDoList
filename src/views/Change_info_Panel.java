@@ -8,7 +8,7 @@ import logica.TelaConfigurações.Controller.ControllerConfiguracoes;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
+//import java.awt.event.WindowEvent;
 
 public class Change_info_Panel extends JPanel implements ActionListener {
 
@@ -24,6 +24,8 @@ public class Change_info_Panel extends JPanel implements ActionListener {
     JButton logout_button;
     JButton delete_account;
     Sett_frame sett_frame;
+    JLabel nome_usuario;
+    JLabel senha_usuario;
 
     Change_info_Panel (ModelMenuPrincipal model, Sett_frame frame) {
         this.model = model;
@@ -42,7 +44,7 @@ public class Change_info_Panel extends JPanel implements ActionListener {
         userIconSetting = new ImageIcon(novaImageUserIconSetting);
 
         //Label do nome de usuário 
-        JLabel nome_usuario = new JLabel(model.getNomeUsuario());
+        nome_usuario = new JLabel(model.getNomeUsuario());
         nome_usuario.setFont(new Font("Verdana", Font.PLAIN, 16));
         nome_usuario.setForeground(new Color(144, 202, 249));
         nome_usuario.setBounds(10, 50 , 300, 25);
@@ -62,7 +64,7 @@ public class Change_info_Panel extends JPanel implements ActionListener {
             senhaEscondida = senhaEscondida + "*";
         }
 
-        JLabel senha_usuario = new JLabel(senhaEscondida);
+        senha_usuario = new JLabel(senhaEscondida);
         senha_usuario.setSize(400, 20);        
         senha_usuario.setFont(new Font("Verdana", Font.PLAIN, 16));
         senha_usuario.setBounds(10, 90, 300, 25);
@@ -181,16 +183,23 @@ public class Change_info_Panel extends JPanel implements ActionListener {
 
         if (e.getSource() == this.save_new_userName) {
             String username = change_userName_input.getText();
+            this.nome_usuario.setText(username);
             this.controllerConfiguracoes.editarPerfil(username, confirmarSenha, "nome_usuario");
         }
 
         if (e.getSource() == this.save_new_name) {
             String name = change_name_input.getText();
+            this.sett_frame.user_image.user_Icon.setText(name);
             this.controllerConfiguracoes.editarPerfil(name, confirmarSenha, "nome");   
         }
 
         if (e.getSource() == this.save_new_passw) {
             String newPassword = new String(change_passw_input.getPassword());
+            String senhaEscondida = "";
+            for (int i = 0; i < newPassword.length(); i++) {
+                senhaEscondida = senhaEscondida + "*";
+            }
+            this.senha_usuario.setText(senhaEscondida);
             this.controllerConfiguracoes.editarPerfil(newPassword, confirmarSenha, "senha");
         }
 
@@ -202,7 +211,7 @@ public class Change_info_Panel extends JPanel implements ActionListener {
             this.controllerConfiguracoes.ApagarRegistro(this.sett_frame);
         }
 
-        sett_frame.dispatchEvent(new WindowEvent(sett_frame, WindowEvent.WINDOW_CLOSING));
+        //sett_frame.dispatchEvent(new WindowEvent(sett_frame, WindowEvent.WINDOW_CLOSING));
     }
 
 }
