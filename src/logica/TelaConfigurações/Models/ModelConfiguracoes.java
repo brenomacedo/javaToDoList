@@ -1,4 +1,6 @@
 package logica.TelaConfigurações.Models;
+import org.json.JSONObject;
+
 import logica.TelaConfigurações.Observers.*;
 
 public class ModelConfiguracoes{
@@ -13,7 +15,12 @@ public class ModelConfiguracoes{
 
   String mensagem;
 
-  public ModelConfiguracoes(){
+  public ModelConfiguracoes(JSONObject usuario){
+
+    this.nome = (String) usuario.get("nome");
+    this.nome_usuario = (String) usuario.get("nome_usuario");
+    this.senha = (String) usuario.get("senha");
+
     this.attachObserverNome(new ObserverNome());
     this.attachObserverSenha(new ObserverSenha());
     this.attachObserverNomeUsuario(new ObserverNomeUsuario());

@@ -18,7 +18,7 @@ public class ControllerConfiguracoes{
   ModelConfiguracoes model;
 
   public ControllerConfiguracoes(JSONObject usuario){
-    this.setModel(new ModelConfiguracoes());
+    this.setModel(new ModelConfiguracoes(usuario));
     this.usuario = usuario;
   }
 

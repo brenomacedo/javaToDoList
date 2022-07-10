@@ -44,7 +44,7 @@ public class Change_info_Panel extends JPanel implements ActionListener {
         userIconSetting = new ImageIcon(novaImageUserIconSetting);
 
         //Label do nome de usuário 
-        nome_usuario = new JLabel(model.getNomeUsuario());
+        nome_usuario = new JLabel(this.controllerConfiguracoes.getModel().getNomeUsuario());
         nome_usuario.setFont(new Font("Verdana", Font.PLAIN, 16));
         nome_usuario.setForeground(new Color(144, 202, 249));
         nome_usuario.setBounds(10, 50 , 300, 25);
@@ -60,7 +60,7 @@ public class Change_info_Panel extends JPanel implements ActionListener {
 
         String senhaEscondida = "";
 
-        for (int i = 0; i < model.getSenha().length(); i++) {
+        for (int i = 0; i < this.controllerConfiguracoes.getModel().getSenha().length(); i++) {
             senhaEscondida = senhaEscondida + "*";
         }
 

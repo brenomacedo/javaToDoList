@@ -58,7 +58,12 @@ public class Menu extends JFrame implements ActionListener {
       @Override
       public void windowClosing(WindowEvent e)
       {
-          controllerMenuPrincipal.salvarDados();
+          try {
+            controllerMenuPrincipal.salvarDados();
+          } catch (Exception err) {
+            System.out.println("Erro ao salvar dados - conta deletada.");
+          }
+          
           e.getWindow().dispose();
       }
     });
