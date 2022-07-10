@@ -121,12 +121,10 @@ public class RegisterPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        
         String username = usernameInput.getText();
         String nome = nameInputTypeAgain.getText();
-        String password = passwoField.getText();
-        String passw_confirm = passwoFieldTypeAgain.getText();
+        String password = new String(passwoField.getPassword());
+        String passw_confirm = new String(passwoFieldTypeAgain.getPassword());
         
         //chamar a lógica do brandão
         ControllerCadastro controllerCadastro = new ControllerCadastro(nome, username, password, passw_confirm, new ModelCadastro());

@@ -89,7 +89,7 @@ public class LoginPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String username = this.usernameInput.getText();
-        String password = this.passwoField.getText();
+        String password = new String(this.passwoField.getPassword());
 
         ControllerLogin controllerLogin = new ControllerLogin(username, password, new ModelLogin(this.frame));
         controllerLogin.verificarLogin();

@@ -177,7 +177,7 @@ public class Change_info_Panel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        String confirmarSenha = confirm_passw_input.getText();
+        String confirmarSenha = new String(confirm_passw_input.getPassword());
 
         if (e.getSource() == this.save_new_userName) {
             String username = change_userName_input.getText();
@@ -190,7 +190,7 @@ public class Change_info_Panel extends JPanel implements ActionListener {
         }
 
         if (e.getSource() == this.save_new_passw) {
-            String newPassword = change_passw_input.getText();
+            String newPassword = new String(change_passw_input.getPassword());
             this.controllerConfiguracoes.editarPerfil(newPassword, confirmarSenha, "senha");
         }
 

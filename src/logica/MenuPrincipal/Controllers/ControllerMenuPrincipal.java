@@ -220,6 +220,8 @@ public class ControllerMenuPrincipal{
       }
     }
 
+    this.menu.botaoAdicionar.setEnabled(true);
+
     if (!temConcluido) {
       this.model_menu_principal.setLimparTarefasConcluidas(false);
       this.menu.botaoLimparConcluidas.setEnabled(false);

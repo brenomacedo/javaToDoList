@@ -211,12 +211,18 @@ public class Menu extends JFrame implements ActionListener {
       index++;
     }
 
+    int numeroDeTarefas = this.model.getTarefas().length();
+
     if (!temConcluido) {
       this.botaoLimparConcluidas.setEnabled(false);
     }
 
-    if (this.model.getTarefas().length() == 0) {
+    if (numeroDeTarefas == 0) {
       this.botaoLimparTudo.setEnabled(false);
+    }
+
+    if (numeroDeTarefas == 15) {
+      this.botaoAdicionar.setEnabled(false);
     }
   }
 
