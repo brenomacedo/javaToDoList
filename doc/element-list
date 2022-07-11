@@ -1,0 +1,14 @@
+logica.Arquivos
+logica.Auxiliar
+logica.MenuPrincipal.Controllers
+logica.MenuPrincipal.Models
+logica.MenuPrincipal.Observers
+logica.TelaConfigurações.Controller
+logica.TelaConfigurações.Models
+logica.TelaConfigurações.Observers
+logica.TelasBasicas.Controllers
+logica.TelasBasicas.Models
+logica.TelasBasicas.Observers
+org.json
+utils
+views
