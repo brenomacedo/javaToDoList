@@ -196,6 +196,7 @@ public class EditarTask extends JFrame implements ActionListener {
     campoPrioridade.setFont(new Font(null, Font.BOLD, 18));
     campoPrioridade.setEditable(false);
     campoPrioridade.setBackground(Color.WHITE);
+    campoPrioridade.setSelectedItem(prioridade);
 
     secaoPrioridade.add(tituloPrioridade);
     secaoPrioridade.add(campoPrioridade);

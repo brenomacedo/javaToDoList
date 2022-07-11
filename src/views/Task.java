@@ -124,15 +124,15 @@ public class Task extends JPanel implements ActionListener {
 
     Color corPrioridade = null;
 
-    if (prioridade == "1") {
+    if (prioridade.equals("1")) {
       corPrioridade = new Color(186, 246, 247);
-    } else if (prioridade == "2") {
+    } else if (prioridade.equals("2")) {
       corPrioridade = new Color(159, 243, 245);
-    } else if (prioridade == "3") {
+    } else if (prioridade.equals("3")) {
       corPrioridade = new Color(185, 245, 171);
-    } else if (prioridade == "4") {
+    } else if (prioridade.equals("4")) {
       corPrioridade = new Color(255, 201, 150);
-    } else if (prioridade == "5") {
+    } else if (prioridade.equals("5")) {
       corPrioridade = new Color(255, 150, 150);
     }
 
