@@ -80,6 +80,7 @@ public class ControllerConfiguracoes{
       if (senha_usuario.equals(senha)){
         Dados arquivo = new Dados();
         arquivo.atualizarUsuario((this.usuario), mudanca, tipo_mudanca);
+        this.usuario.put(tipo_mudanca, mudanca);
         String nome_ = "nome";
         String senha_ = "senha";
 
