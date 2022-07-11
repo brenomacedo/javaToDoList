@@ -24,6 +24,10 @@ import java.awt.event.ActionListener;
 import utils.Theme;
 import utils.JTextFieldLimit;
 
+/**
+ * Tela de Editar Tarefa
+ * @author Breno Macêdo e Renan Xerez
+ */
 public class EditarTask extends JFrame implements ActionListener {
 
   int index;
@@ -43,6 +47,17 @@ public class EditarTask extends JFrame implements ActionListener {
 
   Menu menu;
 
+  /**
+   * 
+   * @param index
+   * @param titulo
+   * @param descricao
+   * @param data
+   * @param hora
+   * @param prioridade
+   * @param conclusao
+   * @param menu
+   */
   public EditarTask(int index, String titulo, String descricao, String data, String hora, String prioridade, String conclusao, Menu menu) {
 
     this.index = index;

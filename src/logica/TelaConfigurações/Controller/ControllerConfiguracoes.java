@@ -13,15 +13,27 @@ import views.Sett_frame;
 import logica.Arquivos.Dados;
 import java.awt.event.WindowEvent;
 
+/**
+ * Controller das telas de configurações
+ * @author Tiago Brandão e Gustavo Wendell
+ */
 public class ControllerConfiguracoes{
   JSONObject usuario;
   ModelConfiguracoes model;
 
+  /**
+   * 
+   * @param usuario
+   */
   public ControllerConfiguracoes(JSONObject usuario){
     this.setModel(new ModelConfiguracoes(usuario));
     this.usuario = usuario;
   }
 
+  /**
+   * 
+   * @param usuario
+   */
   public void setUsuario(JSONObject usuario){
     this.usuario = usuario;
   }
@@ -30,6 +42,10 @@ public class ControllerConfiguracoes{
     return this.usuario;
   }
 
+  /**
+   * 
+   * @param model
+   */
   public void setModel(ModelConfiguracoes model){
     this.model = model;
   }
@@ -38,11 +54,15 @@ public class ControllerConfiguracoes{
     return this.model;
   }
 
-  // 1) editarPerfil
-  // Edita 1 tipo de dado, dependendo de tipo_mudanca
-  // Se tipo_mudanca == "nome", modifica o nome do Usuário
-  // Se tipo_mudanca == "senha", modifica a senha do Usuário
-  // Se tipo_mudanca == "nome_usuario", modifica o nome de usuario do Usuário
+  /**
+   * Edita 1 tipo de dado, dependendo de tipo_mudanca
+   * Se tipo_mudanca == "nome", modifica o nome do Usuário
+   * Se tipo_mudanca == "senha", modifica a senha do Usuário
+   * Se tipo_mudanca == "nome_usuario", modifica o nome de usuario do Usuário
+   * @param mudanca
+   * @param senha
+   * @param tipo_mudanca
+   */
   public void editarPerfil(String mudanca, String senha, String tipo_mudanca){
     String mensagem = "";
 
@@ -83,7 +103,10 @@ public class ControllerConfiguracoes{
     JOptionPane.showMessageDialog(null, mensagem, "Mensagem", JOptionPane.INFORMATION_MESSAGE);
   }
 
-  // 2) Apagar registro
+  /**
+   * Apagar registro
+   * @param frame
+   */
   public void ApagarRegistro(Sett_frame frame){
     Dados arquivo = new Dados();
     arquivo.apagar_registro(usuario);
@@ -93,7 +116,10 @@ public class ControllerConfiguracoes{
     this.logout(frame);
   }
 
-  // 3) Fazer logout
+  /**
+   * Fazer logout
+   * @param frame
+   */
   public void logout (Sett_frame frame) {
     ((JFrame) frame.menuFrame).setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     ((Menu) frame.menuFrame).dispatchEvent(new WindowEvent(((Menu) frame.menuFrame), WindowEvent.WINDOW_CLOSING));

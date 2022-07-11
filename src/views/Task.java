@@ -21,6 +21,10 @@ import java.awt.event.ActionListener;
 import utils.JTextFieldLimit;
 import utils.Theme;
 
+/**
+ * Componente de uma tarefa
+ * @author Breno Macêdo e Renan Xerez
+ */
 public class Task extends JPanel implements ActionListener {
 
   int index;

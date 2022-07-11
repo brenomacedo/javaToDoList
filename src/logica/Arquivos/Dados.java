@@ -8,34 +8,25 @@ import java.util.List;
 import java.util.Iterator;
 import java.io.FileWriter;
 
-// Formato do arquivo .json
-// - ArrayList de "Usuários"
-// - Usuário:
-// . "nome" : String
-// . "nome_usuario": String
-// . "senha" : String
-// . "id_usuario" : int
-// . "Tarefas": ArrayList Tarefas
-
-// - Tarefa:
-// . "titulo" : String
-// . "descricao" : String
-// . "data" : String
-// . "hora" : String
-// . "prioridade" : String
-// . "conclusao" : String
-
+/**
+ * Classe que manipula os dados do usuario
+ * @author Tiago Brandção e Gustavo Wendell
+ */
 public class Dados{
   JSONArray usuarios;
   JSONObject usuario_logado;
   int prox_id_livre;
 
-  // Sempre que instanciado, um objeto "Dados" já tem o atributo "usuários" atualizado
+  /**
+   * Sempre que instanciado, um objeto "Dados" já tem o atributo "usuários" atualizado
+   */
   public Dados(){
     this.carregar();
   }
 
-  // Puxa os dados dos arquivos "dados.json" e "prox_id_livre.json"
+  /**
+   * Puxa os dados dos arquivos "dados.json" e "prox_id_livre.json"
+   */
   public void carregar(){
     try{
       // Lendo os dados dos usuários
@@ -56,11 +47,16 @@ public class Dados{
     }
   }
 
-  // 1) Verificar login
-  // Verifica se determinado registro existe no banco de dados
-  // Se retorna 0, existe registro e salva os dados do usuario em "usuario_logado"
-  // Se retorna 1, "nome_usuário" existe, mas "senha" está errada
-  // Se retorna -1, "nome_usuário" não existe
+  /**
+   * Verificar login
+   * Verifica se determinado registro existe no banco de dados
+   * Se retorna 0, existe registro e salva os dados do usuario em "usuario_logado"
+   * Se retorna 1, "nome_usuário" existe, mas "senha" está errada
+   * Se retorna -1, "nome_usuário" não existe
+   * @param nome_usuario_ent
+   * @param senha_ent
+   * @return
+   */
   public int verificarLogin(String nome_usuario_ent, String senha_ent){
     Iterator<Object> iterator_usuarios = (this.usuarios).iterator();
     JSONObject usuario;
@@ -92,8 +88,13 @@ public class Dados{
     return -1;
   }
 
-  // 2) Cadastrar
-  // Verifica se "nome_usuario_ent" é válido e adiciona um novo cadastro ao banco de dados
+  /**
+   * Verifica se "nome_usuario_ent" é válido e adiciona um novo cadastro ao banco de dados
+   * @param nome_ent
+   * @param nome_usuario_ent
+   * @param senha_ent
+   * @return
+   */
   public int cadastrar(String nome_ent, String nome_usuario_ent, String senha_ent){
     int i = this.verificarLogin(nome_usuario_ent, senha_ent);
 
@@ -127,14 +128,22 @@ public class Dados{
     return 1;
   }
 
-  // 3) Apagar registro
+  /**
+   * apaga um registro
+   * @param usuario
+   */
   public void apagar_registro(JSONObject usuario){
     int index = this.getIndex(usuario);
     this.usuarios.remove(index);
     this.salvar();
   }
 
-  // 4) Atualizar usuário
+  /**
+   * atualiza o usuário
+   * @param usuario
+   * @param mudanca
+   * @param tipo_mudanca
+   */
   public void atualizarUsuario(JSONObject usuario, String mudanca, String tipo_mudanca){
     int index = this.getIndex(usuario); 
     this.usuarios.remove(index);
@@ -144,7 +153,10 @@ public class Dados{
     this.salvar();
   }
 
-  // 4.5 Salvar usuario
+  /**
+   * salva o usuario
+   * @param usuario
+   */
   public void salvarUsuario (JSONObject usuario) {
     int index = this.getIndex(usuario);
     this.usuarios.put(index, usuario);
@@ -152,13 +164,16 @@ public class Dados{
   }
 
 
-  // 5) Acrescenta 1 ao atributo "prox_id_livre"
+  /**
+   * Acrescenta 1 ao atributo "prox_id_livre"
+   */
   public void atualizar_prox_id_livre(){
     this.prox_id_livre++;
   }
 
-  // 6) salvar
-  // Salva os dados nos arquivos
+  /**
+   * Salva os dados nos arquivos
+   */
   public void salvar(){
     try {
       // Salvando dados dos usuários
@@ -179,12 +194,19 @@ public class Dados{
     catch (Exception e) {}
   }
 
-  // 7)
+  /**
+   * Retorna o usuario logado
+   * @return
+   */
   public JSONObject getUsuario(){
     return this.usuario_logado;
   }
 
-  // 8) Função auxiliar que retorna o index de um usuário no Arraylist do
+  /**
+   * Função auxiliar que retorna o index de um usuário
+   * @param usuario
+   * @return
+   */
   public int getIndex(JSONObject usuario){
     int id_usuario = (int) usuario.get("id_usuario");
 

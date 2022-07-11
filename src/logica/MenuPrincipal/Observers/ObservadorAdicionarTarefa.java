@@ -4,6 +4,10 @@ import logica.MenuPrincipal.Models.ModelMenuPrincipal;
 import views.Menu;
 import views.Task;
 
+/**
+ * Observador da função de adicionar tarefa
+ * @author Tiago Brandão e Renan Xerez
+ */
 public class ObservadorAdicionarTarefa {
     ModelMenuPrincipal model;
 

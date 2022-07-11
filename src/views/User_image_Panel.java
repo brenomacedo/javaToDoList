@@ -2,6 +2,10 @@ package views;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Componente que exibe o icone e nome de usuário
+ * @author Rafael Facundo
+ */
 public class User_image_Panel extends JPanel {
     
     public JLabel user_Icon;

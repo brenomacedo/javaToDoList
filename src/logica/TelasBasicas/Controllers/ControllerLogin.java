@@ -3,12 +3,18 @@ package logica.TelasBasicas.Controllers;
 import logica.TelasBasicas.Models.ModelTelasIniciais;
 import logica.Auxiliar.*;
 
+/**
+ * Controller da tela de login
+ * @author Tiago Brandão e Gustavo Wendell
+ */
 public class ControllerLogin extends ControllerTelasIniciais{
   public ControllerLogin(String nome_usuario, String senha, ModelTelasIniciais model){
     super(nome_usuario, senha, model);
   }
 
-  // Função verificarLogin
+  /**
+   * Função de verificar o login
+   */
   public void verificarLogin(){
     String nome_usuario = (this.getNomeUsuario()).toUpperCase();
     String senha = this.getSenha();

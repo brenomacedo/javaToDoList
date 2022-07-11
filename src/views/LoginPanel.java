@@ -8,6 +8,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Componente de Login
+ * @author Rafael Facundo
+ */
 public class LoginPanel extends JPanel implements ActionListener {
     int width = 300;
     int height = 400;
@@ -21,6 +25,10 @@ public class LoginPanel extends JPanel implements ActionListener {
     public final JPasswordField passwoField = new JPasswordField(60);
     final JFrame frame;
 
+    /**
+     * 
+     * @param frame
+     */
     LoginPanel (JFrame frame) {
         this.frame = frame;
         

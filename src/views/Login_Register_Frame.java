@@ -4,7 +4,10 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-
+/**
+ * Frame que envolve os componentes de Registro e Login
+ * @author Rafael Facundo
+ */
 public class Login_Register_Frame extends JFrame implements MouseListener {
     int width = 600;
     int height = 920;

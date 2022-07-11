@@ -17,6 +17,10 @@ import java.awt.event.WindowEvent;
 
 import utils.Theme;
 
+/**
+ * Tela de visualizar task
+ * @author Breno Macêdo e Renan Xerez
+ */
 public class VisualizarTask extends JFrame {
 
   String titulo;

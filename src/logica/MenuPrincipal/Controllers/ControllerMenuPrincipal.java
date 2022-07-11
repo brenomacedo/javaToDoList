@@ -13,18 +13,30 @@ import views.EditarTask;
 import views.Menu;
 import views.VisualizarTask;
 
-
+/**
+ * Controller do menu principal
+ * @author Tiago Brandão e Gustavo Wendell
+ */
 public class ControllerMenuPrincipal{
   ModelMenuPrincipal model_menu_principal;
   JSONObject usuario;
   Menu menu;
 
+  /**
+   * constructor do controller
+   * @param usuario
+   * @param menu
+   */
   public ControllerMenuPrincipal(JSONObject usuario, Menu menu){
     this.setUsuario(usuario);
     this.setMenu(menu);
     this.iniciar();
   } 
 
+  /**
+   * 
+   * @param usuario
+   */
   public void setUsuario(JSONObject usuario){
     this.usuario = usuario;
   }
@@ -33,6 +45,10 @@ public class ControllerMenuPrincipal{
     return this.usuario;
   }
 
+  /**
+   * 
+   * @param menu
+   */
   public void setMenu(Menu menu){
     this.menu = menu;
   }
@@ -41,6 +57,10 @@ public class ControllerMenuPrincipal{
     return this.menu;
   }
 
+  /**
+   * 
+   * @param model_menu_principal
+   */
   public void setModelMenuPrincipal(ModelMenuPrincipal model_menu_principal){
     this.model_menu_principal = model_menu_principal;
   }
@@ -49,16 +69,20 @@ public class ControllerMenuPrincipal{
     return this.model_menu_principal;
   }
 
-  // 1) Função de inicializar o MenuPrincipal (após fazer o login)
+  /**
+   * Função de inicializar o MenuPrincipal (após fazer o login)
+   */
   public void iniciar(){
     ModelMenuPrincipal model_menu_principal = new ModelMenuPrincipal(this.getUsuario(), this.getMenu());
     this.setModelMenuPrincipal(model_menu_principal);
   }
 
-  // 2) Função de adicionar tarefas
-  // Como essa função foi chamada, então podemos adicionar mais uma tarefa em "model_menu_tarefas" do
-  // "model_menu_principal".
-  // Precisamos atualizar "porcentagem_tarefas_concluidas" e atualizar "model_menu_tarefas"
+  /**
+   * Função de adicionar tarefas
+   * Como essa função foi chamada, então podemos adicionar mais uma tarefa em "model_menu_tarefas" do
+   * "model_menu_principal".
+   * Precisamos atualizar "porcentagem_tarefas_concluidas" e atualizar "model_menu_tarefas"
+   */
   public void addTarefa () {
     JSONObject tarefa = new JSONObject();
     tarefa.put("titulo", "Nova Tarefa");
@@ -79,25 +103,32 @@ public class ControllerMenuPrincipal{
   }
 
 
-  // 3) Função de limpar tarefas concluídas
-  // Como essa função foi chamada, então há ao menos 1 tarefa concluída em "model_menu_tarefas" do
-  // "model_menu_principal"
-  // Precisamos atualizar "porcentagem_tarefas_concluidas" e "zerar" todas as tarefas concluídas do "model_menu_tarefas" do "model_menu_principal".
+  /**
+   * Função de limpar tarefas concluídas
+   * Como essa função foi chamada, então há ao menos 1 tarefa concluída em "model_menu_tarefas" do
+   * "model_menu_principal"
+   * Precisamos atualizar "porcentagem_tarefas_concluidas" e "zerar" todas as tarefas concluídas do "model_menu_tarefas" do "model_menu_principal".
+   */
   public void limpar_tarefas_concluidas(){
     JSONArray tarefas = Dados_tarefas.limparConcluidas(((this.model_menu_principal).getTarefas()));
     (this.model_menu_principal).setTarefas(tarefas);
   }
 
 
-  // 4) Função de limpar todas as tarefas
-  // Como essa função foi chamada, então há ao menos 1 tarefa em "model_menu_tarefas" do
-  // "model_menu_principal".
-  // Precisamos atualizar "porcentagem_tarefas_concluidas" e "zerar" o "model_menu_tarefas" do "model_menu_principal".
+  /**
+   * Função de limpar todas as tarefas
+   * Como essa função foi chamada, então há ao menos 1 tarefa em "model_menu_tarefas" do
+   * "model_menu_principal".
+   * Precisamos atualizar "porcentagem_tarefas_concluidas" e "zerar" o "model_menu_tarefas" do "model_menu_principal".
+   */
   public void limpar_tudo(){
     (this.model_menu_principal).setTarefas(new JSONArray());
   }
 
-  // 5) Função de visualizar tarefa
+  /**
+   * Função de visualizar tarefa
+   * @param index
+   */
   public void visualizarTarefa(int index) {
     Iterator<Object> tarefas = this.model_menu_principal.getTarefas().iterator();
     
@@ -121,6 +152,11 @@ public class ControllerMenuPrincipal{
     );
   }
 
+  /**
+   * muda o valor de conclusao da tarefa
+   * @param index
+   * @param value
+   */
   public void concluirTarefa (int index, boolean value) {
     JSONObject tarefa = Dados_tarefas.buscarTarefa(index, this.model_menu_principal.getTarefas());
     tarefa.put("conclusao", value ? "concluido" : "nao concluido");
@@ -147,6 +183,10 @@ public class ControllerMenuPrincipal{
     }
   }
 
+  /**
+   * abre a tela de edição de tarefa
+   * @param index
+   */
   public void abrirEditarTarefa (int index) {
     Iterator<Object> tarefas = this.model_menu_principal.getTarefas().iterator();
     
@@ -176,6 +216,15 @@ public class ControllerMenuPrincipal{
     );
   }
 
+  /**
+   * edita uma tarefa
+   * @param index
+   * @param titulo
+   * @param descricao
+   * @param data
+   * @param hora
+   * @param prioridade
+   */
   public void editarTarefa (
     int index,
     String titulo,
@@ -199,6 +248,10 @@ public class ControllerMenuPrincipal{
     Dados_tarefas.atualizarDados(index, this.model_menu_principal.getTarefas(), novaTarefa);
   }
 
+  /**
+   * deleta uma tarefa
+   * @param index
+   */
   public void deletarTarefa (int index) {
     this.model_menu_principal.getTarefas().remove(index);
 
@@ -228,6 +281,9 @@ public class ControllerMenuPrincipal{
     }
   }
 
+  /**
+   * limpa as tarefas concluidas
+   */
   public void limparConcluidas () {
     this.model_menu_principal.setTarefas(
       Dados_tarefas.limparConcluidas(this.model_menu_principal.getTarefas())
@@ -245,6 +301,9 @@ public class ControllerMenuPrincipal{
     }
   }
 
+  /**
+   * limpa todas as tarefas
+   */
   public void limparTudo () {
     this.model_menu_principal.getTarefas().clear();
 
@@ -257,6 +316,9 @@ public class ControllerMenuPrincipal{
     this.menu.botaoAdicionar.setEnabled(true);
   }
 
+  /**
+   * salva os dados
+   */
   public void salvarDados () {
     Dados dados = new Dados();
     dados.salvarUsuario(usuario);

@@ -10,6 +10,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 //import java.awt.event.WindowEvent;
 
+/**
+ * Componente de editar as informações do usuário
+ * @author Rafael Facundo
+ */
 public class Change_info_Panel extends JPanel implements ActionListener {
 
     JPasswordField change_passw_input = new JPasswordField(60);

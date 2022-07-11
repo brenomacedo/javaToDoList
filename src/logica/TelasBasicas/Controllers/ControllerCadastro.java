@@ -3,15 +3,32 @@ package logica.TelasBasicas.Controllers;
 import logica.TelasBasicas.Models.ModelTelasIniciais;
 import logica.Auxiliar.*;
 
+/**
+ * Controller das telas de cadastro
+ * @author Tiago Brandão e Gustavo Wendell
+ */
 public class ControllerCadastro extends ControllerTelasIniciais{
   String nome;
   String confirmaSenha;
+
+  /**
+   * 
+   * @param nome
+   * @param nome_usuario
+   * @param senha
+   * @param confirmaSenha
+   * @param model
+   */
   public ControllerCadastro(String nome, String nome_usuario, String senha, String confirmaSenha, ModelTelasIniciais model) {
     super(nome_usuario, senha, model);
     this.setNome(nome);
     this.setConfirmaSenha(confirmaSenha);
   }
 
+  /**
+   * 
+   * @param nome
+   */
   public void setNome(String nome) {
     this.nome = nome;
   }
@@ -20,6 +37,10 @@ public class ControllerCadastro extends ControllerTelasIniciais{
     return this.nome;
   }
 
+  /**
+   * 
+   * @param confirmaSenha
+   */
   public void setConfirmaSenha (String confirmaSenha) {
     this.confirmaSenha = confirmaSenha;
   }

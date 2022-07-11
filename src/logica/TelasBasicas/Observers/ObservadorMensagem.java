@@ -3,6 +3,10 @@ import javax.swing.JOptionPane;
 
 import logica.TelasBasicas.Models.ModelTelasIniciais;
 
+/**
+ * Observador das mensagens do app
+ * @author Tiago Brandão e Gustavo Wendell
+ */
 public class ObservadorMensagem{
   String mensagem;
   ModelTelasIniciais model;

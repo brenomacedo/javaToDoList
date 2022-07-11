@@ -1,9 +1,20 @@
 package logica.Auxiliar;
 
+/**
+ * Classe que guarda as mensagens a serem exibidas durante o programa
+ * @author Tiago Brandão e Gustavo Wendell
+ */
 public class Mensagens{
   public static String nome = "nome";
   public static String nome_usuario = "nome_usuario";
   public static String senha = "senha";
+
+  /**
+   * gera a mensagem de login
+   * @param numero_da_mensagem
+   * @param valor_retorno
+   * @return
+   */
   public static String gera_mensagem_login(int i, int valor_retorno){
     String mensagem = "";
     if (i == 0){
@@ -27,6 +38,14 @@ public class Mensagens{
     return mensagem;
   }
 
+  /**
+   * gera a mensagem de cadastro
+   * @param numero_da_mensagem
+   * @param valor_retorno
+   * @param senha
+   * @param confirmaSenha
+   * @return
+   */
   public static String gera_mensagem_cadastro(int i, int valor_retorno, String senha, String confirmaSenha){
     String mensagem = "";
     if (i == 0){
@@ -47,6 +66,13 @@ public class Mensagens{
     return mensagem;
   }
 
+  /**
+   * gera a mensagem de editar perfil
+   * @param senha_atual
+   * @param senha_ent
+   * @param tipo_mudanca
+   * @return
+   */
   public static String gera_mensagem_EditarPerfil(String senha_atual, String senha_ent, String tipo_mudanca){
     String mensagem = "";
     if (senha_ent.equals(mensagem))
@@ -65,6 +91,12 @@ public class Mensagens{
     return mensagem;
   }
 
+  /**
+   * gera a mensagem de apagar o registro
+   * @param senha_atual
+   * @param senha_ent
+   * @return
+   */
   public static String gera_mensagem_ApagarRegistro(String senha_atual, String senha_ent){
     String mensagem = "";
     if (senha_ent.equals(mensagem))

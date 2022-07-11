@@ -8,6 +8,10 @@ import logica.MenuPrincipal.Observers.ObservadorAdicionarTarefa;
 import java.util.Iterator;
 import views.Menu;
 
+/**
+ * Model do menu principal
+ * @author Tiago Brandão e Gustavo Wendell
+ */
 public class ModelMenuPrincipal{
   String nome_usuario;
   JSONArray tarefas;
@@ -19,10 +23,11 @@ public class ModelMenuPrincipal{
   ObservadorAdicionarTarefa observadorAdicionarTarefa;
   Menu menu;
 
-  // Adicionar observadores
-  // Fazer attach
-  // Fazer notify
-  // Fazer construtor
+  /**
+   *
+   * @param usuario
+   * @param menu
+   */
   public ModelMenuPrincipal(JSONObject usuario, Menu menu){
     this.usuario = usuario;
     this.attach(new ObservadorAdicionarTarefa());
@@ -83,6 +88,10 @@ public class ModelMenuPrincipal{
     this.setPorcentagemTarefasConcluidas(porcentagem_tarefas_concluidas);
   }
 
+  /**
+   * 
+   * @param menu
+   */
   public void setMenu(Menu menu){
     this.menu = menu;
   }
@@ -91,26 +100,50 @@ public class ModelMenuPrincipal{
     return this.menu;
   }
 
+  /**
+   * 
+   * @param nome_usuario
+   */
   public void setNomeUsuario(String nome_usuario){
     this.nome_usuario = nome_usuario;
   }
 
+  /**
+   * 
+   * @param tarefas
+   */
   public void setTarefas(JSONArray tarefas){
     this.tarefas = tarefas;
   }
 
+  /**
+   * 
+   * @param porcentagem_tarefas_concluidas
+   */
   public void setPorcentagemTarefasConcluidas(String porcentagem_tarefas_concluidas){
     this.porcentagem_tarefas_concluidas = porcentagem_tarefas_concluidas;
   }
 
+  /**
+   * 
+   * @param adicionar_tarefa
+   */
   public void setAdicionarTarefa(boolean adicionar_tarefa){
     this.adicionar_tarefa = adicionar_tarefa;
   }
 
+  /**
+   * 
+   * @param limpar_tarefas_concluidas
+   */
   public void setLimparTarefasConcluidas(boolean limpar_tarefas_concluidas){
     this.limpar_tarefas_concluidas = limpar_tarefas_concluidas;
   }
 
+  /**
+   * 
+   * @param limpar_tudo
+   */
   public void setLimparTudo(boolean limpar_tudo){
     this.limpar_tudo = limpar_tudo;
   }
@@ -151,6 +184,10 @@ public class ModelMenuPrincipal{
     return this.usuario;
   }
 
+  /**
+   * 
+   * @param observador
+   */
   public void attach (ObservadorAdicionarTarefa observador) {
     this.observadorAdicionarTarefa = observador;
     observador.setModel(this);

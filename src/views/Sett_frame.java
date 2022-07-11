@@ -7,6 +7,10 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Frame que envolve os componentes de icone do usuario e de edição de suas informações
+ * @author Rafael Facundo
+ */
 public class Sett_frame extends JFrame {
 
     public ActionListener menuFrame;

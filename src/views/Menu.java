@@ -28,6 +28,10 @@ import java.awt.event.WindowEvent;
 import java.util.Iterator;
 import logica.MenuPrincipal.Controllers.ControllerMenuPrincipal;
 
+/**
+ * Tela de Menu principal
+ * @author Breno Macêdo e Renan Xerez
+ */
 public class Menu extends JFrame implements ActionListener {
   
   public JPanel listaDeTarefas;
@@ -40,6 +44,10 @@ public class Menu extends JFrame implements ActionListener {
   boolean visualizandoTarefa = false;
   boolean editandoTarefa = false;
 
+  /**
+   * 
+   * @param model
+   */
   public Menu (ModelMenuPrincipal model) {
 
     this.model = model;
@@ -181,6 +189,10 @@ public class Menu extends JFrame implements ActionListener {
     return this.visualizandoTarefa;
   }
 
+  /**
+   * atualiza a informação de se há uma tela de visualização de tarefa aberta
+   * @param visualizandoTarefa
+   */
   public void setVisualizandoTarefa (boolean visualizandoTarefa) {
     this.visualizandoTarefa = visualizandoTarefa;
   }
@@ -189,10 +201,17 @@ public class Menu extends JFrame implements ActionListener {
     return this.editandoTarefa;
   }
 
+  /**
+   * atualiza a informação de se há uma tela de edição de tarefa aberta
+   * @param editandoTarefa
+   */
   public void setEditandoTarefa (boolean editandoTarefa) {
     this.editandoTarefa = editandoTarefa;
   }
 
+  /**
+   * carrega as tarefas
+   */
   public void carregarTarefas () {
     Iterator<Object> tarefas = this.model.getTarefas().iterator();
 
@@ -231,10 +250,16 @@ public class Menu extends JFrame implements ActionListener {
     }
   }
 
+  /**
+   * adiciona uma tarefa
+   */
   public void adicionarTarefa () {
     this.controllerMenuPrincipal.addTarefa();
   }
 
+  /**
+   * recarrega as tarefas
+   */
   public void recarregarTarefas () {
     this.listaDeTarefas.removeAll();
     this.carregarTarefas();
@@ -242,6 +267,10 @@ public class Menu extends JFrame implements ActionListener {
     this.setVisible(true);
   }
 
+  /**
+   * abre a tela de visualização de tarefa
+   * @param index
+   */
   public void visualizarTarefa (int index) {
     if (!this.visualizandoTarefa) {
       this.setVisualizandoTarefa(true);
@@ -249,10 +278,19 @@ public class Menu extends JFrame implements ActionListener {
     }
   }
 
+  /**
+   * muda o status de conclusão de uma tarefa
+   * @param index
+   * @param value
+   */
   public void concluirTarefa (int index, boolean value) {
     this.controllerMenuPrincipal.concluirTarefa(index, value);
   }
 
+  /**
+   * abre a tela de edição de tarefa
+   * @param index
+   */
   public void abrirEditarTarefa (int index) {
     if (!this.editandoTarefa) { 
       this.setEditandoTarefa(true);
@@ -260,6 +298,15 @@ public class Menu extends JFrame implements ActionListener {
     }
   }
 
+  /**
+   * edita uma tarefa
+   * @param index
+   * @param titulo
+   * @param descricao
+   * @param data
+   * @param hora
+   * @param prioridade
+   */
   public void editarTarefa (
     int index,
     String titulo,
@@ -280,6 +327,10 @@ public class Menu extends JFrame implements ActionListener {
     this.recarregarTarefas();
   }
 
+  /**
+   * deleta uma tarefa
+   * @param index
+   */
   public void deletarTarefa (int index) {
     this.controllerMenuPrincipal.deletarTarefa(index);
     this.recarregarTarefas();

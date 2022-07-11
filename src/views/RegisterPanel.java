@@ -8,6 +8,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Componente de Registro
+ * @author Rafael Facundo
+ */
 public class RegisterPanel extends JPanel implements ActionListener {
     int width = 570;
     int height = 400;
@@ -25,6 +29,10 @@ public class RegisterPanel extends JPanel implements ActionListener {
     final JButton registerButton;
     final JFrame frame;
 
+    /**
+     * 
+     * @param frame
+     */
     RegisterPanel (JFrame frame) {
 
         this.frame = frame;

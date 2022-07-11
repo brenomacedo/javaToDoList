@@ -11,6 +11,10 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 
+/**
+ * Observador da tela de login
+ * @author Tiago Brandão e Gustavo Wendell
+ */
 public class ObservadorLogin{
   JSONObject usuario;
   ModelTelasIniciais model;
